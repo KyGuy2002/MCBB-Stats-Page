@@ -3,8 +3,8 @@
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     aspect-ratio: 2;
-    gap: 10px;
-    padding: 10px;
+    gap: 20px;
+    padding: 20px;
   }
   
 .grid-container > div {

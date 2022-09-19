@@ -9,20 +9,6 @@ html, body {
 
 
 
-.title {
-  font-size: 30px;
-  text-align: center;
-  margin: 20px 15px 15px 20px;
-  color: #ffffff;
-}
-
-
-.box {
-  background-color: #1b1b1bce;
-  border-radius: 20px;
-  backdrop-filter: blur(8px);
-}
-
 .button-div {
   display: flex;
   justify-content: center;
@@ -38,7 +24,7 @@ html, body {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  border-radius: 20px;
+  border-radius: 25px;
   font-weight: bold;
   transition-duration: 0.4s;
 }
@@ -54,15 +40,41 @@ html, body {
 }
 
 
+.box {
+  background-color: #1b1b1bce;
+  border-radius: 15px;
+  backdrop-filter: blur(8px);
+  margin: 0;
+}
+
+
+.title {
+  font-size: 19px;
+  text-align: center;
+  color: #ffffff;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+
+.description {
+  text-align: center;
+  color: #a5a5a5;
+  font-weight: 500;
+  margin: 0px 12%;
+  font-size: 12px;
+}
+
+
 .username-input {
-  background-color: #5c5c5c;
+  background-color: rgba(109, 109, 109, 0.705);
   border: none;
-  color: rgb(233, 233, 233);
-  padding: 15px 32px;
+  padding: 0px;
+  height: 65px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 23px;
   font-weight: bold;
   width: 100%;
 }

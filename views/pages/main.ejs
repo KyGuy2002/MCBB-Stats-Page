@@ -17,24 +17,30 @@
 
 
     <body>
-
         <div class="grid-container">
-            <div class="namePrompt">
-                <div class="col-12 col-s-12">
-                    <div class="box">
-                        <h1 class="title">What Is Your Name</h1>
-    
-                        <form action="/submitName" method = "post">
-                        <input class="username-input" type="text" placeholder="Your Username" name="username" required/>
-                        <div class="button-div">
-                            <button class="submit-button">SUBMIT</button>
-                        </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
 
+
+            <!-- Announcement Box -->
+            <div class="announcement box">
+                <h1 class="title" id="announcement-title">Welcome To The MCBlockBuilds Stats Page</h1>
+                <h1 class="description" id="announcement-description">Here you can view all your game stats in one place!  Vizualize your progression and advancment throughout every gamemode, and share a quick link to your friends!</h1>
+            </div>
+
+
+            <!-- View Stats Box -->
+            <div class="namePrompt box">
+                <h1 class="title" id="input-title">View Player Stats Of</h1>
+
+                <form action="/submitName" method = "post">
+                <input class="username-input" type="text" placeholder="Enter A Username" name="username" required/>
+                <div class="button-div">
+                    <button class="submit-button">SUBMIT</button>
+                </div>
+                </form>
+            </div>
+
+
+        </div>
     </body>
 
 
