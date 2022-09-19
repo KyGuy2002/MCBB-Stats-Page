@@ -1,0 +1,23 @@
+/* For mobile */
+.namePrompt {
+  grid-column: 2 / 10;
+  grid-row: 2 / 5;
+}
+
+
+/* For tablets */
+@media only screen and (min-width: 600px) {
+  .namePrompt {
+    grid-column: 3 / 9;
+    grid-row: 2 / 5;
+  }
+}
+
+
+/* For desktop */
+@media only screen and (min-width: 768px) {
+  .namePrompt {
+    grid-column: 4 / 8;
+    grid-row: 2 / 4;
+  }
+}

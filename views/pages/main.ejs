@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+    <head>
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/grid.css">
+        <link rel="stylesheet" href="/css/main/grid-items.css">
+        <script src="https://kit.fontawesome.com/56772e7f1a.js" crossorigin="anonymous"></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>MCBB Stats</title>
+    </head>
+
+
+    <%- include('../partials/_header') %>
+
+
+    <body>
+
+        <div class="grid-container">
+            <div class="namePrompt">
+                <div class="col-12 col-s-12">
+                    <div class="box">
+                        <h1 class="title">What Is Your Name</h1>
+    
+                        <form action="/submitName" method = "post">
+                        <input class="username-input" type="text" placeholder="Your Username" name="username" required/>
+                        <div class="button-div">
+                            <button class="submit-button">SUBMIT</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+
+
+</html>

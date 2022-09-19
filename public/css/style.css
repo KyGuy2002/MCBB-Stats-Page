@@ -1,0 +1,68 @@
+html {
+    font-family: 'Open Sans', sans-serif;
+    background-image: url("/images/background.png")
+}
+html, body {
+  margin: 0;
+}
+
+
+
+
+.title {
+  font-size: 30px;
+  text-align: center;
+  margin: 20px 15px 15px 20px;
+  color: #ffffff;
+}
+
+
+.box {
+  background-color: #1b1b1bce;
+  border-radius: 20px;
+  backdrop-filter: blur(8px);
+}
+
+.button-div {
+  display: flex;
+  justify-content: center;
+}
+
+.submit-button {
+  margin: 20px;
+  background-color: #33ca38;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 20px;
+  font-weight: bold;
+  transition-duration: 0.4s;
+}
+
+.submit-button:hover {
+  background-color: #57d15b;
+  padding: 15.5px 32.5px;
+}
+
+.submit-button:active {
+  background-color: #3b913d;
+  padding: 15.5px 32.5px;
+}
+
+
+.username-input {
+  background-color: #5c5c5c;
+  border: none;
+  color: rgb(233, 233, 233);
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  width: 100%;
+}
