@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
     <head>
-        <link rel="stylesheet" href="/css/style.css" type="text/css">
-        <link rel="stylesheet" href="/css/columns.css" type="text/css">
+        <link rel="stylesheet" href="/css/global/global.css">
+        <link rel="stylesheet" href="/css/pages/stats/stats.css">
+        <link rel="stylesheet" href="/css/pages/stats/stats-grid.css">
+        <script src="https://kit.fontawesome.com/56772e7f1a.js" crossorigin="anonymous"></script>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Cat Fact</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>MCBB Stats</title>
     </head>
 
 
@@ -15,32 +15,51 @@
 
 
     <body>
+        <div class="grid-container">
 
 
-        <div class="row">
+            <!-- General Box -->
+            <div class="general box">
 
+                <div style="display: flex; justify-content: flex-start">
 
-            <!-- Fact -->
-            <div class="col-12 col-s-12">
-                <div class="box">
-                    <h1 class="title">Welcome Back</h1>
+                    <div>
+                        <img class="g-character" src="/assets/images/character.png">
+                    </div>
 
-                    <p id="name" class="fact"><%= username %></p>
+                    <div>
+                        <h1 class="g-name">Stats For <%= username %></h1>
+                        <h1 class="g-uuid"><%= uuid %></h1>
+
+                        <div style="display: flex; justify-content: flex-start">
+                            <div>
+                                <hr class="g-line">
+                            </div>
+                        </div>
+
+                        <h1 class="g-stats-label">First Joined: <span class="g-stats-value"><%= first_joined %></span></h1>
+                        <h1 class="g-stats-label">Last Online: <span class="g-stats-value"><%= last_online %></span></h1>
+                        <h1 class="g-stats-label">Current Location: <span class="g-stats-value"><%= current_loc %></span></h1>
+                        <h1 class="g-stats-label">Rank: <span class="g-stats-value"><%= rank %></span></h1>
+                    </div>
+
                 </div>
+
+            </div>
+
+
+            <!-- Badges Box -->
+            <div class="badges box">
+                <h1 class="title">Badges</h1>
+            </div>
+
+            <!-- Main Box -->
+            <div class="main box">
+                <h1 class="title">Main</h1>
             </div>
 
 
         </div>
-
-
-        <!-- Credit -->
-        <div class="row">
-            <p class="credit">Created By IEatBeans</p>
-        </div>
-
-
-        <!-- <script src="/js/main.js"></script> -->
-
     </body>
 
 

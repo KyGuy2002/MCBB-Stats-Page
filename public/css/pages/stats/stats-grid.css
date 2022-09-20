@@ -1,0 +1,42 @@
+/* For desktop */
+@media only screen and (min-width: 768px) {
+  .general {
+    grid-column: 2 / 8;
+    grid-row: 1 / 3;
+  }
+  .badges {
+    grid-column: 8 / 10;
+    grid-row: 1 / 3;
+  }
+  .main {
+    grid-column: 2 / 10;
+    grid-row: 3 / 5;
+  }
+}
+
+
+/* For tablets */
+@media only screen and (min-width: 600px) {
+  .general {
+    /* TODO */
+  }
+  .badges {
+    /* TODO */
+  }
+  .main {
+    /* TODO */
+  }
+}
+
+
+
+/* For mobile */
+.general {
+  /* TODO */
+}
+.badges {
+  /* TODO */
+}
+.main {
+  /* TODO */
+}

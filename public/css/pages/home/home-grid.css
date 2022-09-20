@@ -1,0 +1,48 @@
+/* For desktop */
+@media only screen and (min-width: 768px) {
+  .announcement {
+    grid-column: 3 / 9;
+    grid-row: 1 / 2;
+  }
+  #announcement-title {
+    font-size: 27px;
+  }
+  #announcement-description {
+    font-size: 16px;
+  }
+
+  .namePrompt {
+    grid-column: 3 / 9;
+    grid-row: 2 / 3;
+  }
+  #input-title {
+    font-size: 27px;
+  }
+}
+
+
+/* For tablets */
+@media only screen and (min-width: 600px) {
+  .announcement {
+    grid-column: 3 / 9;
+    grid-row: 2 / 5;
+  }
+
+  .namePrompt {
+    grid-column: 3 / 9;
+    grid-row: 2 / 5;
+  }
+}
+
+
+
+/* For mobile */
+.announcement {
+  grid-column: 2 / 10;
+  grid-row: 1 / 2;
+}
+
+.namePrompt {
+  grid-column: 2 / 10;
+  grid-row: 2 / 5;
+}

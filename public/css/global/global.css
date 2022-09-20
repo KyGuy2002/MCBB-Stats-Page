@@ -1,0 +1,50 @@
+/* ===== Page ===== */
+html {
+    font-family: 'Open Sans', sans-serif;
+    background-image: url("/assets/images/background.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+html, body {
+    margin: 0;
+}
+
+
+
+/* ===== Grid ===== */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 20px;
+    padding: 20px;
+  }
+  
+.grid-container > div {
+    text-align: center;
+    padding: 20px 0;
+    font-size: 30px;
+}
+
+
+
+/* ===== Other ===== */
+.box {
+    background-color: #1b1b1bce;
+    border-radius: 35px;
+    backdrop-filter: blur(8px);
+    margin: 0px;
+    padding: 0%;
+}
+
+.button {
+    border: none;
+    color: white;
+    padding: 8px 11px;
+    text-align: center;
+    font-size: 14px;
+    border-radius: 18px;
+    font-weight: bold;
+    transition-duration: 0.4s;
+}

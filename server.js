@@ -20,16 +20,21 @@ app.listen(8080);
 
 
 // *** Display Pages ***
-// Main Page
+// Home Page
 app.get('/', function (req, res) {
-    res.render('pages/main', {});
+    res.render('pages/home', {});
 });
 
 // Stats Page
 app.get('/stats/:username', function (req, res) {
     res.render('pages/stats', { 
         // EJS variable and server-side variable
-        username: req.params.username
+        username: req.params.username,
+        uuid: "910b8e50-7cc3-4062-8f0a-f9fbd4a9b935",
+        first_joined: "March 17, 2021",
+        last_online: "5 Minutes ago",
+        current_loc: "Manhunt: In Game",
+        rank: "Squid"
     });
 });
 
