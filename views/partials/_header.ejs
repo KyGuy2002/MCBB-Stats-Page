@@ -1,109 +1,49 @@
+<head>
+    <link rel="stylesheet" href="/css/global/header.css">
+</head>
+
 <!-- Header -->
 <header class="header">
 
+
+    <!-- Logo And Name -->
     <div class="h-name-logo">
         <img class="h-logo" src="/assets/images/logo.png" onclick="location.href = '/'">
         <h1 class="h-name">MCBlockBuilds Stats</h1>
     </div>
 
 
+    <!-- Mobile - Search Bar -->
+    <div>
+        <form action="/submitName" method = "post">
+            <input class="button h-button-small h-search-small search-small" id="search-input-small" name="username" placeholder="Search">
+            <label class="button h-button-small h-search-small" for="search-input-small">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </label>
+        </form>
+    </div>
+    
+
+    <!-- Desktop - Search Bar -->
+    <div>
+        <form action="/submitName" method = "post">
+            <input class="button h-button h-search search" id="search-input" name="username" placeholder="Search">
+            <label class="button h-button h-search" for="search-input">
+                Search <i class="fa-solid fa-magnifying-glass"></i>
+            </label>
+        </form>
+    </div>
 
 
-    <button class="h-button-small button h-search-small" onclick="location.href = '/'">
-        <i class="fa-solid fa-magnifying-glass"></i>
-    </button>
-
-
-
-    <button class="button h-button h-search" onclick="location.href = '/'">
-        Search <i class="fa-solid fa-magnifying-glass"></i>
-    </button>
-
+    <!-- Discord Button -->
     <button class="button h-button h-discord" onclick="window.open('https://mcblockbuilds.net/discord/','_blank')">
         Discord <i class="fa-brands fa-discord"></i>
     </button>
 
+    <!-- Website Button -->
     <button class="button h-button h-website" onclick="window.open('https://mcblockbuilds.net/','_blank')">
         Website <i class="fa-solid fa-arrow-up-right-from-square"></i>
     </button>
 
+
 </header>
-
-<style>
-    header {
-        position: sticky;
-        top: 0;
-        z-index: 999;
-    }
-    .header {
-        background-color: #282828;
-        padding: 25px;
-        text-align: center;
-    }
-    .h-logo {
-        width: 30px;
-        height: 30px;
-        position: absolute;
-        top: 10px;
-        left: 10px;
-    }
-    .h-name {
-        color: #ffffff;
-        font-size: 20px;
-        text-align: left;
-        position: absolute;
-        top: 0;
-        left: 50px;
-    }
-    .h-button {
-        top: 9px;
-        position: absolute;
-        visibility: hidden;
-    }
-    .h-button-small {
-        top: 9px;
-        position: absolute;
-        visibility: visible;
-        padding-left: 9px;
-        padding-right: 9px;
-    }
-
-    .h-search {
-        background-color: #666666;
-        right: 223px;
-    }
-    .h-search-small {
-        background-color: #666666;
-        right: 10px;
-    }
-    .h-search:hover, .h-search-small:hover {
-        background-color: #919191;
-    }
-
-    .h-discord {
-        background-color: #5865F2;
-        right: 10px;
-    }
-    .h-discord:hover {
-        background-color: #808af7;
-    }
-
-    .h-website {
-        background-color: #3a3a3a;
-        right: 118px;
-    }
-    .h-website:hover {
-        background-color: #666666;
-    }
-
-
-    /* For Desktop */
-    @media only screen and (min-width: 600px) {
-        .h-button {
-            visibility: visible;
-        }
-        .h-button-small {
-            visibility: hidden;
-        }
-    }
-</style>

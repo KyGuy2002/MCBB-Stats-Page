@@ -10,7 +10,7 @@
   }
   .main {
     grid-column: 2 / 10;
-    grid-row: 3 / 5;
+    grid-row: 3 / 10;
   }
 }
 

@@ -31,10 +31,16 @@ app.get('/stats/:username', function (req, res) {
         // EJS variable and server-side variable
         username: req.params.username,
         uuid: "910b8e50-7cc3-4062-8f0a-f9fbd4a9b935",
+        
         first_joined: "March 17, 2021",
         last_online: "5 Minutes ago",
         current_loc: "Manhunt: In Game",
-        rank: "Squid"
+        rank: "Squid",
+
+        total_kills: "35",
+        wins_looses: "7/24",
+        games_played: "31",
+        minutes_played: "6,708",
     });
 });
 
