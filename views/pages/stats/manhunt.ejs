@@ -10,7 +10,7 @@
     <body>
         <div class="grid-container"> <!-- Container -->
             <%- include('../../partials/_general-stats') %> <!-- General Box -->
-            <div class="main box" style="padding: 40px;"> <!-- Main Box -->
+            <div class="box main pad"> <!-- Main Box -->
 
 
 
@@ -21,28 +21,26 @@
                         <hr class="g-line">
                     </div>
                 </div>
-                <div class="rg-table-div">
-                    <table class="rg-table">
+                <table>
+                    <tr>
+                        <th>Date</th>
+                        <th>Duration</th>
+                        <th>Role</th>
+                        <th>Winner</th>
+                        <th>Modifiers</th>
+                        <th>More Details</th>
+                    </tr>
+                    <%table.forEach(function(entry) {%>
                         <tr>
-                            <th>Date</th>
-                            <th>Duration</th>
-                            <th>Role</th>
-                            <th>Winner</th>
-                            <th>Modifiers</th>
-                            <th>More Details</th>
+                            <td><%=entry.date%></td>
+                            <td><%=entry.duration%></td>
+                            <td><%=entry.role%></td>
+                            <td><%=entry.winner%></td>
+                            <td><%=entry.mods%></td>
+                            <td><button class="rg-details"><i class="fa-solid fa-angle-right"></i></button></td>
                         </tr>
-                        <%table.forEach(function(entry) {%>
-                            <tr>
-                                <td><%=entry.date%></td>
-                                <td><%=entry.duration%></td>
-                                <td><%=entry.role%></td>
-                                <td><%=entry.winner%></td>
-                                <td><%=entry.mods%></td>
-                                <td><button class="rg-details"><i class="fa-solid fa-angle-right"></i></button></td>
-                            </tr>
-                        <%});%>
-                    </table>
-                </div>
+                    <%});%>
+                </table>
 
 
 

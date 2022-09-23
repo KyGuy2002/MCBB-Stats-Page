@@ -23,7 +23,19 @@
 .g-character {
     height: 200px;
     margin: 10px;
-    margin-left: 50px;
+    margin-left: 0px;
+    visibility: hidden;
+}
+.g-character-div {
+    width: 0px;
+}
+@media only screen and (min-width: 550px) {
+    .g-character {
+        visibility: visible;
+    }
+    .g-character-div {
+        width: auto;
+    }
 }
 
 
@@ -53,10 +65,18 @@
 table {
     border-collapse: collapse;
     color:#ffffff;
-    font-size: 12px;
+    font-size: 10px;
     text-align: center;
-    margin: 10px;
-    width: 500px;
+    margin: auto;
+    width: 100%;
+}
+/* For tablets and small desktops */
+@media only screen and (min-width: 768px) {
+    table {
+      width: 500px;
+      margin: 10px;
+      font-size: 12px;
+    }
 }
 tr {
     border-bottom: 1px solid var(--grey);

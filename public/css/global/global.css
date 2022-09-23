@@ -21,28 +21,66 @@ html, body {
 /* ===== Grid ===== */
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(10, 1fr);
+    grid-template-columns: 1;
     grid-template-rows: repeat(10, 1fr);
     gap: 20px;
-    padding: 20px;
+    padding: 0px;
   }
   
 .grid-container > div {
     text-align: center;
-    padding: 20px 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
     font-size: 30px;
+}
+.box {
+    background-color: #1b1b1bce;
+    border-radius: 0px;
+    backdrop-filter: blur(8px);
+    margin: 0px;
+    padding: 0px;
+}
+/* Tablet and Desktop */
+@media only screen and (min-width: 550px) {
+    .grid-container {
+        grid-template-columns: repeat(10, 1fr);
+        padding: 20px;
+    }
+    .box {
+        border-radius: 35px;
+        padding: 40px;
+    }
 }
 
 
 /* ===== Other ===== */
-.box {
-    background-color: #1b1b1bce;
-    border-radius: 35px;
-    backdrop-filter: blur(8px);
+.inner-box {
+    background-color: rgba(27, 27, 27, 0.699);
+    border-radius: 20px;
     margin: 0px;
     padding: 0%;
 }
-
+.inner-elements {
+    display: flex;
+    justify-content:flex-start;
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+}
+.c-stats-label {
+    font-size: 17px;
+    text-align: left;
+    color: #ffffff;
+    margin: 10px;
+    font-weight: bold;
+}
+.c-stats-value {
+    text-align: left;
+    color: #a5a5a5;
+    font-weight: bold;
+    margin: 10px;
+    font-size: 17px;
+}
 
 .button {
     border: none;

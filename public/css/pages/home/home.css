@@ -2,15 +2,14 @@
     font-size: 18px;
     text-align: center;
     color: #ffffff;
-    margin-left: 6%;
-    margin-right: 6%;
+    padding: 0px 15px;
 }
 .a-description {
     text-align: center;
     color: #a5a5a5;
     font-weight: 500;
-    margin: 0px 12%;
-    font-size: 12px;
+    font-size: 15px;
+    padding: 0px 15px;
 }
 
 
