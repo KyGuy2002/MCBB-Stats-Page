@@ -1,33 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <link rel="stylesheet" href="/css/global/global.css">
-        <link rel="stylesheet" href="/css/pages/home/home.css">
-        <link rel="stylesheet" href="/css/pages/home/home-grid.css">
-        <script src="https://kit.fontawesome.com/56772e7f1a.js" crossorigin="anonymous"></script>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>MCBB Stats</title>
+        <%- include('../partials/_head-home') %>
+        <title>Home | MCBB Stats</title>
     </head>
-
-
     <%- include('../partials/_header') %>
-
 
     <body>
         <div class="grid-container">
 
 
+
             <!-- Announcement Box -->
             <div class="announcement box">
-                <h1 class="title" id="announcement-title">Welcome To The MCBlockBuilds Stats Page</h1>
-                <h1 class="description" id="announcement-description">Here you can view all your game stats in one place!  Vizualize your progression and advancment throughout every gamemode, and share a quick link to your friends!</h1>
+                <h1 class="a-title">Welcome To The MCBlockBuilds Stats Page</h1>
+                <h1 class="a-description">Here you can view all your game stats in one place!  Vizualize your progression and advancment throughout every gamemode, and share a quick link to your friends!</h1>
             </div>
 
 
+            
             <!-- View Stats Box -->
             <div class="namePrompt box">
-                <h1 class="title" id="input-title">View Player Stats Of</h1>
+                <h1 class="a-title">View Player Stats Of</h1>
 
                 <form action="/submitName" method = "post">
                     <input class="username-input" type="text" placeholder="Enter A Username" name="username" required/>
@@ -38,8 +32,7 @@
             </div>
 
 
+
         </div>
     </body>
-
-
 </html>

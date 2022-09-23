@@ -19,15 +19,23 @@ app.listen(8080);
 
 
 
+// *** API ***
+// Submit name for main page
+app.post('/submitName', encodeURL, (req, res) => {
+    return res.redirect('/stats/'+req.body["username"]+"/manhunt");
+});
+
+
+
 // *** Display Pages ***
 // Home Page
 app.get('/', function (req, res) {
     res.render('pages/home', {});
 });
 
-// Stats Page
-app.get('/stats/:username', function (req, res) {
-    res.render('pages/stats', { 
+// Theme parks Page
+app.get('/stats/:username/themeparks', function (req, res) {
+    res.render('pages/stats/themeparks', { 
         // EJS variable and server-side variable
         username: req.params.username,
         uuid: "910b8e50-7cc3-4062-8f0a-f9fbd4a9b935",
@@ -44,10 +52,83 @@ app.get('/stats/:username', function (req, res) {
     });
 });
 
+// Manhunt Page
+app.get('/stats/:username/manhunt', function (req, res) {
+    var items = [
+        {date:'10/23/22 3:23 PM',duration:'1:35:06',role:'Hunter',winner:'Speedrunner',mods:'None'},
+        {date:'10/23/22 3:23 PM',duration:'1:35:06',role:'Hunter',winner:'Speedrunner',mods:'None'}];
+    res.render('pages/stats/manhunt', { 
+        // EJS variable and server-side variable
+        username: req.params.username,
+        uuid: "910b8e50-7cc3-4062-8f0a-f9fbd4a9b935",
+        
+        first_joined: "March 17, 2021",
+        last_online: "5 Minutes ago",
+        current_loc: "Manhunt: In Game",
+        rank: "Squid",
+        
+        table:items,
 
+        total_kills: "35",
+        wins_looses: "7 / 24",
+        games_played: "31",
+        minutes_played: "6,708",
+    });
+});
 
-// *** API ***
-// Submit name for main page
-app.post('/submitName', encodeURL, (req, res) => {
-    return res.redirect('/stats/'+req.body["username"]);
+// Creative Page
+app.get('/stats/:username/creative', function (req, res) {
+    res.render('pages/stats/creative', { 
+        // EJS variable and server-side variable
+        username: req.params.username,
+        uuid: "910b8e50-7cc3-4062-8f0a-f9fbd4a9b935",
+        
+        first_joined: "March 17, 2021",
+        last_online: "5 Minutes ago",
+        current_loc: "Manhunt: In Game",
+        rank: "Squid",
+
+        total_kills: "35",
+        wins_looses: "7 / 24",
+        games_played: "31",
+        minutes_played: "6,708",
+    });
+});
+
+// Survial Page
+app.get('/stats/:username/survival', function (req, res) {
+    res.render('pages/stats/survival', { 
+        // EJS variable and server-side variable
+        username: req.params.username,
+        uuid: "910b8e50-7cc3-4062-8f0a-f9fbd4a9b935",
+        
+        first_joined: "March 17, 2021",
+        last_online: "5 Minutes ago",
+        current_loc: "Manhunt: In Game",
+        rank: "Squid",
+
+        total_kills: "35",
+        wins_looses: "7 / 24",
+        games_played: "31",
+        minutes_played: "6,708",
+    });
+});
+
+// Skyblock Page
+app.get('/stats/:username/skyblock', function (req, res) {
+    res.render('pages/stats/skyblock', { 
+        // EJS variable and server-side variable
+        username: req.params.username,
+        uuid: "910b8e50-7cc3-4062-8f0a-f9fbd4a9b935",
+        
+        first_joined: "March 17, 2021",
+        last_online: "5 Minutes ago",
+        current_loc: "Manhunt: In Game",
+        rank: "Squid",
+
+        total_kills: "35",
+        wins_looses: "7 / 24",
+        games_played: "31",
+        minutes_played: "6,708",
+    });
 });

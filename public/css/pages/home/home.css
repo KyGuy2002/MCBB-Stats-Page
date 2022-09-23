@@ -1,13 +1,11 @@
-.title {
-    font-size: 19px;
+.a-title {
+    font-size: 18px;
     text-align: center;
     color: #ffffff;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 6%;
+    margin-right: 6%;
 }
-
-
-.description {
+.a-description {
     text-align: center;
     color: #a5a5a5;
     font-weight: 500;
@@ -18,6 +16,7 @@
 
 .username-input {
     background-color: rgba(109, 109, 109, 0.705);
+    color: white;
     border: none;
     padding: 0px;
     height: 65px;
@@ -29,12 +28,13 @@
     width: 100%;
 }
 
+
 .submit-button {
-    background-color: #0BCA51;
+    background-color: var(--green);
     margin: 20px;
     padding: 20px 25px;
     border-radius: 35px;
 }
 .submit-button:hover {
-    background-color: #45e680;
+    background-color: rgb(0, 207, 62);
 }

@@ -1,82 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <link rel="stylesheet" href="/css/global/global.css">
-        <link rel="stylesheet" href="/css/pages/stats/stats.css">
-        <link rel="stylesheet" href="/css/pages/stats/stats-grid.css">
-        <script src="https://kit.fontawesome.com/56772e7f1a.js" crossorigin="anonymous"></script>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>MCBB Stats</title>
+        <%- include('../../partials/_head-stats') %>
+        <title><%= username %> | MCBB Stats</title>
     </head>
-
-
-    <%- include('../partials/_header') %>
-
-
+    <%- include('../../partials/_header') %>
+    <%- include('../../partials/_stats-nav') %>
 
     <body>
-
-        <div class="box" style="border-radius: 0;">
-            <hr class="nav-line">
-            <ul>
-                <li><a>Theme Parks</a></li>
-                <li><a>Manhunt</a></li>
-                <li><a>Creative</a></li>
-                <li><a>Survival</a></li>
-                <li><a>Skyblock</a></li>
-            </ul>
-        </div>
+        <div class="grid-container"> <!-- Container -->
+            <%- include('../../partials/_general-stats') %> <!-- General Box -->
+            <div class="main box" style="padding: 40px;"> <!-- Main Box -->
 
 
-        <div class="grid-container">
-
-
-            <!-- General Box -->
-            <div class="general box">
-
-                <div style="display: flex; justify-content: flex-start">
-
-                    <div>
-                        <img class="g-character" src="/assets/images/character.png">
-                    </div>
-
-                    <div>
-                        <h1 class="g-name">Stats For <%= username %></h1>
-                        <h1 class="g-uuid"><%= uuid %></h1>
-
-                        <div style="display: flex; justify-content: flex-start">
-                            <div>
-                                <hr class="g-line">
-                            </div>
-                        </div>
-
-                        <h1 class="g-stats-label">First Joined: <span class="g-stats-value"><%= first_joined %></span></h1>
-                        <h1 class="g-stats-label">Last Online: <span class="g-stats-value"><%= last_online %></span></h1>
-                        <h1 class="g-stats-label">Current Location: <span class="g-stats-value"><%= current_loc %></span></h1>
-                        <h1 class="g-stats-label">Rank: <span class="g-stats-value"><%= rank %></span></h1>
-                    </div>
-
-                </div>
-                
-
-            </div>
-
-
-
-
-            <!-- Badges Box -->
-            <div class="badges box">
-                <h1 class="title">Badges</h1>
-            </div>
-
-
-
-
-
-
-            <!-- Main Box -->
-            <div class="main box" style="padding: 40px;">
 
                 <!-- Recent Games -->
                 <h1 class="heading">Recent Games <span><a class="more-details" href="/">View All</a></span></h1>
@@ -141,9 +77,6 @@
 
 
 
-
-
-
                 <!-- Other Stats -->
                 <h1 class="heading" style="margin-top: 30px;">Other Stats</h1>
                 <div style="display: flex; justify-content: flex-start; margin-bottom: 20px;">
@@ -153,11 +86,12 @@
                 </div>
 
 
+
                 <!-- Total Kills -->
                 <div style="display: flex; justify-content: flex-start">
                     <div>
                         <span class="fa-stack fa-2x" style="font-size: 15px; display:inline-block">
-                            <i class="fa-solid fa-circle fa-stack-2x" style="color:rgb(0, 175, 0)"></i>
+                            <i class="fa-solid fa-circle fa-stack-2x" style="color:var(--green)"></i>
                             <i class="fa-solid fa-shield-halved fa-stack-1x" style="color:white"></i>
                         </span>
                     </div>
@@ -166,11 +100,13 @@
                     </div>
                 </div>
 
+
+
                 <!-- Wins/Looses -->
                 <div style="display: flex; justify-content: flex-start">
                     <div>
                         <span class="fa-stack fa-2x" style="font-size: 15px; display:inline-block">
-                            <i class="fa-solid fa-circle fa-stack-2x" style="color:rgb(0, 175, 0)"></i>
+                            <i class="fa-solid fa-circle fa-stack-2x" style="color:var(--green)"></i>
                             <i class="fa-solid fa-star fa-stack-1x" style="color:white"></i>
                         </span>
                     </div>
@@ -179,11 +115,13 @@
                     </div>
                 </div>
 
+
+
                 <!-- Games -->
                 <div style="display: flex; justify-content: flex-start">
                     <div>
                         <span class="fa-stack fa-2x" style="font-size: 15px; display:inline-block">
-                            <i class="fa-solid fa-circle fa-stack-2x" style="color:rgb(0, 175, 0)"></i>
+                            <i class="fa-solid fa-circle fa-stack-2x" style="color:var(--green)"></i>
                             <i class="fa-solid fa-hashtag fa-stack-1x" style="color:white"></i>
                         </span>
                     </div>
@@ -192,11 +130,13 @@
                     </div>
                 </div>
 
+
+                
                 <!-- Minutes Played -->
                 <div style="display: flex; justify-content: flex-start">
                     <div>
                         <span class="fa-stack fa-2x" style="font-size: 15px; display:inline-block">
-                            <i class="fa-solid fa-circle fa-stack-2x" style="color:rgb(0, 175, 0)"></i>
+                            <i class="fa-solid fa-circle fa-stack-2x" style="color:var(--green)"></i>
                             <i class="fa-solid fa-clock fa-stack-1x" style="color:white"></i>
                         </span>
                     </div>
@@ -206,11 +146,8 @@
                 </div>
 
 
+
             </div>
-
-
         </div>
     </body>
-
-
 </html>

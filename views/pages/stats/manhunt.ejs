@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('../../partials/_head-stats') %>
+        <title><%= username %> | MCBB Stats</title>
+    </head>
+    <%- include('../../partials/_header') %>
+    <%- include('../../partials/_stats-nav') %>
+
+    <body>
+        <div class="grid-container"> <!-- Container -->
+            <%- include('../../partials/_general-stats') %> <!-- General Box -->
+            <div class="main box" style="padding: 40px;"> <!-- Main Box -->
+
+
+
+                <!-- Recent Games -->
+                <h1 class="heading">Recent Games <span><a class="more-details" href="/">View All</a></span></h1>
+                <div style="display: flex; justify-content: flex-start; margin-bottom: 20px;">
+                    <div>
+                        <hr class="g-line">
+                    </div>
+                </div>
+                <div class="rg-table-div">
+                    <table class="rg-table">
+                        <tr>
+                            <th>Date</th>
+                            <th>Duration</th>
+                            <th>Role</th>
+                            <th>Winner</th>
+                            <th>Modifiers</th>
+                            <th>More Details</th>
+                        </tr>
+                        <%table.forEach(function(entry) {%>
+                            <tr>
+                                <td><%=entry.date%></td>
+                                <td><%=entry.duration%></td>
+                                <td><%=entry.role%></td>
+                                <td><%=entry.winner%></td>
+                                <td><%=entry.mods%></td>
+                                <td><button class="rg-details"><i class="fa-solid fa-angle-right"></i></button></td>
+                            </tr>
+                        <%});%>
+                    </table>
+                </div>
+
+
+
+                <!-- Other Stats -->
+                <h1 class="heading" style="margin-top: 30px;">Other Stats</h1>
+                <div style="display: flex; justify-content: flex-start; margin-bottom: 20px;">
+                    <div>
+                        <hr class="g-line">
+                    </div>
+                </div>
+
+
+
+                <!-- Total Kills -->
+                <div style="display: flex; justify-content: flex-start">
+                    <div>
+                        <span class="fa-stack fa-2x" style="font-size: 15px; display:inline-block">
+                            <i class="fa-solid fa-circle fa-stack-2x" style="color:var(--green)"></i>
+                            <i class="fa-solid fa-shield-halved fa-stack-1x" style="color:white"></i>
+                        </span>
+                    </div>
+                    <div>
+                        <h1 class="g-stats-label">Total Kills: <span class="g-stats-value"><%= total_kills %></span></h1>
+                    </div>
+                </div>
+
+
+
+                <!-- Wins/Looses -->
+                <div style="display: flex; justify-content: flex-start">
+                    <div>
+                        <span class="fa-stack fa-2x" style="font-size: 15px; display:inline-block">
+                            <i class="fa-solid fa-circle fa-stack-2x" style="color:var(--green)"></i>
+                            <i class="fa-solid fa-star fa-stack-1x" style="color:white"></i>
+                        </span>
+                    </div>
+                    <div>
+                        <h1 class="g-stats-label">Wins / Looses: <span class="g-stats-value"><%= wins_looses %></span></h1>
+                    </div>
+                </div>
+
+
+
+                <!-- Games -->
+                <div style="display: flex; justify-content: flex-start">
+                    <div>
+                        <span class="fa-stack fa-2x" style="font-size: 15px; display:inline-block">
+                            <i class="fa-solid fa-circle fa-stack-2x" style="color:var(--green)"></i>
+                            <i class="fa-solid fa-hashtag fa-stack-1x" style="color:white"></i>
+                        </span>
+                    </div>
+                    <div>
+                        <h1 class="g-stats-label">Games: <span class="g-stats-value"><%= games_played %></span></h1>
+                    </div>
+                </div>
+
+
+
+                <!-- Minutes Played -->
+                <div style="display: flex; justify-content: flex-start">
+                    <div>
+                        <span class="fa-stack fa-2x" style="font-size: 15px; display:inline-block">
+                            <i class="fa-solid fa-circle fa-stack-2x" style="color:var(--green)"></i>
+                            <i class="fa-solid fa-clock fa-stack-1x" style="color:white"></i>
+                        </span>
+                    </div>
+                    <div>
+                        <h1 class="g-stats-label">Minutes Played: <span class="g-stats-value"><%= minutes_played %></span></h1>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </body>
+</html>

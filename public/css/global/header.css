@@ -8,6 +8,8 @@ header {
 	padding: 25px;
 	text-align: center;
 }
+
+
 .h-logo {
 	width: 30px;
 	height: 30px;
@@ -23,6 +25,8 @@ header {
 	top: 0;
 	left: 50px;
 }
+
+
 .h-button {
 	top: 9px;
 	position: absolute;
@@ -33,6 +37,25 @@ header {
 	position: absolute;
 	visibility: visible;
 }
+
+
+.h-discord {
+	background-color: #5865F2;
+	right: 10px;
+}
+.h-discord:hover {
+	background-color: #808af7;
+}
+
+
+.h-website {
+	background-color: #3a3a3a;
+	right: 118px;
+}
+.h-website:hover {
+	background-color: #666666;
+}
+
 
 .h-search {
 	background-color: #666666;
@@ -46,38 +69,6 @@ header {
 	background-color: #919191;
 }
 
-.h-discord {
-	background-color: #5865F2;
-	right: 10px;
-}
-.h-discord:hover {
-	background-color: #808af7;
-}
-
-.h-website {
-	background-color: #3a3a3a;
-	right: 118px;
-}
-.h-website:hover {
-	background-color: #666666;
-}
-
-
-/* For Desktop */
-@media only screen and (min-width: 600px) {
-	.h-button {
-		visibility: visible;
-	}
-	.h-button-small {
-		visibility: hidden;
-	}
-}
-
-
-
-
-
-
 
 .search:focus{
 	transition-duration: 0.4s;
@@ -87,7 +78,6 @@ header {
     width: 363px;
 	padding: 0 0 0 16px;
 }
-
 .search {
 	position: absolute;
     top: 9px;
@@ -105,8 +95,6 @@ header {
 }
 
 
-
-
 .search-small:focus{
 	transition-duration: 0.4s;
 	-moz-transition-duration: 0.4s;
@@ -115,7 +103,6 @@ header {
     width: 150px;
 	padding: 0 0 0 16px;
 }
-
 .search-small {
 	position: absolute;
     top: 9px;
@@ -130,4 +117,15 @@ header {
 	-moz-transition-duration: 0.4s;
 	-webkit-transition-duration: 0.4s;
 	-o-transition-duration: 0.4s;
+}
+
+
+/* For Tablet and Desktop */
+@media only screen and (min-width: 600px) {
+	.h-button {
+		visibility: visible;
+	}
+	.h-button-small {
+		visibility: hidden;
+	}
 }

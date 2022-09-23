@@ -1,3 +1,10 @@
+/* ===== Colors ===== */
+:root {
+    --green: rgb(0, 170, 51);
+    --grey: rgb(124, 124, 124);
+}
+
+
 /* ===== Page ===== */
 html {
     font-family: 'Open Sans', sans-serif;
@@ -9,7 +16,6 @@ html {
 html, body {
     margin: 0;
 }
-
 
 
 /* ===== Grid ===== */
@@ -28,7 +34,6 @@ html, body {
 }
 
 
-
 /* ===== Other ===== */
 .box {
     background-color: #1b1b1bce;
@@ -37,6 +42,7 @@ html, body {
     margin: 0px;
     padding: 0%;
 }
+
 
 .button {
     border: none;
