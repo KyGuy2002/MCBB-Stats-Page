@@ -25,6 +25,7 @@ html, body {
     grid-template-rows: repeat(10, 1fr);
     gap: 20px;
     padding: 0px;
+    padding-top: 20px;
   }
   
 .grid-container > div {
