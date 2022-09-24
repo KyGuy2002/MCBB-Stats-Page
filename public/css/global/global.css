@@ -12,6 +12,7 @@ html {
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    background-size: 100%;
 }
 html, body {
     margin: 0;
