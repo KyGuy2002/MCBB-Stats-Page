@@ -1,29 +1,10 @@
-/* For mobile */
-.announcement {
-  grid-column: 1 / 11;
-  grid-row: 1 / 6;
-}
-.namePrompt {
-  grid-column: 1 / 11;
-  grid-row: 6 / 13;
-}
-
-
 /* For tablets */
 @media only screen and (min-width: 550px) {
   .announcement {
     grid-column: 2 / 10;
-    grid-row: 1 / 6;
   }
   .namePrompt {
     grid-column: 2 / 10;
-    grid-row: 6 / 13;
-  }
-  .a-title {
-    font-size: 25px;
-  }
-  .a-description {
-    font-size: 16px;
   }
 }
 
@@ -32,10 +13,8 @@
 @media only screen and (min-width: 1200px) {
   .announcement {
     grid-column: 3 / 9;
-    grid-row: 1 / 5;
   }
   .namePrompt {
     grid-column: 3 / 9;
-    grid-row: 5 / 12;
   }
 }

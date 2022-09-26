@@ -12,7 +12,7 @@ html {
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: 100%;
+    background-size: cover;
 }
 html, body {
     margin: 0;
@@ -23,10 +23,9 @@ html, body {
 .grid-container {
     display: grid;
     grid-template-columns: 1;
-    grid-template-rows: repeat(10, 1fr);
     gap: 20px;
-    padding: 0px;
     padding-top: 20px;
+    padding-bottom: 20px;
   }
   
 .grid-container > div {
@@ -67,8 +66,9 @@ html, body {
     justify-content:flex-start;
     text-align: center;
     padding: 10px;
-    margin: 10px;
+    margin: 5px;
 }
+
 .c-stats-label {
     font-size: 17px;
     text-align: left;

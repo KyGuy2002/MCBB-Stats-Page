@@ -106,13 +106,6 @@ th {
 }
 
 
-.nav-line {
-    width: 99.8%;
-    border: 2px solid var(--green);
-    margin: 0;
-}
-
-
 .more-details {
     font-size: 13px;
     margin: 5px;

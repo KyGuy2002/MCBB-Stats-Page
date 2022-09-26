@@ -3,7 +3,7 @@
 </head>
 
 <!-- Header -->
-<header class="header">
+<header>
 
 
     <!-- Logo And Name -->
@@ -11,25 +11,14 @@
         <img class="h-logo" src="/assets/images/logo.png" onclick="location.href = '/'">
         <h1 class="h-name">MCBlockBuilds Stats</h1>
     </div>
-
-
-    <!-- Mobile - Search Bar -->
-    <div>
-        <form action="/submitName" method = "post">
-            <input class="button h-button-small h-search-small search-small" id="search-input-small" name="username" placeholder="Search">
-            <label class="button h-button-small h-search-small" for="search-input-small">
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </label>
-        </form>
-    </div>
     
 
-    <!-- Desktop - Search Bar -->
+    <!-- Search Bar -->
     <div>
         <form action="/submitName" method = "post">
-            <input class="button h-button h-search search" id="search-input" name="username" placeholder="Search">
+            <input class="button h-button h-search h-search-input" id="search-input" name="username" placeholder="Search">
             <label class="button h-button h-search" for="search-input">
-                Search <i class="fa-solid fa-magnifying-glass"></i>
+                <span class="h-search-label">Search </span><i class="fa-solid fa-magnifying-glass"></i>
             </label>
         </form>
     </div>

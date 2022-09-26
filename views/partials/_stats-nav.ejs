@@ -23,6 +23,13 @@
 </script>
 
 <style>
+    .nav-line {
+        width: 100%;
+        border: none;
+        border-top: 2px solid var(--green);
+        border-bottom: 2px solid var(--green);
+        margin: 0px;
+    }
     ul {
         display: flex;
         justify-content: space-between;
@@ -50,12 +57,12 @@
         text-decoration: underline;
     }
     /* For tablets and desktops */
-@media only screen and (min-width: 768px) {
-    ul {
-        width: 75%;
+    @media only screen and (min-width: 768px) {
+        ul {
+            width: 75%;
+        }
+        li {
+            font-size: 20px;
+        }
     }
-    li {
-        font-size: 20px;
-    }
-}
 </style>
