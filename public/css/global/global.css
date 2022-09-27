@@ -2,11 +2,13 @@
 :root {
     --green: rgb(0, 170, 51);
     --grey: rgb(124, 124, 124);
+    --black: #1b1b1bbe;
 }
 
 
 /* ===== Page ===== */
 html {
+    background-color: #282828;
     font-family: 'Open Sans', sans-serif;
     background-image: url("/assets/images/background.png");
     background-position: center;
@@ -35,7 +37,7 @@ html, body {
     font-size: 30px;
 }
 .box {
-    background-color: #1b1b1bbe;
+    background-color: var(--black);
     border-radius: 0px;
     backdrop-filter: blur(15px);
     margin: 0px;
