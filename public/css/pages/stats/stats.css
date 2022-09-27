@@ -1,15 +1,8 @@
-.g-name {
-    font-size: 30px;
+.heading {
+    font-size: 25px;
     text-align: left;
     color: #ffffff;
     margin: 10px;
-}
-.g-uuid {
-    text-align: left;
-    color: #a5a5a5;
-    font-weight: 500;
-    margin: 10px;
-    font-size: 16px;
 }
 
 
@@ -20,45 +13,9 @@
 }
 
 
-.g-character {
-    height: 200px;
-    margin: 10px;
-    margin-left: 0px;
-    visibility: hidden;
-}
-.g-character-div {
-    width: 0px;
-}
-@media only screen and (min-width: 550px) {
-    .g-character {
-        visibility: visible;
-    }
-    .g-character-div {
-        width: auto;
-    }
-}
-
-
-.g-stats-label {
-    font-size: 15px;
+.o-stats {
     text-align: left;
-    color: #ffffff;
-    margin: 10px;
-}
-.g-stats-value {
-    text-align: left;
-    color: #a5a5a5;
-    font-weight: 500;
-    margin: 10px;
-    font-size: 15px;
-}
-
-
-.heading {
-    font-size: 25px;
-    text-align: left;
-    color: #ffffff;
-    margin: 10px;
+    margin: 7px;
 }
 
 

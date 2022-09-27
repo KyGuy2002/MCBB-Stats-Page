@@ -55,8 +55,8 @@ app.get('/stats/:username/themeparks', function (req, res) {
 // Manhunt Page
 app.get('/stats/:username/manhunt', function (req, res) {
     var items = [
-        {date:'10/23/22 3:23 PM',duration:'1:35:06',role:'Hunter',winner:'Speedrunner',mods:'None'},
-        {date:'10/23/22 3:23 PM',duration:'1:35:06',role:'Hunter',winner:'Speedrunner',mods:'None'}];
+        {date:'10/23/22',duration:'1:35:06',role:'Hunter',winner:'Speedrunner',mods:'None'},
+        {date:'10/23/22',duration:'1:35:06',role:'Hunter',winner:'Speedrunner',mods:'None'}];
     res.render('pages/stats/manhunt', { 
         // EJS variable and server-side variable
         username: req.params.username,

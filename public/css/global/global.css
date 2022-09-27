@@ -35,9 +35,9 @@ html, body {
     font-size: 30px;
 }
 .box {
-    background-color: #1b1b1bce;
+    background-color: #1b1b1bbe;
     border-radius: 0px;
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(15px);
     margin: 0px;
     padding: 0px;
 }
@@ -58,31 +58,24 @@ html, body {
 .inner-box {
     background-color: rgba(27, 27, 27, 0.699);
     border-radius: 20px;
-    margin: 0px;
-    padding: 0%;
-}
-.inner-elements {
-    display: flex;
-    justify-content:flex-start;
     text-align: center;
-    padding: 10px;
+    padding: 15px 23px;
     margin: 5px;
 }
 
-.c-stats-label {
+.c-stats {
     font-size: 17px;
     text-align: left;
     color: #ffffff;
-    margin: 10px;
     font-weight: bold;
+    display: inline;
+    margin: 2px;
+    vertical-align: middle;
 }
 .c-stats-value {
-    text-align: left;
     color: #a5a5a5;
-    font-weight: bold;
-    margin: 10px;
-    font-size: 17px;
 }
+
 
 .button {
     border: none;
