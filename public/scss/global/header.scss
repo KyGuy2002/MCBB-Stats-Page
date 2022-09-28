@@ -1,0 +1,92 @@
+header {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	position: sticky;
+	top: 0;
+	z-index: 999;
+	background-color: var(--header-black);
+	height: 50px;
+	line-height: 50px;
+}
+.h-button {
+	display: inline;
+	margin-right: 7px;
+}
+
+
+/* Logo and Name */
+.h-logo {
+	width: 30px;
+	height: 30px;
+	display: inline;
+	margin: 0px 7px;
+	cursor: pointer;
+}
+.h-name {
+	color: white;
+	font-size: 20px;
+	display: inline;
+}
+
+
+/* Buttons */
+.h-discord {
+	background-color: #5865F2;
+	display: none;
+}
+.h-discord:hover {
+	background-color: #808af7;
+}
+
+.h-website {
+	background-color: #3a3a3a;
+	display: none;
+}
+.h-website:hover {
+	background-color: #666666;
+}
+
+
+/* Search */
+.h-search {
+	background-color: #666666;
+}
+.h-search:hover {
+	background-color: #919191;
+}
+.h-search-label {
+	display: none;
+	padding: 0px;
+}
+.h-search-input {
+	width: 0;
+	padding: 0px;
+	padding-top: inherit;
+	padding-bottom: inherit;
+	outline: none;
+	border: none;
+	z-index: 10;
+	position: absolute;
+	right: -1px;
+	top: -2px;
+}
+.h-search-input:focus {
+	padding: inherit;
+	width: 200px;
+}
+
+
+/* Desktop and Tablet */
+@media only screen and (min-width: 600px) {
+	.h-discord {display: inline;}
+	.h-website {display: inline;}
+	.h-search-label {display: inline;}
+
+	.h-search-input:focus {
+		width: 363px;
+	}
+	.h-search-input {
+		top: 0;
+	}
+}

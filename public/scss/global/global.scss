@@ -1,0 +1,115 @@
+/* ===== Variables ===== */
+:root {
+    --header-black: #222222;
+
+    --green: rgb(0, 170, 51);
+    --green-hover: rgb(0, 219, 66);
+
+    --grey: rgb(124, 124, 124);
+    --grey2: rgba(109, 109, 109, 0.705);
+
+    --black: #000000ad;
+    --black2: #3a3a3a8a;
+
+    --font: 'Montserrat', sans-serif;
+}
+
+
+/* ===== Page ===== */
+html {
+    background-color: var(--header-black);
+    font-family: var(--font);
+    background-image: url("/assets/images/background.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+html, body {
+    margin: 0;
+}
+
+
+/* ===== Grid ===== */
+.grid-container {
+    display: grid;
+    grid-template-columns: 1;
+    gap: 20px;
+    padding: 20px 0px;
+  }
+  
+.grid-container > div {
+    text-align: center;
+    font-size: 30px;
+}
+.box {
+    background-color: var(--black);
+    border-radius: 0px;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(10px);
+    margin: 0px;
+    padding: 15px 10px;
+    
+    opacity: 0;
+    animation: fadeInAnimation 0.5s;
+    animation-fill-mode: forwards;
+
+    @for $i from 1 through 50 {
+        &:nth-child(#{$i}) {
+          animation-delay: 20ms * $i;
+        }
+    }
+}
+/* Tablet and Desktop */
+@media only screen and (min-width: 550px) {
+    .grid-container {
+        grid-template-columns: repeat(10, 1fr);
+        padding: 20px;
+    }
+    .box {
+        border-radius: 35px;
+        padding: 30px 40px;
+    }
+}
+
+
+/* ===== Other ===== */
+.inner-box {
+    background-color: var(--black2);
+    border-radius: 20px;
+    text-align: center;
+    padding: 15px 23px;
+}
+
+.c-stats {
+    font-size: 17px;
+    text-align: left;
+    color: white;
+    font-weight: bold;
+    display: inline;
+    margin: 2px;
+    vertical-align: middle;
+}
+.c-stats-value {
+    color: var(--grey);
+}
+
+
+.button {
+    font-family: var(--font);
+    border: none;
+    color: white;
+    padding: 8px 11px;
+    text-align: center;
+    font-size: 14px;
+    border-radius: 18px;
+    font-weight: bold;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+
+@keyframes fadeInAnimation {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+}

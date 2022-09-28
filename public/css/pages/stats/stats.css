@@ -1,75 +1,63 @@
 .heading {
-    font-size: 25px;
-    text-align: left;
-    color: white;
-    margin: 10px;
-}
-
+  font-size: 25px;
+  text-align: left;
+  color: white;
+  margin: 10px; }
 
 .g-line {
-    border: 3px solid var(--green);
-    width: 125px;
-    margin: 4px 10px;
-}
-
+  border: 3px solid var(--green);
+  width: 125px;
+  margin: 4px 10px; }
 
 .o-stats {
-    text-align: left;
-    margin: 7px;
-}
-
+  text-align: left;
+  margin: 7px; }
 
 table {
-    border-collapse: collapse;
-    color:white;
-    font-size: 10px;
-    text-align: center;
-    margin: auto;
-    width: 95%;
-}
+  border-collapse: collapse;
+  color: white;
+  font-size: 10px;
+  text-align: center;
+  margin: auto;
+  width: 95%; }
+
 /* For tablets and small desktops */
 @media only screen and (min-width: 768px) {
-    table {
-      width: 500px;
-      margin: 10px;
-      font-size: 12px;
-    }
-}
-tr {
-    border-bottom: 1px solid var(--grey);
-    border-top: 1px solid var(--grey);
-}
-tr:last-child {
-    border-bottom: 1px solid transparent;
-}
-th {
-    border: 1px solid transparent;
-    border-bottom: 1px solid var(--grey);
-}
+  table {
+    width: 500px;
+    margin: 10px;
+    font-size: 12px; } }
 
+tr {
+  border-bottom: 1px solid var(--grey);
+  border-top: 1px solid var(--grey); }
+
+tr:last-child {
+  border-bottom: 1px solid transparent; }
+
+th {
+  border: 1px solid transparent;
+  border-bottom: 1px solid var(--grey); }
 
 .rg-details {
-    border: 1px solid transparent;
-    color: white;
-    background-color: transparent;
-    padding: 5px 8px;
-    margin: 5px;
-    text-align: center;
-    border-radius: 18px;
-    transition-duration: 0.5s;
-    cursor: pointer;
-}
-.rg-details:hover {
-    border: 1px solid var(--green);
-}
+  border: 1px solid transparent;
+  color: white;
+  background-color: transparent;
+  padding: 5px 8px;
+  margin: 5px;
+  text-align: center;
+  border-radius: 18px;
+  transition-duration: 0.5s;
+  cursor: pointer; }
 
+.rg-details:hover {
+  border: 1px solid var(--green); }
 
 .more-details {
-    font-size: 13px;
-    margin: 5px;
-    color: var(--green);
-    text-decoration: underline;
-}
+  font-size: 13px;
+  margin: 5px;
+  color: var(--green);
+  text-decoration: underline; }
+
 .more-details:hover {
-    color: var(--green-hover);
-}
+  color: var(--green-hover); }
