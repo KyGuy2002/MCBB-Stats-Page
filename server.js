@@ -30,7 +30,21 @@ app.post('/submitName', encodeURL, (req, res) => {
 // *** Display Pages ***
 // Home Page
 app.get('/', function (req, res) {
-    res.render('pages/home', {});
+    var top_players = [
+        {name:'IEatBeans',category:'Most Theme Parks Coins',stat:'Coins',value:'9869'},
+        {name:'Chacos5',category:'Most Theme Parks Coins',stat:'Coins',value:'9869'},
+        {name:'TheDisneyMC',category:'Most Theme Parks Coins',stat:'Coins',value:'9869'},
+        {name:'TheDisneyMC',category:'Most Theme Parks Coins',stat:'Coins',value:'9869'},
+        {name:'TheDisneyMC',category:'Most Theme Parks Coins',stat:'Coins',value:'9869'},
+        {name:'TheDisneyMC',category:'Most Theme Parks Coins',stat:'Coins',value:'9869'},
+        {name:'TheDisneyMC',category:'Most Theme Parks Coins',stat:'Coins',value:'9869'},
+        {name:'TheDisneyMC',category:'Most Theme Parks Coins',stat:'Coins',value:'9869'},
+        {name:'TheDisneyMC',category:'Most Theme Parks Coins',stat:'Coins',value:'9869'},
+        {name:'TheDisneyMC',category:'Most Theme Parks Coins',stat:'Coins',value:'9869'},
+        {name:'TheDisneyMC',category:'Most Theme Parks Coins',stat:'Coins',value:'9869'},];
+    res.render('pages/home', {
+        top_players: top_players,
+    });
 });
 
 // Theme parks Page

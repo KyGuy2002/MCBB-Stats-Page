@@ -1,6 +1,6 @@
 <body>
 
-    <div class="box" style="border-radius: 0; padding: 0px;">
+    <div class="box" style="border-radius: 0; padding: 0px; animation: none;">
         <hr class="nav-line">
         <ul>
             <li><a class="nav" href="/stats/<%= username %>/themeparks">Theme Parks</a></li>
@@ -26,8 +26,8 @@
     .nav-line {
         width: 100%;
         border: none;
-        border-top: 2px solid var(--green);
-        border-bottom: 2px solid var(--green);
+        background-color: var(--green);
+        height: 4px;
         margin: 0px;
     }
     ul {
@@ -45,7 +45,7 @@
         transition-duration: 0.4s;
     }
     a:hover {
-        color: var(--green);
+        color: var(--green-hover);
     }
     a {
         color: white;

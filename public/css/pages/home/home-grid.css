@@ -6,6 +6,9 @@
   .namePrompt {
     grid-column: 2 / 10;
   }
+  .top-players-container {
+    grid-column: 2 / 10;
+  }
 }
 
 
@@ -15,6 +18,9 @@
     grid-column: 3 / 9;
   }
   .namePrompt {
+    grid-column: 3 / 9;
+  }
+  .top-players-container {
     grid-column: 3 / 9;
   }
 }

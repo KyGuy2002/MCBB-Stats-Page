@@ -1,15 +1,24 @@
-/* ===== Colors ===== */
+/* ===== Variables ===== */
 :root {
+    --header-black: #222222;
+
     --green: rgb(0, 170, 51);
+    --green-hover: rgb(0, 219, 66);
+
     --grey: rgb(124, 124, 124);
-    --black: #1b1b1bbe;
+    --grey2: rgba(109, 109, 109, 0.705);
+
+    --black: #000000ad;
+    --black2: #3a3a3a8a;
+
+    --font: 'Montserrat', sans-serif;
 }
 
 
 /* ===== Page ===== */
 html {
-    background-color: #282828;
-    font-family: 'Open Sans', sans-serif;
+    background-color: var(--header-black);
+    font-family: var(--font);
     background-image: url("/assets/images/background.png");
     background-position: center;
     background-repeat: no-repeat;
@@ -26,22 +35,21 @@ html, body {
     display: grid;
     grid-template-columns: 1;
     gap: 20px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding: 20px 0px;
   }
   
 .grid-container > div {
     text-align: center;
-    padding-top: 20px;
-    padding-bottom: 20px;
     font-size: 30px;
 }
 .box {
     background-color: var(--black);
     border-radius: 0px;
     backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(10px);
     margin: 0px;
-    padding: 0px;
+    padding: 15px 10px;
+    animation: fadeInAnimation 0.5s;
 }
 /* Tablet and Desktop */
 @media only screen and (min-width: 550px) {
@@ -51,14 +59,14 @@ html, body {
     }
     .box {
         border-radius: 35px;
-        padding: 40px;
+        padding: 30px 40px;
     }
 }
 
 
 /* ===== Other ===== */
 .inner-box {
-    background-color: rgba(27, 27, 27, 0.699);
+    background-color: var(--black2);
     border-radius: 20px;
     text-align: center;
     padding: 15px 23px;
@@ -68,18 +76,19 @@ html, body {
 .c-stats {
     font-size: 17px;
     text-align: left;
-    color: #ffffff;
+    color: white;
     font-weight: bold;
     display: inline;
     margin: 2px;
     vertical-align: middle;
 }
 .c-stats-value {
-    color: #a5a5a5;
+    color: var(--grey);
 }
 
 
 .button {
+    font-family: var(--font);
     border: none;
     color: white;
     padding: 8px 11px;
@@ -88,4 +97,11 @@ html, body {
     border-radius: 18px;
     font-weight: bold;
     transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+
+@keyframes fadeInAnimation {
+    0% { opacity: 0; transform: scale(0.5); }
+    100% { opacity: 1; transform: scale(1); }
 }

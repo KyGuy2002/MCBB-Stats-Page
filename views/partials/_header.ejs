@@ -7,31 +7,30 @@
 
 
     <!-- Logo And Name -->
-    <div class="h-name-logo">
-        <img class="h-logo" src="/assets/images/logo.png" onclick="location.href = '/'">
-        <h1 class="h-name">MCBlockBuilds Stats</h1>
-    </div>
+    <img class="h-logo" src="/assets/images/logo.png" onclick="location.href = '/'">
+    <h1 class="h-name">MCBlockBuilds Stats</h1>
     
 
     <!-- Search Bar -->
-    <div>
-        <form action="/submitName" method = "post">
-            <input class="button h-button h-search h-search-input" id="search-input" name="username" placeholder="Search">
-            <label class="button h-button h-search" for="search-input">
-                <span class="h-search-label">Search </span><i class="fa-solid fa-magnifying-glass"></i>
-            </label>
-        </form>
-    </div>
+    <form style="margin-left: auto;" action="/submitName" method = "post">
+        <label class="button h-button h-search" style="position: relative;">
+            <input class="button h-button h-search h-search-input" name="username" placeholder="Search" required>
+            <h1 class="button h-search-label">Search</h1>
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </label>
+    </form>
 
 
     <!-- Discord Button -->
     <button class="button h-button h-discord" onclick="window.open('https://mcblockbuilds.net/discord/','_blank')">
-        Discord <i class="fa-brands fa-discord"></i>
+        Discord
+        <i class="fa-brands fa-discord"></i>
     </button>
 
     <!-- Website Button -->
     <button class="button h-button h-website" onclick="window.open('https://mcblockbuilds.net/','_blank')">
-        Website <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        Website
+        <i class="fa-solid fa-arrow-up-right-from-square"></i>
     </button>
 
 

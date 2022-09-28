@@ -11,7 +11,7 @@
 
 
 
-            <!-- Announcement Box -->
+            <!-- Welcome Box -->
             <div class="announcement box">
                 <h1 class="a-title">Welcome To The MCBlockBuilds Stats Page</h1>
                 <h1 class="a-description">Here you can view all your game stats in one place!  Vizualize your progression and advancment throughout every gamemode, and share a quick link to your friends!</h1>
@@ -29,6 +29,30 @@
                         <button class="button submit-button">VIEW STATS</button>
                     </div>
                 </form>
+            </div>
+
+
+
+            <!-- Top Players Boxes -->
+            <div class="top-players-container">
+
+                <%top_players.forEach(function(entry) {%>
+                    <div class="box tp-item" href="/stats/<%=entry.name%>/manhunt">
+                        <img src="/assets/images/head.png" style="height: 64px; border-radius: 10px;">
+                        <div style="padding-left: 20px;">
+                            <h1 class="tp-main" style="display: block"><%=entry.name%></h1>
+    
+                            <h1 class="tp-main tp-sub" style="display: block"><%=entry.category%></h1>
+    
+                            <h1 class="tp-main" style="display: block; margin-top: 3px;">
+                                <i class="tp-main fa-solid fa-coins" style="color:rgb(255, 230, 0); font-size: 20px; margin-right: 3px;"></i>
+                                <%=entry.stat%>
+                                <span class="tp-main tp-value" style="margin-left: 3px;"><%=entry.value%></span>
+                            </h1>
+                        </div>
+                    </div>
+                <%});%>
+
             </div>
 
 
