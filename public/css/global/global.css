@@ -40,9 +40,8 @@ html, body {
   -webkit-backdrop-filter: blur(10px);
   margin: 0px;
   padding: 15px 10px;
-  opacity: 0;
   animation: fadeInAnimation 0.5s;
-  animation-fill-mode: forwards; }
+  animation-fill-mode: backwards; }
   .box:nth-child(1) {
     animation-delay: 20ms; }
   .box:nth-child(2) {
@@ -191,3 +190,42 @@ html, body {
   to {
     opacity: 1;
     transform: scale(1); } }
+
+/* ===== Tooltip ===== */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  background-color: var(--header-black);
+  color: white;
+  text-align: center;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 16px;
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  transform: translate(-50%, -10px);
+  transition: opacity 0.3s;
+  opacity: 0;
+  min-width: 200px;
+  max-width: 200px; }
+
+.tooltip {
+  position: relative; }
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1; }
+
+.t-heading {
+  color: var(--grey);
+  font-weight: bold;
+  font-size: 18px;
+  margin: 10px;
+  margin-bottom: 0px; }
+
+.t-text {
+  margin: 0px;
+  margin-bottom: 25px;
+  color: white;
+  font-size: 15px; }

@@ -15,6 +15,7 @@
 }
 
 
+
 /* ===== Page ===== */
 html {
     background-color: var(--header-black);
@@ -28,6 +29,7 @@ html {
 html, body {
     margin: 0;
 }
+
 
 
 /* ===== Grid ===== */
@@ -49,10 +51,9 @@ html, body {
     -webkit-backdrop-filter: blur(10px);
     margin: 0px;
     padding: 15px 10px;
-    
-    opacity: 0;
+
     animation: fadeInAnimation 0.5s;
-    animation-fill-mode: forwards;
+    animation-fill-mode: backwards;
 
     @for $i from 1 through 50 {
         &:nth-child(#{$i}) {
@@ -71,6 +72,7 @@ html, body {
         padding: 30px 40px;
     }
 }
+
 
 
 /* ===== Other ===== */
@@ -94,7 +96,6 @@ html, body {
     color: var(--grey);
 }
 
-
 .button {
     font-family: var(--font);
     border: none;
@@ -108,8 +109,60 @@ html, body {
     cursor: pointer;
 }
 
-
 @keyframes fadeInAnimation {
     from { opacity: 0; transform: scale(0.5); }
     to { opacity: 1; transform: scale(1); }
+}
+
+
+
+/* ===== Tooltip ===== */
+  
+// Text
+.tooltip .tooltiptext {
+    visibility: hidden;
+    background-color: var(--header-black);
+    color: white;
+    text-align: center;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+
+    position: absolute;
+    z-index: 1;
+
+    bottom: 100%;
+    left: 50%;
+    transform: translate(-50%, -10px);
+
+    transition: opacity 0.3s;
+    opacity: 0;
+
+    min-width:200px;
+    max-width:200px;
+}
+
+.tooltip {
+    position: relative;
+}
+  
+// On hover
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+.t-heading {
+    color: var(--grey);
+    font-weight: bold;
+    font-size: 18px;
+    margin: 10px;
+    margin-bottom: 0px;
+}
+
+.t-text {
+    margin: 0px;
+    margin-bottom: 25px;
+    color: white;
+    font-size: 15px;
 }

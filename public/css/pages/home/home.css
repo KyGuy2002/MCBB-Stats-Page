@@ -52,7 +52,7 @@
   flex-grow: 1;
   padding: 20px;
   cursor: pointer;
-  transition: all .2s ease-in-out; }
+  transition: all .18s ease-in-out; }
 
 .tp-item:hover {
   transform: scale(1.03); }

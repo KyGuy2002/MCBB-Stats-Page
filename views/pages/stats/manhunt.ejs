@@ -30,7 +30,7 @@
                         <th>Modifiers</th>
                         <th>Details</th>
                     </tr>
-                    <%table.forEach(function(entry) {%>
+                    <%recent_games.forEach(function(entry) {%>
                         <tr>
                             <td><%=entry.date%></td>
                             <td><%=entry.duration%></td>
@@ -52,45 +52,26 @@
                     </div>
                 </div>
 
-                <!-- Total Kills -->
-                <div class="o-stats">
-                    <span class="fa-stack fa-2x" style="font-size: 15px;">
-                        <i class="fa-solid fa-circle fa-stack-2x" style="color:var(--green)"></i>
-                        <i class="fa-solid fa-shield-halved fa-stack-1x" style="color:white"></i>
-                    </span>
-                    <h1 class="c-stats">Total Kills:</h1>
-                    <h1 class="c-stats c-stats-value"><%= total_kills %></h1>
-                </div>
+                <!-- Item -->
+                <%other_stats.forEach(function(entry) {%>
+                    <div class="o-stats">
+                        <div class="tooltip" style="display: inline;">
+                            <span class="fa-stack fa-2x" style="font-size: 15px;">
+                                <i class="fa-solid fa-circle fa-stack-2x" style="color:var(--green)"></i>
+                                <i class="fa-solid fa-shield-halved fa-stack-1x" style="color:white"></i>
+                            </span>
+                            <h1 class="c-stats"><%=entry.stat%></h1>
+                            <h1 class="c-stats c-stats-value"><%=entry.value%></h1>
 
-                <!-- Wins / Looses -->
-                <div class="o-stats">
-                    <span class="fa-stack fa-2x" style="font-size: 15px;">
-                        <i class="fa-solid fa-circle fa-stack-2x" style="color:var(--green)"></i>
-                        <i class="fa-solid fa-shield-halved fa-stack-1x" style="color:white"></i>
-                    </span>
-                    <h1 class="c-stats">Wins / Looses:</h1>
-                    <h1 class="c-stats c-stats-value"><%= wins_looses %></h1>
-                </div>
-
-                <!-- Games Played -->
-                <div class="o-stats">
-                    <span class="fa-stack fa-2x" style="font-size: 15px;">
-                        <i class="fa-solid fa-circle fa-stack-2x" style="color:var(--green)"></i>
-                        <i class="fa-solid fa-shield-halved fa-stack-1x" style="color:white"></i>
-                    </span>
-                    <h1 class="c-stats">Games:</h1>
-                    <h1 class="c-stats c-stats-value"><%= games_played %></h1>
-                </div>
-
-                <!-- Mins Played -->
-                <div class="o-stats">
-                    <span class="fa-stack fa-2x" style="font-size: 15px;">
-                        <i class="fa-solid fa-circle fa-stack-2x" style="color:var(--green)"></i>
-                        <i class="fa-solid fa-shield-halved fa-stack-1x" style="color:white"></i>
-                    </span>
-                    <h1 class="c-stats">Total Game Minutes:</h1>
-                    <h1 class="c-stats c-stats-value"><%= minutes_played %></h1>
-                </div>
+                            <span class="tooltiptext">
+                                <h1 class="t-heading">WHAT IS IT</h1>
+                                <h1 class="t-text"><%=entry.t_what%></h1>
+                                <h1 class="t-heading">HOW TO</h1>
+                                <h1 class="t-text"><%=entry.t_how%></h1>
+                            </span>
+                        </div>
+                    </div>
+                <%});%>
 
 
 
