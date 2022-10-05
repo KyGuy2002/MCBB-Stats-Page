@@ -37,8 +37,8 @@
             <div class="top-players-container">
 
                 <%top_players.forEach(function(entry) {%>
-                    <div class="box tp-item" href="/stats/<%=entry.name%>/manhunt">
-                        <img src="/assets/images/head.png" style="height: 64px; border-radius: 10px;">
+                    <a class="box tp-item" href="/stats/<%=entry.name%>/manhunt">
+                        <img src="https://crafatar.com/avatars/<%=entry.uuid%>?size=8&overlay" style="height: 64px; border-radius: 10px; image-rendering: pixelated;">
                         <div style="padding-left: 20px;">
                             <h1 class="tp-main" style="display: block"><%=entry.name%></h1>
     
@@ -50,7 +50,7 @@
                                 <span class="tp-main tp-value" style="margin-left: 3px;"><%=entry.value%></span>
                             </h1>
                         </div>
-                    </div>
+                    </a>
                 <%});%>
 
             </div>
