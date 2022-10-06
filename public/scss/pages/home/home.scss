@@ -82,6 +82,13 @@
     color: var(--grey);
 }
 
+#username-error {
+    width: 100%;
+    background-color: red;
+    color: white;
+    font-size: 15px;
+}
+
 
 /* For tablets and desktops */
 @media only screen and (min-width: 550px) {

@@ -23,8 +23,10 @@
             <div class="namePrompt box" style="padding-left: 0px; padding-right: 0px;">
                 <h1 class="a-title">View Player Stats Of</h1>
 
-                <form action="/submitName" method = "post">
-                    <input class="username-input" type="text" placeholder="Enter A Username" name="username" required/>
+                <iframe name="dummyframe" id="dummyframe" style="display: none"></iframe>
+                <form onsubmit="return submitName();" target="dummyframe">
+                    <div id="username-error"></div>
+                    <input class="username-input" type="text" placeholder="Enter A Username" name="username" id="username-input" required/>
                     <div class="button-div">
                         <button class="button submit-button">VIEW STATS</button>
                     </div>
@@ -58,5 +60,7 @@
 
 
         </div>
+        <script src="/js/usernameChecks.js"></script>
+        <script src="/js/pages/home/home.js"></script>
     </body>
 </html>
