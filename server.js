@@ -19,13 +19,6 @@ app.listen(8080);
 
 
 
-// *** API ***
-// Submit name for main page
-app.post('/submitName', async (req, res) => {
-    const username = req.body.username;
-});
-
-
 
 // *** Display Pages ***
 // Home Page
@@ -65,18 +58,15 @@ app.get('/stats/:username/themeparks', function (req, res) {
         {stat:'Coins',value:'9869',t_what:'Theme parks coins are the currency used throughout all parks.  They can be used for shop items and more!',t_how:'Earn coins through rides, games, and other activities.'},
         {stat:'Coins',value:'9869',t_what:'Theme parks coins are the currency used throughout all parks.  They can be used for shop items and more!',t_how:'Earn coins through rides, games, and other activities.'},];
     
-        res.render('pages/stats/themeparks', { 
+        res.render('pages/stats/themeparks', {
+
         // EJS variable and server-side variable
-        username: req.params.username,
-        uuid: "910b8e50-7cc3-4062-8f0a-f9fbd4a9b935",
-        
         first_joined: "March 17, 2021",
         last_online: "5 Minutes ago",
         current_loc: "Manhunt: In Game",
         rank: "Squid",
 
         common_stats: common_stats,
-
         other_stats: other_stats,
     });
 });
@@ -91,29 +81,24 @@ app.get('/stats/:username/manhunt', function (req, res) {
         {stat:'Coins',value:'9869',t_what:'Theme parks coins are the currency used throughout all parks.  They can be used for shop items and more!',t_how:'Earn coins through rides, games, and other activities.'},
         {stat:'Coins',value:'9869',t_what:'Theme parks coins are the currency used throughout all parks.  They can be used for shop items and more!',t_how:'Earn coins through rides, games, and other activities.'},];
 
-    res.render('pages/stats/manhunt', { 
+    res.render('pages/stats/manhunt', {
+
         // EJS variable and server-side variable
-        username: req.params.username,
-        uuid: "910b8e50-7cc3-4062-8f0a-f9fbd4a9b935",
-        
         first_joined: "March 17, 2021",
         last_online: "5 Minutes ago",
         current_loc: "Manhunt: In Game",
         rank: "Squid",
         
         recent_games: recent_games,
-
         other_stats: other_stats,
     });
 });
 
 // Creative Page
 app.get('/stats/:username/creative', function (req, res) {
-    res.render('pages/stats/creative', { 
+    res.render('pages/stats/creative', {
+
         // EJS variable and server-side variable
-        username: req.params.username,
-        uuid: "910b8e50-7cc3-4062-8f0a-f9fbd4a9b935",
-        
         first_joined: "March 17, 2021",
         last_online: "5 Minutes ago",
         current_loc: "Manhunt: In Game",
@@ -128,11 +113,9 @@ app.get('/stats/:username/creative', function (req, res) {
 
 // Survial Page
 app.get('/stats/:username/survival', function (req, res) {
-    res.render('pages/stats/survival', { 
+    res.render('pages/stats/survival', {
+
         // EJS variable and server-side variable
-        username: req.params.username,
-        uuid: "910b8e50-7cc3-4062-8f0a-f9fbd4a9b935",
-        
         first_joined: "March 17, 2021",
         last_online: "5 Minutes ago",
         current_loc: "Manhunt: In Game",
@@ -147,11 +130,9 @@ app.get('/stats/:username/survival', function (req, res) {
 
 // Skyblock Page
 app.get('/stats/:username/skyblock', function (req, res) {
-    res.render('pages/stats/skyblock', { 
+    res.render('pages/stats/skyblock', {
+
         // EJS variable and server-side variable
-        username: req.params.username,
-        uuid: "910b8e50-7cc3-4062-8f0a-f9fbd4a9b935",
-        
         first_joined: "March 17, 2021",
         last_online: "5 Minutes ago",
         current_loc: "Manhunt: In Game",

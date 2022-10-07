@@ -7,12 +7,17 @@ async function validatePlayer(id) {
 
     // Invalid name/uuid
     if (response.status == 400) {
-      throw 'Invalid Name or UUID'
+      throw 'Invalid Name or UUID!'
+    }
+
+    // Invalid name/uuid
+    if (response.status == 404) {
+      throw 'Player Does Not Exist!'
     }
 
     // Other error
     if (response.status != 200) {
-      throw 'Unknown Error.  Status Code: '+response.status
+      throw 'Unknown Error!  Status Code: '+response.status
     }
     
     return response.json();
@@ -36,12 +41,12 @@ async function validatePlayerExistsCallback(uuid, username) {
     fetch('https://api.ashcon.app/mojang/v2/user/'+uuid) // https://api.mcblockbuilds.net/
     .then(res => {
 
-      if (res.status == 204) {
-        throw "That player has never joined the server!"
+      if (res.status == 404) {
+        throw "Player Has Never Joined The Server!"
       }
 
       if (res.status != 200) {
-        throw "An unknown error occurred contacting our API.  Please try again later."
+        throw "Unknown Error!  Status Code: '+response.status"
       }
 
       usernameValid(uuid, username);

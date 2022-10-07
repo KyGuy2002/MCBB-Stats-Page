@@ -3,24 +3,15 @@
     <div class="box" style="border-radius: 0; padding: 0px; animation: none;">
         <hr class="nav-line">
         <ul>
-            <li><a class="nav" href="/stats/<%= username %>/themeparks">Theme Parks</a></li>
-            <li><a class="nav" href="/stats/<%= username %>/manhunt">Manhunt</a></li>
-            <li><a class="nav" href="/stats/<%= username %>/creative">Creative</a></li>
-            <li><a class="nav" href="/stats/<%= username %>/survival">Survival</a></li>
-            <li><a class="nav" href="/stats/<%= username %>/skyblock">Skyblock</a></li>
+            <li><a class="nav" page="themeparks">Theme Parks</a></li>
+            <li><a class="nav" page="manhunt">Manhunt</a></li>
+            <li><a class="nav" page="creative">Creative</a></li>
+            <li><a class="nav" page="survival">Survival</a></li>
+            <li><a class="nav" page="skyblock">Skyblock</a></li>
         </ul>
     </div>
 
 </body>
-
-<script>
-    let current_url = document.location;
-    document.querySelectorAll(".nav").forEach(function(e){
-       if(e.href == current_url){
-          e.classList += " current";
-       }
-    });
-</script>
 
 <style>
     .nav-line {

@@ -12,9 +12,10 @@
     
 
     <!-- Search Bar -->
-    <form style="margin-left: auto;" action="/submitName" method = "post">
+    <iframe name="dummyframe" id="dummyframe" style="display: none"></iframe>
+    <form style="margin-left: auto;" onsubmit="return submitName();" target="dummyframe">
         <label class="button h-button h-search" style="position: relative;">
-            <input class="button h-button h-search h-search-input" name="username" placeholder="Search" required>
+            <input class="button h-button h-search h-search-input" name="username" placeholder="Search" id="username-input-header" required>
             <h1 class="button h-search-label">Search</h1>
             <i class="fa-solid fa-magnifying-glass"></i>
         </label>

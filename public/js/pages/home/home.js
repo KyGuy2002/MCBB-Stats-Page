@@ -4,22 +4,24 @@ const urlParams = new URLSearchParams(queryString);
 // Check if username error in url params
 if (urlParams.has('usernameError')) {
   const error = urlParams.get('usernameError');
-  urlParams.delete('usernameError');
+  window.history.pushState({}, document.title, window.location.pathname);
   usernameError(error);
-}
-
-
-// Validate submit name form
-async function submitName() {
-  validatePlayer(document.getElementById("username-input").value);
 }
 
 
 // Display failed to validate username error
 async function usernameError(reason) {
-  console.log(reason);
-  const error = document.getElementById("username-error");
+  const error = document.querySelector(".username-error");
   error.innerHTML = reason;
+  error.classList.remove("username-error-visible");
+
+  const input = document.querySelector(".username-input");
+  input.classList.remove("username-input-error");
+
+  setTimeout(function() { 
+    error.classList.add("username-error-visible");
+    input.classList.add("username-input-error");
+   }, 10);
 }
 
 

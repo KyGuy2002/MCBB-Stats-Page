@@ -4,6 +4,9 @@
   color: white;
   margin: 10px; }
 
+.box {
+  animation-play-state: paused; }
+
 .g-line {
   border: 3px solid var(--green);
   width: 125px;
