@@ -17,15 +17,7 @@ async function usernameValid(uuid, username) {
 
   // Make sure uuid is in url
   var page = document.location.pathname.split('/')[3];
-  window.history.pushState({}, document.title, '/stats/'+uuid+'/'+page);
-
-  // Load player model
-  loadPlayerModel(uuid);
-
-  // Show everything
-  document.querySelectorAll(".box").forEach(function(e){
-    e.style.animationPlayState = 'running';
-  })
+  window.history.replaceState({}, document.title, '/stats/'+uuid+'/'+page);
 
   // Favicon and title
   document.querySelector('#favicon').href = 'https://crafatar.com/avatars/'+uuid+'?size=8&overlay'
@@ -40,7 +32,21 @@ async function usernameValid(uuid, username) {
   })
 
   // General stats
-  document.querySelector(".g-name").innerHTML = "Stats for " + username
-  document.querySelector(".g-uuid").innerHTML = uuid
+  document.querySelector(".g-name").innerHTML = "Stats for " + username;
+  document.querySelector(".g-uuid").innerHTML = uuid;
+  loadPlayerModel(uuid);
+
+  // Load all other data
+  loadData(uuid, username);
+
+}
+
+
+async function loadingComplete() {
+
+  // Show everything
+  document.querySelectorAll(".box").forEach(function(e){
+    e.style.animationPlayState = 'running';
+  })
 
 }

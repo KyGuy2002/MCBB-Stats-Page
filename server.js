@@ -18,27 +18,49 @@ app.use(express.urlencoded({ extended: true }));
 app.listen(8080);
 
 
-
-
-// *** Display Pages ***
-// Home Page
-app.get('/', function (req, res) {
+// Temp API
+app.get('/topPlayers', (req, res) => {
     var top_players = [
         {name:'IEatBeans',category:'Most Theme Parks Coins',stat:'Coins',value:'9869',uuid:'910b8e507cc340628f0af9fbd4a9b935'},
         {name:'Chacos5',category:'Most Theme Parks Coins',stat:'Coins',value:'9869',uuid:'910b8e507cc340628f0af9fbd4a9b935'},
         {name:'TheDisneyMC',category:'Most Theme Parks Coins',stat:'Coins',value:'9869',uuid:'910b8e507cc340628f0af9fbd4a9b935'},
         {name:'TheDisneyMC',category:'Most Theme Parks Coins',stat:'Coins',value:'9869',uuid:'910b8e507cc340628f0af9fbd4a9b935'},
         {name:'TheDisneyMC',category:'Most Theme Parks Coins',stat:'Coins',value:'9869',uuid:'910b8e507cc340628f0af9fbd4a9b935'},
-        {name:'TheDisneyMC',category:'Most Theme Parks Coins',stat:'Coins',value:'9869',uuid:'910b8e507cc340628f0af9fbd4a9b935'},
-        {name:'TheDisneyMC',category:'Most Theme Parks Coins',stat:'Coins',value:'9869',uuid:'910b8e507cc340628f0af9fbd4a9b935'},
-        {name:'TheDisneyMC',category:'Most Theme Parks Coins',stat:'Coins',value:'9869',uuid:'910b8e507cc340628f0af9fbd4a9b935'},
-        {name:'TheDisneyMC',category:'Most Theme Parks Coins',stat:'Coins',value:'9869',uuid:'910b8e507cc340628f0af9fbd4a9b935'},
-        {name:'TheDisneyMC',category:'Most Theme Parks Coins',stat:'Coins',value:'9869',uuid:'910b8e507cc340628f0af9fbd4a9b935'},
         {name:'TheDisneyMC',category:'Most Theme Parks Coins',stat:'Coins',value:'9869',uuid:'910b8e507cc340628f0af9fbd4a9b935'},];
-    
-        res.render('pages/home', {
-        top_players: top_players,
-    });
+    res.send(top_players);
+});
+app.get('/:uuid/manhunt/recentGames', (req, res) => {
+    var recent_games = [
+        {date:'10/23/22',duration:'1:35:06',role:'Hunter',winner:'Speedrunner',mods:'None'},
+        {date:'10/23/23',duration:'1:35:06',role:'Hunter',winner:'Speedrunner',mods:'None'}];
+    res.send(recent_games);
+});
+app.get('/:uuid/manhunt/otherStats', (req, res) => {
+    var other_stats = [
+        {stat:'Coins',value:'9869',t_what:'Theme parks coins are the currency used throughout all parks.  They can be used for shop items and more!',t_how:'Earn coins through rides, games, and other activities.'},
+        {stat:'Coins',value:'9869',t_what:'Theme parks coins are the currency used throughout all parks.  They can be used for shop items and more!',t_how:'Earn coins through rides, games, and other activities.'},];
+    res.send(other_stats);
+});
+app.get('/:uuid/themeparks/commonStats', (req, res) => {
+    var common_stats = [
+        {stat:'Coins',value:'9869',t_what:'Theme parks coins are the currency used throughout all parks.  They can be used for shop items and more!',t_how:'Earn coins through rides, games, and other activities.'},
+        {stat:'Coins',value:'9869',t_what:'Theme parks coins are the currency used throughout all parks.  They can be used for shop items and more!',t_how:'Earn coins through rides, games, and other activities.'},];
+    res.send(common_stats);
+});
+app.get('/:uuid/themeparks/otherStats', (req, res) => {
+    var other_stats = [
+        {stat:'Coins',value:'9869',t_what:'Theme parks coins are the currency used throughout all parks.  They can be used for shop items and more!',t_how:'Earn coins through rides, games, and other activities.'},
+        {stat:'Coins',value:'9869',t_what:'Theme parks coins are the currency used throughout all parks.  They can be used for shop items and more!',t_how:'Earn coins through rides, games, and other activities.'},];
+    res.send(other_stats);
+});
+
+
+
+
+// *** Display Pages ***
+// Home Page
+app.get('/', function (req, res) {
+    res.render('pages/home', {});
 });
 
 // Theme parks Page
@@ -73,13 +95,6 @@ app.get('/stats/:username/themeparks', function (req, res) {
 
 // Manhunt Page
 app.get('/stats/:username/manhunt', function (req, res) {
-    var recent_games = [
-        {date:'10/23/22',duration:'1:35:06',role:'Hunter',winner:'Speedrunner',mods:'None'},
-        {date:'10/23/22',duration:'1:35:06',role:'Hunter',winner:'Speedrunner',mods:'None'}];
-
-    var other_stats = [
-        {stat:'Coins',value:'9869',t_what:'Theme parks coins are the currency used throughout all parks.  They can be used for shop items and more!',t_how:'Earn coins through rides, games, and other activities.'},
-        {stat:'Coins',value:'9869',t_what:'Theme parks coins are the currency used throughout all parks.  They can be used for shop items and more!',t_how:'Earn coins through rides, games, and other activities.'},];
 
     res.render('pages/stats/manhunt', {
 
@@ -88,9 +103,6 @@ app.get('/stats/:username/manhunt', function (req, res) {
         last_online: "5 Minutes ago",
         current_loc: "Manhunt: In Game",
         rank: "Squid",
-        
-        recent_games: recent_games,
-        other_stats: other_stats,
     });
 });
 

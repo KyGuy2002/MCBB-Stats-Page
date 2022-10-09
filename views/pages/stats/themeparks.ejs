@@ -14,22 +14,20 @@
 
 
                 <!-- ======= Common ======= -->
-                <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap:20px;">
+                <div id="cs-container" style="display: flex; flex-wrap: wrap; justify-content: space-around; gap:20px;">
 
                     <!-- Item -->
-                    <%common_stats.forEach(function(entry) {%>
-                        <div class="inner-box tooltip">
-                            <i class="c-stats fa-solid fa-coins" style="color:rgb(255, 230, 0); font-size: 21px;"></i>
-                            <h1 class="c-stats"><%=entry.stat%></h1>
-                            <h1 class="c-stats c-stats-value"><%=entry.value%></h1>
-                            <span class="tooltiptext">
-                                <h1 class="t-heading">WHAT IS IT</h1>
-                                <h1 class="t-text"><%=entry.t_what%></h1>
-                                <h1 class="t-heading">HOW TO</h1>
-                                <h1 class="t-text"><%=entry.t_how%></h1>
-                            </span>
-                        </div>
-                    <%});%>
+                    <div id="cs-0" class="inner-box tooltip" style="visibility:hidden">
+                        <i class="c-stats fa-solid fa-coins" style="color:rgb(255, 230, 0); font-size: 21px;"></i>
+                        <h1 id='cs-stat' class="c-stats">STAT</h1>
+                        <h1 id='cs-value' class="c-stats c-stats-value">VALUE</h1>
+                        <span class="tooltiptext">
+                            <h1 class="t-heading">WHAT IS IT</h1>
+                            <h1 id='cs-t_what' class="t-text">T_WHAT</h1>
+                            <h1 class="t-heading">HOW TO</h1>
+                            <h1 id='cs-t_how' class="t-text">T_HOW</h1>
+                        </span>
+                    </div>
 
                 </div>
 
@@ -44,30 +42,31 @@
                 </div>
 
                 <!-- Item -->
-                <%other_stats.forEach(function(entry) {%>
-                    <div class="o-stats">
+                <div id="os-container" style="visibility:hidden">
+                    <div id="os-0" class="o-stats">
                         <div class="tooltip" style="display: inline;">
                             <span class="fa-stack fa-2x" style="font-size: 15px;">
                                 <i class="fa-solid fa-circle fa-stack-2x" style="color:var(--green)"></i>
                                 <i class="fa-solid fa-shield-halved fa-stack-1x" style="color:white"></i>
                             </span>
-                            <h1 class="c-stats"><%=entry.stat%></h1>
-                            <h1 class="c-stats c-stats-value"><%=entry.value%></h1>
+                            <h1 id='os-stat' class="c-stats">STAT</h1>
+                            <h1 id='os-value' class="c-stats c-stats-value">VALUE</h1>
 
                             <span class="tooltiptext">
                                 <h1 class="t-heading">WHAT IS IT</h1>
-                                <h1 class="t-text"><%=entry.t_what%></h1>
+                                <h1 id='os-t_what' class="t-text">T_WHAT</h1>
                                 <h1 class="t-heading">HOW TO</h1>
-                                <h1 class="t-text"><%=entry.t_how%></h1>
+                                <h1 id='os-t_how' class="t-text">T_HOW</h1>
                             </span>
                         </div>
                     </div>
-                <%});%>
+                </div>
 
 
 
             </div>
         </div>
+        <script src="/js/pages/stats/themeparks.js"></script>
         <%- include('../../partials/_stats-scripts') %>
     </body>
 </html>

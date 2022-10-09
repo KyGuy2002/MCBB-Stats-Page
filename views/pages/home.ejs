@@ -38,28 +38,28 @@
             <!-- Top Players Boxes -->
             <div class="top-players-container">
 
-                <%top_players.forEach(function(entry) {%>
-                    <a class="box tp-item" href="/stats/<%=entry.name%>/manhunt">
-                        <img src="https://crafatar.com/avatars/<%=entry.uuid%>?size=8&overlay" style="height: 64px; border-radius: 10px; image-rendering: pixelated;">
-                        <div style="padding-left: 20px;">
-                            <h1 class="tp-main" style="display: block"><%=entry.name%></h1>
-    
-                            <h1 class="tp-main tp-sub" style="display: block"><%=entry.category%></h1>
-    
-                            <h1 class="tp-main" style="display: block; margin-top: 3px;">
-                                <i class="tp-main fa-solid fa-coins" style="color:rgb(255, 230, 0); font-size: 20px; margin-right: 3px;"></i>
-                                <%=entry.stat%>
-                                <span class="tp-main tp-value" style="margin-left: 3px;"><%=entry.value%></span>
-                            </h1>
+                <!-- Element is duplicated in home.js -->
+                <a id="tp-0" class="box tp-item" style="visibility:hidden">
+                    <img style="height: 64px; border-radius: 10px; image-rendering: pixelated;">
+                    <div style="padding-left: 20px;">
+                        <h1 id='tp-username' class="tp-main" style="display: block">USERNAME</h1>
+
+                        <h1 id='tp-category' class="tp-main tp-sub" style="display: block">CATEGORY</h1>
+
+                        <div style="text-align: left; padding:0px; line-height: 20px;margin-top: 5px">
+                            <i class="tp-main fa-solid fa-coins" style="color:rgb(255, 230, 0); font-size: 20px; margin-right: 3px;"></i>
+                            <span id="tp-stat" class="tp-main" style="display:inline">STAT</span>
+                            <span id='tp-value' class="tp-main tp-value" style="margin-left: 3px;">VALUE</span>
                         </div>
-                    </a>
-                <%});%>
+                    </div>
+                </a>
 
             </div>
 
 
 
         </div>
+        <script src="/js/utils.js"></script>
         <script src="/js/usernameChecks.js"></script>
         <script src="/js/search.js"></script>
         <script src="/js/pages/home/home.js"></script>
