@@ -1,8 +1,8 @@
 async function loadData(uuid, username) {
+  loadJson('http://localhost:8080/'+uuid+'/generalStats', (json) => {initGeneralStats(json, uuid, username)});
+
   loadJson('http://localhost:8080/'+uuid+'/manhunt/recentGames', (json) => {initRecentGames(json)});
   loadJson('http://localhost:8080/'+uuid+'/manhunt/otherStats', (json) => {initOtherStats(json)});
-
-  loadingComplete();
 }
 
 

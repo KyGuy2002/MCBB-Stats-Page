@@ -31,13 +31,9 @@ async function usernameValid(uuid, username) {
     }
   })
 
-  // General stats
-  document.querySelector(".g-name").innerHTML = "Stats for " + username;
-  document.querySelector(".g-uuid").innerHTML = uuid;
-  loadPlayerModel(uuid);
-
-  // Load all other data
-  loadData(uuid, username);
+  // Load all data
+  await loadData(uuid, username);
+  loadingComplete();
 
 }
 
