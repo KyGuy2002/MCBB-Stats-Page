@@ -50,10 +50,10 @@ app.get('/:uuid/themeparks/otherStats', (req, res) => {
         {stat:'Coins',value:'9869',t_what:'Theme parks coins are the currency used throughout all parks.  They can be used for shop items and more!',t_how:'Earn coins through rides, games, and other activities.'},];
     res.send(other_stats);
 });
-// app.get('/:uuid/generalStats', (req, res) => {
-//     var general_stats = {first_joined:'January 6th, 2021',last_online:'5 minutes ago',current_loc:'Manhunt: In a game',rank:'Owner'};
-//     res.send(general_stats);
-// });
+app.get('/:uuid/generalStats', (req, res) => {
+    var general_stats = {first_joined:'January 6th, 2021',last_online:'5 minutes ago',current_loc:'Manhunt: In a game',rank:'Owner'};
+    res.send(general_stats);
+});
 
 
 
