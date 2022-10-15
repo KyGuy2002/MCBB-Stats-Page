@@ -1,26 +1,9 @@
-/* For tablets */
-@media only screen and (min-width: 550px) {
-  .announcement {
-    grid-column: 2 / 10;
-  }
-  .namePrompt {
-    grid-column: 2 / 10;
-  }
-  .top-players-container {
-    grid-column: 2 / 10;
-  }
+.announcement {
+  grid-column: 1 / 4;
 }
-
-
-/* For desktop */
-@media only screen and (min-width: 1200px) {
-  .announcement {
-    grid-column: 3 / 9;
-  }
-  .namePrompt {
-    grid-column: 3 / 9;
-  }
-  .top-players-container {
-    grid-column: 3 / 9;
-  }
+.namePrompt {
+  grid-column: 1 / 4;
+}
+.tpc-parent {
+  grid-column: 1 / 4;
 }

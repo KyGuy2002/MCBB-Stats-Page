@@ -51,6 +51,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 20px;
+    overflow: visible;
 }
 .tp-item {
     text-decoration: none;
@@ -98,6 +99,35 @@
     padding: 7px 0px;
     opacity: 1;
     animation: shake 0.4s;
+}
+
+.tcp-parent {
+    overflow: visible;
+}
+
+
+.leaderboard-links-container {
+    text-align: left;
+    margin-bottom: 12px;
+    overflow: scroll;
+    white-space: nowrap;
+}
+
+.lbl-button {
+    padding: 9px 12px;
+    vertical-align: middle;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.lbl-button > i {
+    margin-left: 3px;
+}
+
+.lbl-button:hover {
+    background-color: var(--black2);
 }
 
 

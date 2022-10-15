@@ -27,9 +27,13 @@ html, body {
   display: grid;
   grid-template-columns: 1;
   gap: 20px;
-  padding: 20px 0px; }
+  padding: 20px 0px;
+  margin-left: auto;
+  overflow: hidden;
+  margin-right: auto; }
 
 .grid-container > div {
+  overflow: hidden;
   text-align: center;
   font-size: 30px; }
 
@@ -143,11 +147,21 @@ html, body {
   .box:nth-child(50) {
     animation-delay: 1000ms; }
 
-/* Tablet and Desktop */
+/* Tablet */
 @media only screen and (min-width: 550px) {
   .grid-container {
-    grid-template-columns: repeat(10, 1fr);
-    padding: 20px; }
+    padding: 20px;
+    width: 80%; }
+  .box {
+    border-radius: 35px;
+    padding: 30px 40px; } }
+
+/* Desktop */
+@media only screen and (min-width: 1200px) {
+  .grid-container {
+    grid-template-columns: repeat(3, 1fr);
+    padding: 20px;
+    width: 1000px; }
   .box {
     border-radius: 35px;
     padding: 30px 40px; } }

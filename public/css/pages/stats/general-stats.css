@@ -18,7 +18,7 @@
 .g-character-div {
   width: 0px; }
 
-@media only screen and (min-width: 550px) {
+@media only screen and (min-width: 700px) {
   .g-character {
     visibility: visible; }
   .g-character-div {

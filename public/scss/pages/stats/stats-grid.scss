@@ -1,3 +1,16 @@
+/* Desktop grid width */
+@media only screen and (min-width: 700px) {
+  .grid-container {
+    width: 90%;
+  }
+}
+@media only screen and (min-width: 1400px) {
+  .grid-container {
+    width: 1300px;
+  }
+}
+
+
 /* For mobile */
 .general {
   grid-column: 1 / 11;
@@ -13,7 +26,7 @@
 }
 
 
-/* For tablets and small desktops */
+/* For tablets and desktops */
 @media only screen and (min-width: 1000px) {
   .general {
     grid-column: 1 / 7;
@@ -25,19 +38,5 @@
   }
   .main {
     grid-row: 2 / 3;
-  }
-}
-
-
-/* For desktop */
-@media only screen and (min-width: 1150px) {
-  .general {
-    grid-column: 2 / 7;
-  }
-  .badges {
-    grid-column: 7 / 10;
-  }
-  .main {
-    grid-column: 2 / 10;
   }
 }

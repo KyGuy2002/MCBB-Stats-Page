@@ -12,6 +12,9 @@
     --black2: #3a3a3a8a;
 
     --font: 'Montserrat', sans-serif;
+
+    // Tablet-Min: 550px
+    // Desktop-Min: 1200px
 }
 
 
@@ -38,9 +41,13 @@ html, body {
     grid-template-columns: 1;
     gap: 20px;
     padding: 20px 0px;
-  }
+    margin-left: auto;
+    overflow: hidden;
+    margin-right: auto;
+}
   
 .grid-container > div {
+    overflow: hidden;
     text-align: center;
     font-size: 30px;
 }
@@ -61,11 +68,23 @@ html, body {
         }
     }
 }
-/* Tablet and Desktop */
+/* Tablet */
 @media only screen and (min-width: 550px) {
     .grid-container {
-        grid-template-columns: repeat(10, 1fr);
         padding: 20px;
+        width: 80%
+    }
+    .box {
+        border-radius: 35px;
+        padding: 30px 40px;
+    }
+}
+/* Desktop */
+@media only screen and (min-width: 1200px) {
+    .grid-container {
+        grid-template-columns: repeat(3, 1fr);
+        padding: 20px;
+        width: 1000px;
     }
     .box {
         border-radius: 35px;
