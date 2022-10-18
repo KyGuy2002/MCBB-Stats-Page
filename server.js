@@ -64,7 +64,13 @@ app.get('/', function (req, res) {
     res.render('pages/home', {});
 });
 
-// Theme parks Page
+// Leaderboard List Page
+app.get('/leaderboards', function (req, res) {
+    res.render('pages/leaderboards');
+});
+
+
+// Theme Parks Page
 app.get('/stats/:username/themeparks', function (req, res) {
     res.render('pages/stats/themeparks');
 });
