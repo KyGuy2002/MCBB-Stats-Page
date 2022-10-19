@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="/css/global/global.css">
+        <link rel="stylesheet" href="/css/pages/home/home.css">
+        <link rel="stylesheet" href="/css/pages/leaderboards/leaderboard-grid.css">
+        <link rel="stylesheet" href="/css/pages/leaderboards/leaderboard.css">
+        <link rel="icon" type="image/x-icon" href="/assets/images/logo.png">
+        <script src="https://kit.fontawesome.com/56772e7f1a.js" crossorigin="anonymous"></script>
+        <meta charset="UTF-8">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Leaderboard | MCBB Stats</title>
+    </head>
+    <%- include('../partials/_header') %>
+
+    <body>
+        <div class="grid-container">
+
+            <div class="box section">
+                <!-- TODO: Top 3 -->
+                <h1 class="page-title">Leaderboard Name</h1>
+            </div>
+
+
+
+            <!-- LB Entry -->
+            <div id="e-0" class="box section entry">
+                <h1>1</h1>
+                <img src="https://crafatar.com/avatars/910b8e50-7cc3-4062-8f0a-f9fbd4a9b935?size=8&overlay">
+
+                <div class="data" style="min-width: 170px">
+                    <h1 class="username">IEatBeans</h1>
+                    <div class="stat">
+                        <i class="fa-solid fa-coins" style="color:rgb(255, 230, 0); font-size: 20px; margin-right: 3px;"></i>
+                        <h1 class="value">135</h1>
+                        <h1 class="label">Coins</h1>
+                    </div>
+                </div>
+
+                <div class="bar">
+                    <div id="none">
+                        <h1 id="value">0</h1>
+                    </div>
+                    <div id="you">
+                        <h1>This</h1>
+                        <h1 id="value">135</h1>
+                    </div>
+                    <div id="best">
+                        <h1>Top</h1>
+                        <h1 id="value">869</h1>
+                    </div>
+                </div>
+
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </div>
+
+        
+
+        </div>
+        <script src="/js/utils.js"></script>
+        <script src="/js/search.js"></script>
+        <script src="/js/pages/leaderboards/leaderboard.js"></script>
+    </body>
+</html>

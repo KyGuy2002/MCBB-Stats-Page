@@ -55,6 +55,19 @@ app.get('/:uuid/generalStats', (req, res) => {
     res.send(general_stats);
 });
 
+app.get('/api/leaderboard/:lbid', (req, res) => {
+    var lb_data = [
+        {uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'12',label:'Coins'},
+        {uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'6',label:'Coins'},
+        {uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'6',label:'Coins'},
+        {uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'5',label:'Coins'},
+        {uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'5',label:'Coins'},
+        {uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'4',label:'Coins'},
+        {uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'2',label:'Coins'},
+        {uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'1',label:'Coins'},];
+    res.send(lb_data);
+});
+
 
 
 
@@ -65,10 +78,14 @@ app.get('/', function (req, res) {
 });
 
 // Leaderboard List Page
-app.get('/leaderboards', function (req, res) {
-    res.render('pages/leaderboards');
+app.get('/leaderboard', function (req, res) {
+    res.render('pages/leaderboard-list');
 });
 
+// Leaderboard List Page
+app.get('/leaderboard/:lbid', function (req, res) {
+    res.render('pages/leaderboard');
+});
 
 // Theme Parks Page
 app.get('/stats/:username/themeparks', function (req, res) {

@@ -1,0 +1,127 @@
+.page-title {
+  font-size: 30px;
+  margin-top: 5px;
+  color: white; }
+
+.section-title {
+  color: white;
+  font-size: 30px;
+  margin-top: 0px;
+  text-align: left; }
+
+.single-item {
+  border-radius: 15px;
+  background-color: black;
+  padding: 15px 25px;
+  height: 80px;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.98), rgba(0, 0, 0, 0.3)), url("/assets/images/themeparks.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  box-sizing: border-box;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 20px;
+  transition: all .18s ease-in-out;
+  filter: drop-shadow(0 0 0.6rem #161616);
+  text-shadow: 2px 2px 5px black; }
+
+.single-item > i.icon {
+  font-size: 40px; }
+
+.single-item > div {
+  text-align: left; }
+
+.single-item > div > h1 {
+  color: white;
+  font-size: 23px;
+  margin: 0px; }
+
+.single-item > div > h2 {
+  color: gray;
+  font-size: 15px;
+  margin: 0px; }
+
+.single-item > i.link {
+  font-size: 25px;
+  color: white;
+  margin-left: auto;
+  text-shadow: 2px 2px 5px black; }
+
+.single-item:hover {
+  transform: scale(1.03);
+  filter: drop-shadow(0 0 0.8rem #0c0c0c);
+  cursor: pointer; }
+
+.groups-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: stretch;
+  justify-content: space-evenly;
+  align-items: stretch;
+  gap: 20px; }
+
+.groups-item {
+  position: relative;
+  border-radius: 15px;
+  background-color: black;
+  padding: 25px;
+  width: 200px;
+  height: 200px;
+  flex-grow: 1;
+  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.4)), url("/assets/images/themeparks.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: all .24s ease;
+  z-index: 100;
+  filter: drop-shadow(0 0 0.6rem #161616);
+  text-shadow: 2px 2px 5px black; }
+
+.groups-item > h1 {
+  color: white;
+  font-size: 25px; }
+
+.groups-item > h2 {
+  color: gray;
+  font-size: 17px; }
+
+.groups-item:hover {
+  transform: translateY(-50%);
+  filter: drop-shadow(0 0 0.8rem #0c0c0c); }
+
+.groups-item:hover > div {
+  opacity: 1;
+  top: 230px; }
+
+.groups-item > div {
+  z-index: 0;
+  transition: inherit;
+  position: absolute;
+  top: 0px;
+  margin-left: -25px;
+  opacity: 0;
+  background-color: black;
+  width: 100%;
+  box-sizing: border-box;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  padding: 10px 0; }
+
+.groups-item > div > h1 {
+  margin: 0px;
+  box-sizing: content-box;
+  color: white;
+  padding: 15px;
+  font-size: 25px;
+  transition-duration: .2s; }
+
+.groups-item > div > h1 > i {
+  float: right;
+  margin-right: 10px; }
+
+.groups-item > div > h1:hover {
+  background-color: #111111;
+  cursor: pointer; }
