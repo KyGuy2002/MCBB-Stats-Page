@@ -57,14 +57,23 @@ app.get('/:uuid/generalStats', (req, res) => {
 
 app.get('/api/leaderboard/:lbid', (req, res) => {
     var lb_data = [
-        {uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'12',label:'Coins'},
-        {uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'6',label:'Coins'},
-        {uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'6',label:'Coins'},
-        {uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'5',label:'Coins'},
-        {uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'5',label:'Coins'},
-        {uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'4',label:'Coins'},
+        {uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'63',label:'Coins'},
+        {uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'Xx_PeeWee38458_xX',value:'62',label:'Coins'},
+        {uuid:'afded74e-ba7e-4f35-b8ca-2365879e732d',username:'Chacos5',value:'61',label:'Coins'},
+        {uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'60',label:'Coins'},
+        {uuid:'afded74e-ba7e-4f35-b8ca-2365879e732d',username:'Chacos5',value:'55',label:'Coins'},
+        {uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'40',label:'Coins'},
         {uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'2',label:'Coins'},
-        {uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'1',label:'Coins'},];
+        {uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'1',label:'Coins'},
+        {uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'1',label:'Coins'},
+        {uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'1',label:'Coins'},
+        {uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'1',label:'Coins'},
+        {uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'1',label:'Coins'},
+        {uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'1',label:'Coins'},
+        {uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'1',label:'Coins'},
+        {uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'1',label:'Coins'},
+        {uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'1',label:'Coins'},
+        {uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'4',label:'Coins'},];
     res.send(lb_data);
 });
 

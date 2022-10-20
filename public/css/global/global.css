@@ -160,11 +160,7 @@ html, body {
 @media only screen and (min-width: 1200px) {
   .grid-container {
     grid-template-columns: repeat(3, 1fr);
-    padding: 20px;
-    width: 1000px; }
-  .box {
-    border-radius: 35px;
-    padding: 30px 40px; } }
+    width: 1000px; } }
 
 /* ===== Other ===== */
 .inner-box {
@@ -246,3 +242,79 @@ html, body {
   margin-bottom: 25px;
   color: white;
   font-size: 15px; }
+
+.chip-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow: auto;
+  white-space: nowrap;
+  margin-left: 5px; }
+
+/* Tablet & Desktop */
+@media only screen and (min-width: 550px) {
+  .chip-container {
+    margin-left: 0px; } }
+
+.chip {
+  display: inline-flex;
+  margin: 0px;
+  padding: 7px 14px;
+  align-items: center;
+  gap: 7px;
+  border-radius: 35px;
+  transition-duration: 0.15s; }
+
+.chip > i {
+  font-size: 16px;
+  color: white; }
+
+.chip > h1 {
+  font-size: 16px;
+  color: white;
+  margin: 0px; }
+
+.action-chip:hover {
+  transform: scale(1.04);
+  cursor: pointer; }
+
+.vertical-divider {
+  display: inline;
+  border-left: 2px solid darkgray;
+  height: 80%; }
+
+.removable-chip {
+  border: 1px solid var(--green); }
+
+.removable-chip > i {
+  font-size: 17px;
+  margin-left: 3px;
+  color: white; }
+
+.removable-chip > i:hover {
+  color: gray;
+  cursor: pointer; }
+
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg); }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg); }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg); }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg); }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg); }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg); }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg); }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg); }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg); }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg); }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg); } }

@@ -28,11 +28,17 @@ async function loadData(lbId) {
             document.querySelector("#"+id+' > .data > .username').innerHTML = json1['username'];
             document.querySelector("#"+id+' > .data > .stat > .value').innerHTML = json1['value'];
             document.querySelector("#"+id+' > .data > .stat > .label').innerHTML = json1['label'];
+
+            let barPercent = (100 * json1['value']) / json[0]['value'];
+            if (barPercent >= 92) {
+                document.querySelector("#"+id+' > .bar > #best').innerHTML = '';
+            }
+            else {
+                document.querySelector("#"+id+' > .bar > #best > #value').innerHTML = json[0]['value'];
+            }
+
             document.querySelector("#"+id+' > .bar > #you > #value').innerHTML = json1['value'];
-            document.querySelector("#"+id+' > .bar > #best > #value').innerHTML = json[0]['value'];
-            document.querySelector("#"+id+' > .bar > #you').style.left = "calc("+
-            (100 * json1['value']) / json[0]['value']
-            +" - 18px);";
+            document.querySelector("#"+id+' > .bar > #you').style.setProperty('left', 'calc('+barPercent+'% - 17px)');
         }
 
     });
