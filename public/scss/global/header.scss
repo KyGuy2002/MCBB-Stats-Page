@@ -31,6 +31,17 @@ header {
 
 
 /* Buttons */
+.h-leaderboard {
+	background-color: var(--green);
+}
+.h-leaderboard:hover {
+	background-color: var(--green-hover);
+}
+.h-leaderboard-label {
+	display: none;
+	padding: 0px;
+}
+
 .h-discord {
 	background-color: #5865F2;
 	display: none;
@@ -78,9 +89,10 @@ header {
 
 
 /* Desktop and Tablet */
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 730px) {
 	.h-discord {display: inline;}
 	.h-website {display: inline;}
+	.h-leaderboard-label {display: inline;}
 	.h-search-label {display: inline;}
 
 	.h-search-input:focus {

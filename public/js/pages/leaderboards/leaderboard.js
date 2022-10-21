@@ -8,14 +8,24 @@ async function loadData(lbId) {
   
     loadJson('http://localhost:8080/api/leaderboard/'+lbId, (json) => {
 
+        document.querySelector('.page-title').innerHTML = json['name'];
+        document.querySelector('title').innerHTML = json['name'] + " | MCBB Stats";
+        document.querySelector('.page-description').innerHTML = json['description'];
+
         let main = document.querySelector("#e-0")
         main.style.visibility = 'visible';
         main.remove();
         let container = document.querySelector(".grid-container");
 
-        for (let i = 0; i < json.length; i++) {
+        // Top 3 box
+        document.querySelector('.top-3-container > div:nth-child(2) > img').setAttribute('src', 'https://crafatar.com/avatars/'+json['data'][0]['uuid']+'?size=8&overlay');
+        document.querySelector('.top-3-container > div:nth-child(1) > img').setAttribute('src', 'https://crafatar.com/avatars/'+json['data'][1]['uuid']+'?size=8&overlay');
+        document.querySelector('.top-3-container > div:nth-child(3) > img').setAttribute('src', 'https://crafatar.com/avatars/'+json['data'][2]['uuid']+'?size=8&overlay');
 
-            let json1 = json[i];
+        // Create leaderboard entries
+        for (let i = 0; i < json['data'].length; i++) {
+
+            let json1 = json['data'][i];
             let uuid = json1['uuid'];
 
             let element = main.cloneNode(true);
@@ -29,12 +39,15 @@ async function loadData(lbId) {
             document.querySelector("#"+id+' > .data > .stat > .value').innerHTML = json1['value'];
             document.querySelector("#"+id+' > .data > .stat > .label').innerHTML = json1['label'];
 
-            let barPercent = (100 * json1['value']) / json[0]['value'];
+            let barPercent = (100 * json1['value']) / json['data'][0]['value'];
             if (barPercent >= 92) {
                 document.querySelector("#"+id+' > .bar > #best').innerHTML = '';
             }
+            else if (barPercent <= 8) {
+                document.querySelector("#"+id+' > .bar > #none').innerHTML = '';
+            }
             else {
-                document.querySelector("#"+id+' > .bar > #best > #value').innerHTML = json[0]['value'];
+                document.querySelector("#"+id+' > .bar > #best > #value').innerHTML = json['data'][0]['value'];
             }
 
             document.querySelector("#"+id+' > .bar > #you > #value').innerHTML = json1['value'];
