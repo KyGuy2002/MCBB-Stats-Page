@@ -9,7 +9,7 @@ async function loadData(uuid, username) {
 
 
 function initCommonStats(json) {
-  let main = document.querySelector("#cs-0")
+  let main = document.querySelector("#cs-0");
   main.style.visibility = 'visible';
   main.remove();
   let container = document.querySelector("#cs-container");

@@ -7,11 +7,8 @@ header {
 	z-index: 999;
 	background-color: var(--header-black);
 	height: 50px;
-	line-height: 50px;
-}
-.h-button {
-	display: inline;
-	margin-right: 7px;
+	gap: 7px;
+	padding: 0 7px;
 }
 
 
@@ -19,16 +16,58 @@ header {
 .h-logo {
 	width: 30px;
 	height: 30px;
-	display: inline;
-	margin: 0px 7px;
 	cursor: pointer;
 }
 .h-name {
 	color: white;
-	font-size: 20px;
-	display: inline;
+	font-size: 18px;
+	cursor: pointer;
 }
 
+// Info Button
+.h-info {
+	color: lightgray;
+	font-size: 19px;
+	margin-left: 5px;
+	cursor: pointer;
+	transition-duration: color 0.4s;
+}
+.h-info:hover {
+	color: white;
+}
+
+.info-box[expanded=false] {display: none}
+.info-box[expanded=true] {
+	max-width: 500px;
+	position: absolute;
+	margin: 0px;
+	z-index: 998;
+	background-color: var(--header-black);
+	color: white;
+	display: block;
+	padding: 30px;
+	filter: drop-shadow(0 0 1rem rgb(12, 12, 12));
+}
+.info-box a {
+	color: var(--green);
+	text-decoration: none;
+}
+.info-box p {
+	margin: 4px 0;
+}
+.info-box h2 {
+	margin-top: 40px;
+	margin-bottom: 16px;
+}
+.info-box > div {
+	position: absolute;
+	width: 1000px;
+	height: 1000px;
+	left: -100px;
+	top: -100px;
+	z-index: 30;
+	background-color: rgba(0, 0, 0, 0.322);
+}
 
 /* Buttons */
 .h-leaderboard {
@@ -89,7 +128,8 @@ header {
 
 
 /* Desktop and Tablet */
-@media only screen and (min-width: 730px) {
+@media only screen and (min-width: 760px) {
+	.h-name {font-size: 20px;}
 	.h-discord {display: inline;}
 	.h-website {display: inline;}
 	.h-leaderboard-label {display: inline;}
@@ -100,5 +140,9 @@ header {
 	}
 	.h-search-input {
 		top: 0;
+	}
+
+	.info-box[expanded=true] {
+		margin: 25px 20px;
 	}
 }

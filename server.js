@@ -56,27 +56,35 @@ app.get('/:uuid/generalStats', (req, res) => {
 });
 
 app.get('/api/leaderboard/:lbid', (req, res) => {
+    let amount = req.query.amount;
+    let start = req.query.start;
+    if (!amount) amount = 20;
     var lb_data = {
         name:'Theme Parks Coins Leaderboard', 
         description:'Theme parks coins are the currency used throughout all parks.  They can be used for shop items and more!  Earn coins through rides, games, and other activities.',
         data:[
-        {uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'63',label:'Coins'},
-        {uuid:'08f50e03-98e7-477f-a885-f171bad42fef',username:'Xx_PeeWee38458_xX',value:'62',label:'Coins'},
-        {uuid:'afded74e-ba7e-4f35-b8ca-2365879e732d',username:'Chacos5',value:'61',label:'Coins'},
-        {uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'60',label:'Coins'},
-        {uuid:'afded74e-ba7e-4f35-b8ca-2365879e732d',username:'Chacos5',value:'55',label:'Coins'},
-        {uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'40',label:'Coins'},
-        {uuid:'08f50e03-98e7-477f-a885-f171bad42fef',username:'IEatBeans',value:'2',label:'Coins'},
-        {uuid:'afded74e-ba7e-4f35-b8ca-2365879e732d',username:'IEatBeans',value:'1',label:'Coins'},
-        {uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'1',label:'Coins'},
-        {uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'1',label:'Coins'},
-        {uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'1',label:'Coins'},
-        {uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'1',label:'Coins'},
-        {uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'1',label:'Coins'},
-        {uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'1',label:'Coins'},
-        {uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'1',label:'Coins'},
-        {uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'1',label:'Coins'},
-        {uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'4',label:'Coins'},]};
+        {pos: '1', uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'63',label:'Coins'},
+        {pos: '2', uuid:'08f50e03-98e7-477f-a885-f171bad42fef',username:'Xx_PeeWee38458_xX',value:'62',label:'Coins'},
+        {pos: '3', uuid:'afded74e-ba7e-4f35-b8ca-2365879e732d',username:'Chacos5',value:'61',label:'Coins'},
+        {pos: '4', uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'60',label:'Coins'},
+        {pos: '5', uuid:'afded74e-ba7e-4f35-b8ca-2365879e732d',username:'Chacos5',value:'55',label:'Coins'},
+        {pos: '6', uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'40',label:'Coins'},
+        {pos: '7', uuid:'08f50e03-98e7-477f-a885-f171bad42fef',username:'IEatBeans',value:'2',label:'Coins'},
+        {pos: '8', uuid:'afded74e-ba7e-4f35-b8ca-2365879e732d',username:'IEatBeans',value:'1',label:'Coins'},
+        {pos: '9', uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'1',label:'Coins'},
+        {pos: '10', uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'1',label:'Coins'},
+        {pos: '11', uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'1',label:'Coins'},
+        {pos: '12', uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'1',label:'Coins'},
+        {pos: '13', uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'1',label:'Coins'},
+        {pos: '14', uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'1',label:'Coins'},
+        {pos: '15', uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'1',label:'Coins'},
+        {pos: '16', uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'1',label:'Coins'},
+        {pos: '17', uuid:'910b8e50-7cc3-4062-8f0a-f9fbd4a9b935',username:'IEatBeans',value:'4',label:'Coins'},]
+    };
+
+    lb_data['data'] = lb_data['data']
+    .slice(start, lb_data['data'].length) // Remove first to meet start
+    .slice(0, amount) // Remove last to meet length
     res.send(lb_data);
 });
 

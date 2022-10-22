@@ -8,7 +8,10 @@
 
     <!-- Logo And Name -->
     <img class="h-logo" src="/assets/images/logo.png" onclick="location.href = '/'">
-    <h1 class="h-name">MCBlockBuilds Stats</h1>
+    <h1 class="h-name" onclick="location.href = '/'">MCBlockBuilds Stats</h1>
+
+    <!-- Info Button -->
+    <i class="h-info fa-solid fa-circle-info" onClick="return toggleAbout();"></i>
     
 
     <!-- Search Bar -->
@@ -44,3 +47,32 @@
 
 </header>
 <script src="/js/search.js"></script>
+
+
+
+<script>
+    function toggleAbout() {
+        let box = document.querySelector('.info-box');
+        if (box.getAttribute('expanded') == 'false') box.setAttribute('expanded', 'true');
+        else box.setAttribute('expanded', 'false');
+    }
+</script>
+
+
+<div class="box info-box" expanded="false">
+    <p>The MCBlockBuilds Stats Page is the official stats viewer for the <a href="https://mcblockbuilds.net/">MCBlockBuilds.Net</a> Minecraft Server.</p>
+
+    <h2>Other Links</h2>
+    <p>Website: <a href="https://mcblockbuilds.net/">https://mcblockbuilds.net/</a></p>
+    <p>Discord: <a href="https://mcblockbuilds.net/discord">https://mcblockbuilds.net/discord</a></p>
+    <p>Server Ip (Java): <a>mcblockbuilds.net</a></p>
+    <p>Server Ip (Bedrock): <a>br.mcblockbuilds.net</a></p>
+
+    <h2>Credits/Resources</h2>
+    <p>Using the <a href="https://crafater.com/">Crafater API</a> for player skin files.</p>
+    <p>Using Electroids <a href="https://github.com/Electroid/mojang-api">Mojang API</a> for player information.</p>
+    <p>Icons provided by <a href="https://fontawesome.com/">Fontawesome</a></p>
+    <p style="margin-top: 20px;">Created by <a href="https://github.com/KyGuy2002/">KyGuy2002</a></p>
+    <p>Based off of <a href="https://sky.shiiyu.moe/">SkyCrypt</a></p>
+    <div></div>
+</div>
