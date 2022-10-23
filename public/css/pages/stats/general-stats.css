@@ -16,16 +16,11 @@
 
 .g-character {
   margin: 0px;
-  visibility: hidden; }
-
-.g-character-div {
-  width: 0px; }
+  display: none; }
 
 @media only screen and (min-width: 700px) {
   .g-character {
-    visibility: visible; }
-  .g-character-div {
-    width: auto; } }
+    display: block; } }
 
 .g-stats-label {
   font-size: 15px;

@@ -3,6 +3,7 @@ const lbId = pathArray[2];
 
 let loaded = 0;
 let loading = false;
+let best;
 
 let container = document.querySelector(".grid-container");
 
@@ -15,6 +16,7 @@ loadData(true);
 
 
 window.addEventListener('scroll', () => {
+    if (isEnd) return;
     if (loading) return;
     loading = true;
     const {
@@ -23,7 +25,7 @@ window.addEventListener('scroll', () => {
         clientHeight
     } = document.documentElement;
 
-    if (scrollTop + clientHeight >= scrollHeight - 5) {
+    if (scrollTop + clientHeight >= scrollHeight - 250) {
 
         loadData(false);
     } else loading = false;
@@ -52,14 +54,17 @@ async function loadData(initial) {
 function showData(json, initial) {
 
     if (json['data'].length == 0 && !isEnd) {
+        console.log('end')
         let end = document.querySelector('#e-end');
         end.style.setProperty('display', 'block');
         container.appendChild(end.cloneNode(true));
         isEnd = true;
         entryTemplate.remove();
+        end.remove();
     }
 
     if (initial) {
+        best = json['data'][0]['value'];
         document.querySelector('title').innerHTML = json['name'] + " | MCBB Stats";
         document.querySelector('.page-title').innerHTML = json['name'];
         document.querySelector('.page-description').innerHTML = json['description'];
@@ -89,7 +94,7 @@ function showData(json, initial) {
         document.querySelector("#"+id+' > .data > .stat > .label').innerHTML = json1['label'];
 
         // Progress bar
-        let barPercent = (100 * json1['value']) / json['data'][0]['value'];
+        let barPercent = (100 * json1['value']) / best;
         if (barPercent >= 92) {
             document.querySelector("#"+id+' > .bar > #best').innerHTML = '';
         }
@@ -97,7 +102,7 @@ function showData(json, initial) {
             document.querySelector("#"+id+' > .bar > #none').innerHTML = '';
         }
         else {
-            document.querySelector("#"+id+' > .bar > #best > #value').innerHTML = json['data'][0]['value'];
+            document.querySelector("#"+id+' > .bar > #best > #value').innerHTML = best;
         }
         document.querySelector("#"+id+' > .bar > #you > #value').innerHTML = json1['value'];
         document.querySelector("#"+id+' > .bar > #you').style.setProperty('left', 'calc('+barPercent+'% - 17px)');

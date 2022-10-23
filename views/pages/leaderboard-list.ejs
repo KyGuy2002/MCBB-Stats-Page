@@ -43,12 +43,13 @@
 
 
 
-            <div class="box section">
+            <!-- TEMPLATE: Category -->
+            <div id="c-0" class="box section">
                 <h1 class="section-title">Themeparks Leaderboards</h1>
 
 
-                <!-- Single Item -->
-                <div class="single-item" onClick="window.location.href = '/leaderboard/coins'">
+                <!-- TEMPLATE: Individual LB -->
+                <div id="i-0" class="single-item" onClick="window.location.href = '/leaderboard/coins'">
                     <i class="icon fa-solid fa-coins" style="color:rgb(255, 230, 0);"></i>
                     <div>
                         <h1>Coins</h1>
@@ -58,46 +59,16 @@
                 </div>
 
 
-                <div class="groups-container">
+                <div id="c-groups-container" class="groups-container">
                     
-                    <!-- Groups Item -->
-                    <div class="groups-item">
+                    <!-- TEMPLATE: LB Group -->
+                    <div id="g-0" class="groups-item">
                         <h1>Rides</h1>
                         <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
 
+                        <!-- TEMPLATE: LB Group - Entry -->
                         <div>
-                            <h1>Some Ride<i class="fa-solid fa-angle-right"></i></h1>
-                            <h1>Some Ride<i class="fa-solid fa-angle-right"></i></h1>
-                        </div>
-                    </div>
-
-                    <div class="groups-item">
-                        <h1>Games</h1>
-                        <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
-
-                        <div>
-                            <h1>Some Ride<i class="fa-solid fa-angle-right"></i></h1>
-                            <h1>Some Ride<i class="fa-solid fa-angle-right"></i></h1>
-                        </div>
-                    </div>
-
-                    <div class="groups-item">
-                        <h1>Theme Parks</h1>
-                        <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
-
-                        <div>
-                            <h1>Some Ride<i class="fa-solid fa-angle-right"></i></h1>
-                            <h1>Some Ride<i class="fa-solid fa-angle-right"></i></h1>
-                        </div>
-                    </div>
-
-                    <div class="groups-item">
-                        <h1>Theme Parks</h1>
-                        <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
-
-                        <div>
-                            <h1>Some Ride<i class="fa-solid fa-angle-right"></i></h1>
-                            <h1>Some Ride<i class="fa-solid fa-angle-right"></i></h1>
+                            <h1 id="glb-0" >Some Ride<i class="fa-solid fa-angle-right"></i></h1>
                         </div>
                     </div>
 
