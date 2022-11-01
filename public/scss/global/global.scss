@@ -91,10 +91,13 @@ html, body {
 
 /* ===== Other ===== */
 .inner-box {
+    display: flex;
+    align-items: center;
+    gap: 7px;
     background-color: var(--black2);
     border-radius: 20px;
     text-align: center;
-    padding: 15px 23px;
+    padding: 18px 23px;
 }
 
 .c-stats {

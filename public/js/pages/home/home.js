@@ -1,6 +1,7 @@
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 
+
 // Check if username error in url params
 if (urlParams.has('usernameError')) {
   const error = urlParams.get('usernameError');
@@ -22,12 +23,6 @@ async function usernameError(reason) {
     error.classList.add("username-error-visible");
     input.classList.add("username-input-error");
    }, 10);
-}
-
-
-// Username checks were ok
-async function usernameValid(uuid, username) {
-  window.location.href = '/stats/'+uuid+"/manhunt";
 }
 
 

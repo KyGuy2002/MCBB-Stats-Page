@@ -2,14 +2,13 @@
 // Validate uuid
 const pathArray = window.location.pathname.split('/');
 const id = pathArray[2];
-validatePlayer(id);
+validatePlayer(id, false);
 
 
 // Failed to validate username
 async function usernameError(reason) {
   window.location.href = '/?usernameError='+reason; // Send home with error
 }
-
 
 
 // Username checks were ok.  Load user data

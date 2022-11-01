@@ -139,12 +139,12 @@ app.get('/', function (req, res) {
 
 // Leaderboard List Page
 app.get('/leaderboard', function (req, res) {
-    res.render('pages/leaderboard-list');
+    res.render('pages/leaderboards/leaderboard-list');
 });
 
 // Leaderboard List Page
 app.get('/leaderboard/:lbid', function (req, res) {
-    res.render('pages/leaderboard');
+    res.render('pages/leaderboards/leaderboard');
 });
 
 // Theme Parks Page

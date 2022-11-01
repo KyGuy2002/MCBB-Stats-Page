@@ -1,5 +1,5 @@
 // Validate name or uuid
-async function validatePlayer(id) {
+async function validatePlayer(id, search) {
   
   // Check if player exists & get UUID & Name
   fetch('https://api.ashcon.app/mojang/v2/user/'+id)
@@ -23,7 +23,7 @@ async function validatePlayer(id) {
     return response.json();
   })
   .then(json => {
-    validatePlayerExistsCallback(json['uuid'], json['username'])
+    validatePlayerExistsCallback(json['uuid'], json['username'], search)
     return;
   })
   .catch(error => {
@@ -35,7 +35,7 @@ async function validatePlayer(id) {
 
 
 // Validate player - Check if ever joined
-async function validatePlayerExistsCallback(uuid, username) {
+async function validatePlayerExistsCallback(uuid, username, search) {
 
     // Check if player has ever joined
     fetch('https://api.ashcon.app/mojang/v2/user/'+uuid) // https://api.mcblockbuilds.net/
@@ -49,11 +49,19 @@ async function validatePlayerExistsCallback(uuid, username) {
         throw "Unknown Error!  Status Code: '+response.status"
       }
 
-      usernameValid(uuid, username);
+      if (search) usernameValidSearch(uuid, username);
+      else usernameValid(uuid, username);
       return;
     })
     .catch(error => {
       usernameError(error)
       return;
     });
+}
+
+
+
+// Username checks were ok
+async function usernameValidSearch(uuid, username) {
+  window.location.href = '/stats/'+uuid+"/manhunt";
 }
