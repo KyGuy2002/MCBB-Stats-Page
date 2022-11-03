@@ -6,8 +6,7 @@
   width: calc(100% + 8px);
   gap: 6px;
   padding: 6px;
-  margin-left: -10px;
-  overflow: hidden; }
+  margin-left: -10px; }
 
 .i-slot:nth-child(n+29):nth-child(-n+100) {
   margin-top: 14px; }
@@ -16,8 +15,7 @@
   background-color: var(--black2);
   border-radius: 10px;
   aspect-ratio: 1;
-  box-sizing: border-box;
-  overflow: hidden; }
+  box-sizing: border-box; }
 
 .i-icon {
   width: 84%;

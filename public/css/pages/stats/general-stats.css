@@ -16,7 +16,8 @@
 
 .g-character {
   margin: 0px;
-  display: none; }
+  display: none;
+  cursor: grab; }
 
 @media only screen and (min-width: 700px) {
   .g-character {

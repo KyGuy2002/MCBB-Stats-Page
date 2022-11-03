@@ -6,7 +6,7 @@
   --grey: rgb(124, 124, 124);
   --grey2: rgba(109, 109, 109, 0.705);
   --black: #000000ad;
-  --black2: #3a3a3a8a;
+  --black2: #333333;
   --font: 'Montserrat', sans-serif; }
 
 /* ===== Page ===== */
@@ -20,7 +20,9 @@ html {
   background-size: cover; }
 
 html, body {
-  margin: 0; }
+  margin: 0;
+  overflow: visible;
+  overflow-x: hidden; }
 
 /* ===== Grid ===== */
 .grid-container {
@@ -29,11 +31,10 @@ html, body {
   gap: 20px;
   padding: 20px 0px;
   margin-left: auto;
-  overflow: visible;
   margin-right: auto; }
 
 .grid-container > div {
-  overflow: hidden;
+  overflow: visible;
   text-align: center;
   font-size: 30px; }
 
@@ -44,6 +45,7 @@ html, body {
   -webkit-backdrop-filter: blur(10px);
   margin: 0px;
   padding: 15px 10px;
+  overflow: visible;
   animation: popInAnimation 0.5s;
   animation-fill-mode: backwards; }
   .box:nth-child(1) {
@@ -207,8 +209,11 @@ html, body {
     opacity: 1;
     transform: scale(1); } }
 
-/* ===== Tooltip ===== */
-.tooltip .tooltiptext {
+/* ===== Tooltips/Hovercards ===== */
+.tooltipparent {
+  position: relative; }
+
+.tooltipparent .tooltip {
   visibility: hidden;
   background-color: var(--header-black);
   color: white;
@@ -221,30 +226,59 @@ html, body {
   bottom: 100%;
   left: 50%;
   transform: translate(-50%, -10px);
-  transition: opacity 0.3s;
+  transition: all 0.25s ease-in-out;
   opacity: 0;
   min-width: 200px;
-  max-width: 200px; }
+  max-width: 200px;
+  filter: drop-shadow(0 0 1rem #0c0c0c); }
 
-.tooltip {
-  position: relative; }
-
-.tooltip:hover .tooltiptext {
+.tooltipparent:hover .tooltip {
   visibility: visible;
   opacity: 1; }
 
+.tooltip::after {
+  content: '';
+  position: absolute;
+  left: calc(50% - 20px);
+  top: 100%;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid var(--green);
+  clear: both; }
+
 .t-heading {
-  color: var(--grey);
-  font-weight: bold;
-  font-size: 18px;
-  margin: 10px;
-  margin-bottom: 0px; }
+  color: var(--grey) !important;
+  font-weight: bold !important;
+  font-size: 18px !important;
+  margin: 10px !important;
+  margin-bottom: 0px !important; }
 
 .t-text {
-  margin: 0px;
-  margin-bottom: 25px;
-  color: white;
-  font-size: 15px; }
+  margin: 0px !important;
+  margin-bottom: 25px !important;
+  color: white !important;
+  font-size: 15px !important; }
+
+.tooltipparent .loretooltip {
+  overflow: hidden;
+  bottom: 0;
+  left: 0;
+  transform: translate(-110%, 40%); }
+
+.tooltipparent .loretooltip > div {
+  width: calc(100% + 30px);
+  margin: -10px -15px;
+  margin-bottom: 20px;
+  height: 60px;
+  background-color: gold;
+  font-size: 21px;
+  line-height: 60px; }
+
+.tooltipparent .loretooltip > h1 {
+  font-size: 16px;
+  line-height: 15px; }
 
 .chip-container {
   display: flex;

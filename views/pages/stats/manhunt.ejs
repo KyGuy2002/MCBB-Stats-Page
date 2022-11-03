@@ -42,6 +42,38 @@
 
 
 
+                <!-- Leveling / Tiers -->
+                <h1 class="heading" style="margin-top: 30px;">Leveling / Tiers</h1>
+                <div style="display: flex; justify-content: flex-start; margin-bottom: 20px;">
+                    <div>
+                        <hr class="g-line">
+                    </div>
+                </div>
+                
+                <div class="level-box-container">
+                    <!-- Item -->
+                    <div id="l-0" class="level-box inner-box tooltipparent">
+                        <h1 class="lb-title">Weapons Tier</h1>
+
+                        <!-- Circle -->
+                        <div class="circle">
+                            <h1>3</h1> <!-- Current Level -->
+                        </div>
+
+                        <h1 class="lb-next-label">Next Tier</h1>
+                        <h1 class="lb-next-value">345 / 1600</h1>
+
+                        <span class="tooltip">
+                            <h1 class="t-heading">WHAT IS IT</h1>
+                            <h1 id='os-t_what' class="t-text">T_WHAT</h1>
+                            <h1 class="t-heading">HOW TO</h1>
+                            <h1 id='os-t_how' class="t-text">T_HOW</h1>
+                        </span>
+                    </div>
+                </div>
+
+
+
                 <!-- Other Stats -->
                 <h1 class="heading" style="margin-top: 30px;">Other Stats</h1>
                 <div style="display: flex; justify-content: flex-start; margin-bottom: 20px;">
@@ -53,7 +85,7 @@
                 <!-- Item -->
                 <div id="os-container" style="visibility:hidden">
                     <div id="os-0" class="o-stats">
-                        <div class="tooltip" style="display: inline;">
+                        <div class="tooltipparent" style="display: inline;">
                             <span class="fa-stack fa-2x" style="font-size: 15px;">
                                 <i class="fa-solid fa-circle fa-stack-2x" style="color:var(--green)"></i>
                                 <i class="fa-solid fa-shield-halved fa-stack-1x" style="color:white"></i>
@@ -61,7 +93,7 @@
                             <h1 id='os-stat' class="c-stats">STAT</h1>
                             <h1 id='os-value' class="c-stats c-stats-value">VALUE</h1>
 
-                            <span class="tooltiptext">
+                            <span class="tooltip">
                                 <h1 class="t-heading">WHAT IS IT</h1>
                                 <h1 id='os-t_what' class="t-text">T_WHAT</h1>
                                 <h1 class="t-heading">HOW TO</h1>
