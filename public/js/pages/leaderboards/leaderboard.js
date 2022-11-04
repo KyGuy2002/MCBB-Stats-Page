@@ -42,7 +42,6 @@ async function loadData(initial) {
         showData(json, initial);
     });
 
-
     // Show everything
     document.querySelectorAll(".box").forEach(function(e){
         e.style.animationPlayState = 'running';
@@ -111,3 +110,89 @@ function showData(json, initial) {
     loading = false;
     if (!isEnd) container.appendChild(entryTemplate);
 }
+
+
+
+let allFilters = ['Rank:Member', 'Rank:Pig', 'Rank:Squid', 'Rank:creeper', 'Rank:dragon', 'Rank:mod', 'Rank:owner'];
+let currentFilters = ['Rank:Pig', 'Rank:Squid'];
+addChipsToFiltersPage();
+
+// When toggling a filter
+async function modifyFilter(filter, added, fromFilterPage) { // TODO: call when modifying any filter
+    console.log("filter: "+filter);
+    if (added && !currentFilters.includes(filter)) { // Added
+        currentFilters.push(filter);
+    }
+    else if (!added && currentFilters.includes(filter)) { // Removed
+        currentFilters.remove(filter);
+    }
+
+    showHideFilter(filter, added, document.querySelector("#f-container"));
+    
+    if (!fromFilterPage) refreshFilters();
+}
+
+// When exiting the filter page or removing a filter
+async function refreshFilters() { // TODO: Call when exiting filter page
+    // Actually make a new request
+}
+
+// Edit filter display
+async function showHideFilter(filter, show, container) { // TODO make filter page work & make filter page z-index 999
+    if (show) {
+        let main = document.querySelector("#f-item")
+
+        let element = main.cloneNode(true);
+        element.style.display = 'flex';
+        container.appendChild(element);
+
+        element.setAttribute("filter", filter);
+
+        element.querySelector('h1').innerHTML = filter.split(':', 2)[1];
+    }
+    else {
+        let element = document.querySelector("#f-item[filter='"+filter+"']")
+        element.remove();
+    }
+}
+
+
+// Open Filters page
+let filtersPage = document.querySelector('.filtersPage');
+let isFiltersPageOpen = false;
+async function openFiltersPage() {
+    if (isFiltersPageOpen) {
+        closeFiltersPage();
+        return;
+    }
+    isFiltersPageOpen = true;
+    filtersPage.style.display = 'block';
+}
+async function addChipsToFiltersPage() {
+    for (i = 0; i < allFilters.length; i++) {
+        let f = allFilters[i];
+
+        let container;
+
+        // Rank
+        if (f.split(':', 2)[1] = "Rank") container = document.querySelector('.filtersPage > .rank-container');
+        
+        showHideFilter(f, true, container);
+    }
+}
+async function closeFiltersPage() {
+    isFiltersPageOpen = false;
+    filtersPage.style.display = 'none';
+    refreshFilters();
+}
+
+
+// When clicking  TODO: "event.target" doesnt work...
+// addEventListener('click', (event) => {;
+//     if (!isFiltersPageOpen) return;
+
+//     if (!event.target.closest('.filtersPage').length) {
+//         // Close Filters page
+//         closeFiltersPage();
+//     }
+// });

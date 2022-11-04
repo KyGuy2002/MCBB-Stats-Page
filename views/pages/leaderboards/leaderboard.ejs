@@ -45,31 +45,29 @@
 
 
             <!-- Filter Chips -->
-            <div class="section chip-container">
+            <div id="f-container" class="section chip-container">
 
                 <div class="box chip action-chip">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <h1>Search</h1>
                 </div>
 
-                <div class="box chip action-chip">
-                    <h1>Filter</h1>
+                <div class="box chip action-chip" style="position: relative;" onClick='return openFiltersPage()'>
+                    <h1>Filters</h1>
                     <i class="fa-solid fa-chevron-down"></i>
+
+                    <div class="box chip filtersPage">
+                        <h1>Ranks</h1>
+                        <div class="rank-container"></div>
+                    </div>
                 </div>
 
                 <div class="vertical-divider"></div>
 
-                <div class="box chip removable-chip">
-                    <h1>Squid</h1>
-                    <i class="fa-solid fa-xmark"></i>
-                </div>
-                <div class="box chip removable-chip">
-                    <h1>Pig</h1>
-                    <i class="fa-solid fa-xmark"></i>
-                </div>
-                <div class="box chip removable-chip">
-                    <h1>Owner</h1>
-                    <i class="fa-solid fa-xmark"></i>
+                <!-- Temporary Filter Item -->
+                <div id="f-item" filter="Tem:None" class="box chip removable-chip">
+                    <h1>Temp</h1>
+                    <i class="fa-solid fa-xmark" onClick='return modifyFilter(this.parentNode.getAttribute("filter"), false, false)'></i>
                 </div>
 
             </div>

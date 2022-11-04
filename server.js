@@ -28,10 +28,17 @@ app.get('/:uuid/manhunt/recentGames', (req, res) => {
         {date:'10/23/23',duration:'1:35:06',role:'Hunter',winner:'Speedrunner',mods:'None'}];
     res.send(recent_games);
 });
-app.get('/:uuid/manhunt/otherStats', (req, res) => {
-    var other_stats = [
+app.get('/:uuid/manhunt/levels', (req, res) => {
+    var levels = [
         {stat:'Coins',value:'9869',t_what:'Theme parks coins are the currency used throughout all parks.  They can be used for shop items and more!',t_how:'Earn coins through rides, games, and other activities.'},
         {stat:'Coins',value:'9869',t_what:'Theme parks coins are the currency used throughout all parks.  They can be used for shop items and more!',t_how:'Earn coins through rides, games, and other activities.'},];
+    res.send(levels);
+});
+app.get('/:uuid/manhunt/otherStats', (req, res) => {
+    var other_stats = [
+        {title:'Weapons Tier',level:'3',current:'234',next:'1000'},
+        {title:'Something',level:'1',current:'14',next:'100'},
+        {title:'Other Thing',level:'6',current:'3434',next:'8000'},]
     res.send(other_stats);
 });
 app.get('/:uuid/themeparks/commonStats', (req, res) => {

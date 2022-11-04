@@ -211,3 +211,19 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%); } }
+
+.filtersPage {
+  text-align: left;
+  display: none;
+  position: absolute;
+  padding: 15px;
+  top: 40px;
+  left: 0px;
+  z-index: 999;
+  max-width: 300px;
+  min-width: 300px; }
+
+.filtersPage > .rank-container {
+  gap: 10px;
+  display: flex;
+  flex-wrap: wrap; }

@@ -295,6 +295,7 @@ html, body {
 
 .chip {
   display: inline-flex;
+  box-sizing: border-box;
   margin: 0px;
   padding: 7px 14px;
   align-items: center;
