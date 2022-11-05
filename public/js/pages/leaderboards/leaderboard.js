@@ -5,16 +5,23 @@ let loaded = 0;
 let loading = false;
 let best;
 
+let isEnd = false;
+
 let container = document.querySelector(".grid-container");
 
 let entryTemplate = document.querySelector("#e-0");
+let endTemplate = document.querySelector("#e-end");
 
-let isEnd = false;
+let currentFilters = [];
 
+
+
+// Start loading initial data
 loadData(true);
 
 
 
+// Load more entries on scroll
 window.addEventListener('scroll', () => {
     if (isEnd) return;
     if (loading) return;
@@ -37,7 +44,7 @@ window.addEventListener('scroll', () => {
 async function loadData(initial) {
     document.querySelector('title').innerHTML = lbId+" | MCBB Stats" // Favicon
   
-    loadJson('http://localhost:8080/api/leaderboard/'+lbId+'?amount=7&start='+loaded, (json) => {
+    loadJson('http://localhost:8080/api/leaderboard/'+lbId+'?amount=7&start='+loaded+(currentFilters.length != 0 ? '&filters='+currentFilters : ''), (json) => {
         loaded = loaded + json['data'].length;
         showData(json, initial);
     });
@@ -113,86 +120,141 @@ function showData(json, initial) {
 
 
 
-let allFilters = ['Rank:Member', 'Rank:Pig', 'Rank:Squid', 'Rank:creeper', 'Rank:dragon', 'Rank:mod', 'Rank:owner'];
-let currentFilters = ['Rank:Pig', 'Rank:Squid'];
-addChipsToFiltersPage();
 
-// When toggling a filter
-async function modifyFilter(filter, added, fromFilterPage) { // TODO: call when modifying any filter
-    console.log("filter: "+filter);
-    if (added && !currentFilters.includes(filter)) { // Added
+// 
+// 
+// Filter Chips
+// 
+// 
+
+let allFilters = ['Rank:Member', 'Rank:Pig', 'Rank:Squid', 'Rank:Creeper', 'Rank:Dragon', 'Rank:Mod', 'Rank:Builder', 'Rank:Dev', 'Rank:Owner', 'Rank:Parks'];
+
+let xIcon = '<i class="fa-solid fa-xmark"></i>';
+let checkIcon = '<i class="fa-solid fa-check"></i>';
+let template = document.querySelector("template#filter-item-template");
+
+
+/**
+   * When clicking a filter chip (called from onClick attribute)
+   *
+   * @param chipElement The chip element.
+   */
+function clickedFilter(chipElement) {
+    let filter = chipElement.getAttribute('filter');
+    let mode = chipElement.getAttribute('mode');
+
+    // When greyed out (with check) chips are clicked in the filters page.
+    if (mode == "greyed" && currentFilters.includes(filter)) {
+        currentFilters.splice(currentFilters.indexOf(filter), 1);
+        chipElement.innerHTML = chipElement.innerHTML.replace(checkIcon, ''); // Remove the check icon
+        document.querySelector("div#f-container > div.filter-item[filter='"+filter+"']").remove(); // Remove the active chip (outside of filters page)
+        chipElement.setAttribute("mode", 'add');
+        // Don't refresh, since this can only happen within the filters page
+    }
+
+    // When active chip (with X) is clicked.
+    else if (mode == "remove" && currentFilters.includes(filter)) {
+        currentFilters.splice(currentFilters.indexOf(filter), 1);
+        chipElement.remove();
+        let pageChip = document.querySelector("div.filtersPage div.filter-item[filter='"+filter+"']");
+        pageChip.setAttribute('mode', 'add'); // Ungrey out the chip in filters page.
+        pageChip.innerHTML = pageChip.innerHTML.replace(checkIcon, ''); // Remove the check icon
+        refreshFilters();
+    }
+
+    // When non greyed out (no icon) chips are clicked in the filters page.
+    else if (mode == "add" && !currentFilters.includes(filter)) {
         currentFilters.push(filter);
+        chipElement.setAttribute("mode", 'greyed');
+        chipElement.innerHTML = checkIcon + chipElement.innerHTML; // Add a check icon
+        document.querySelector("div#f-container").appendChild(chipBuilder(filter, 'remove'));
+        // Don't refresh, since this can only happen within the filters page
     }
-    else if (!added && currentFilters.includes(filter)) { // Removed
-        currentFilters.remove(filter);
-    }
 
-    showHideFilter(filter, added, document.querySelector("#f-container"));
-    
-    if (!fromFilterPage) refreshFilters();
-}
-
-// When exiting the filter page or removing a filter
-async function refreshFilters() { // TODO: Call when exiting filter page
-    // Actually make a new request
-}
-
-// Edit filter display
-async function showHideFilter(filter, show, container) { // TODO make filter page work & make filter page z-index 999
-    if (show) {
-        let main = document.querySelector("#f-item")
-
-        let element = main.cloneNode(true);
-        element.style.display = 'flex';
-        container.appendChild(element);
-
-        element.setAttribute("filter", filter);
-
-        element.querySelector('h1').innerHTML = filter.split(':', 2)[1];
-    }
-    else {
-        let element = document.querySelector("#f-item[filter='"+filter+"']")
-        element.remove();
-    }
+    // Toggle line between filter chips and buttons
+    let line = document.querySelector('div#f-container > div.vertical-divider');
+    if (currentFilters.length == 0)  line.style.display = 'none';
+    else line.style.display = 'block';
 }
 
 
-// Open Filters page
+/**
+   * Creates a filter chip
+   *
+   * @param filter The filter type and name.  Ex. Rank:Pig
+   * @param mode "add", "remove", or "greyed".
+   * @return The filter chip element.
+   */
+function chipBuilder(filter, mode) {
+    let element = template.content.firstElementChild.cloneNode(true);
+
+    element.setAttribute("filter", filter);
+    element.setAttribute("mode", mode);
+
+    element.querySelector('h1').innerHTML = filter.split(':', 2)[1]; // Set text
+
+    if (mode != "add") element.innerHTML = (mode == "greyed" ? checkIcon : "") + element.innerHTML + (mode == "remove" ? xIcon : ""); // Add icon if not in mode "add"
+
+    return element;
+}
+
+
+addChipsToFiltersPage();
+/**
+   * Copy all default chips to the filters page
+   */
+function addChipsToFiltersPage() {
+    for (i = 0; i < allFilters.length; i++) {
+        let f = allFilters[i];
+        document.querySelector('div.filtersPage > div#'+f.split(':', 2)[0]+'-container').appendChild(chipBuilder(f, 'add'));
+    }
+}
+
+
+/**
+   * Reloads all leaderboard data with new filters
+   */
+function refreshFilters() {
+    // TODO: Actually make a new request
+}
+
+
 let filtersPage = document.querySelector('.filtersPage');
 let isFiltersPageOpen = false;
-async function openFiltersPage() {
+/**
+   * Toggles filter page visibility
+   */
+function openFiltersPage() {
+    console.log('openFiltersPage')
     if (isFiltersPageOpen) {
+        console.log('already open, closing')
         closeFiltersPage();
         return;
     }
     isFiltersPageOpen = true;
     filtersPage.style.display = 'block';
 }
-async function addChipsToFiltersPage() {
-    for (i = 0; i < allFilters.length; i++) {
-        let f = allFilters[i];
 
-        let container;
 
-        // Rank
-        if (f.split(':', 2)[1] = "Rank") container = document.querySelector('.filtersPage > .rank-container');
-        
-        showHideFilter(f, true, container);
-    }
-}
-async function closeFiltersPage() {
+/**
+   * Closes filters page
+   */
+function closeFiltersPage() {
     isFiltersPageOpen = false;
     filtersPage.style.display = 'none';
     refreshFilters();
 }
 
 
-// When clicking  TODO: "event.target" doesnt work...
-// addEventListener('click', (event) => {;
-//     if (!isFiltersPageOpen) return;
+/**
+   * Closes filters page when clicking away
+   */
+addEventListener('click', (event) => {;
+    if (!isFiltersPageOpen) return;
+    console.log('click, its open :)')
 
-//     if (!event.target.closest('.filtersPage').length) {
-//         // Close Filters page
-//         closeFiltersPage();
-//     }
-// });
+    // Check if click is inside filters page
+    if (document.querySelector(".filter-chip-container").contains(event.target)) return; // TODO: Clicking label passes this check...
+
+    closeFiltersPage();
+});

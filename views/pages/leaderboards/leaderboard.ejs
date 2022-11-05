@@ -47,68 +47,81 @@
             <!-- Filter Chips -->
             <div id="f-container" class="section chip-container">
 
+                <!-- Search chip -->
                 <div class="box chip action-chip">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <h1>Search</h1>
                 </div>
 
-                <div class="box chip action-chip" style="position: relative;" onClick='return openFiltersPage()'>
-                    <h1>Filters</h1>
-                    <i class="fa-solid fa-chevron-down"></i>
+                <div class="filter-chip-container">
+                    <!-- Filter chip -->
+                    <div class="box chip action-chip" onClick='return openFiltersPage()'>
+                        <h1>Filters</h1>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
 
+                    <!-- Filter page -->
                     <div class="box chip filtersPage">
                         <h1>Ranks</h1>
-                        <div class="rank-container"></div>
+                        <div id='Rank-container' class="sub-container"></div>
                     </div>
                 </div>
 
                 <div class="vertical-divider"></div>
 
-                <!-- Temporary Filter Item -->
-                <div id="f-item" filter="Tem:None" class="box chip removable-chip">
-                    <h1>Temp</h1>
-                    <i class="fa-solid fa-xmark" onClick='return modifyFilter(this.parentNode.getAttribute("filter"), false, false)'></i>
-                </div>
+                <!-- Filter Item Template (mode: [remove = X, add = Nothing, greyed = Greyed Check]) -->
+                <template id="filter-item-template">
+                    <div filter="Tem:None" mode="remove" class="box chip removable-chip filter-item" onClick="return clickedFilter(this)"> 
+                        <h1>Name</h1>
+                    </div>
+                </template>
 
             </div>
 
 
 
-            <!-- LB Entry -->
-            <div id="e-0" class="box section entry loading">
-                <h1>1</h1>
-                <img src="https://crafatar.com/avatars/910b8e50-7cc3-4062-8f0a-f9fbd4a9b935?size=8&overlay">
+            <!-- LB Entry Template -->
+            <template id="lb-item-template">
+                <div id="e-0" class="box section entry">
+                    <h1>1</h1>
+                    <img src="https://crafatar.com/avatars/910b8e50-7cc3-4062-8f0a-f9fbd4a9b935?size=8&overlay">
 
-                <div class="data" style="min-width: 170px">
-                    <h1 class="username">IEatBeans</h1>
-                    <div class="stat">
-                        <i class="fa-solid fa-coins" style="color:rgb(255, 230, 0); font-size: 20px; margin-right: 3px;"></i>
-                        <h1 class="value">135</h1>
-                        <h1 class="label">Coins</h1>
+                    <div class="data" style="min-width: 170px">
+                        <h1 class="username">IEatBeans</h1>
+                        <div class="stat">
+                            <i class="fa-solid fa-coins" style="color:rgb(255, 230, 0); font-size: 20px; margin-right: 3px;"></i>
+                            <h1 class="value">135</h1>
+                            <h1 class="label">Coins</h1>
+                        </div>
                     </div>
+
+                    <div class="bar">
+                        <div id="none">
+                            <h1 id="value">0</h1>
+                        </div>
+                        <div id="you">
+                            <h1>This</h1>
+                            <h1 id="value">135</h1>
+                        </div>
+                        <div id="best">
+                            <h1>Top</h1>
+                            <h1 id="value">869</h1>
+                        </div>
+                    </div>
+
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
                 </div>
+            </template>
 
-                <div class="bar">
-                    <div id="none">
-                        <h1 id="value">0</h1>
-                    </div>
-                    <div id="you">
-                        <h1>This</h1>
-                        <h1 id="value">135</h1>
-                    </div>
-                    <div id="best">
-                        <h1>Top</h1>
-                        <h1 id="value">869</h1>
-                    </div>
+
+            
+            <!-- End Of Leaderboard Template -->
+            <template id="end-template">
+                <div id="e-end" class="box section">
+                    <h1>That's all!</h1>
+                    <h2>You have reached the end of this leaderboard.  No more entries can be loaded.</h2>
                 </div>
-
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </div>
-
-            <div id="e-end" class="box section">
-                <h1>That's all!</h1>
-                <h2>You have reached the end of this leaderboard.  No more entries can be loaded.</h2>
-            </div>
+            </template>
 
         
 

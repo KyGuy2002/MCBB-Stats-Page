@@ -90,10 +90,6 @@
 
 
 
-#e-end {
-    display: none;
-    font-size: 20px;
-}
 #e-end > h1 {
     font-size: 30px;
     color: white;
@@ -256,16 +252,37 @@
     text-align: left;
     display: none;
     position: absolute;
-    padding: 15px;
+    padding: 20px;
+    padding-bottom: 0px;
     top: 40px;
     left: 0px;
     z-index: 999;
     max-width: 300px;
     min-width: 300px;
+    border-radius: 20px;
 }
 
-.filtersPage > .rank-container {
+.filtersPage > h1 {
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.filtersPage > .sub-container {
     gap: 10px;
     display: flex;
     flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.filter-chip-container {
+    font-size: 0;
+    position: relative;
+}
+
+.filter-item[mode='greyed'] {
+    background-color: var(--grey);
+}
+
+#f-container > .vertical-divider {
+    display: none;
 }

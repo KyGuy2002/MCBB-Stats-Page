@@ -105,6 +105,10 @@ app.get('/api/leaderboard-list/', (req, res) => {
 app.get('/api/leaderboard/:lbid', (req, res) => {
     let amount = req.query.amount;
     let start = req.query.start;
+
+    let filters = req.query;
+    console.log(filters);
+
     if (!amount) amount = 20;
     var lb_data = {
         name:'Theme Parks Coins Leaderboard', 
