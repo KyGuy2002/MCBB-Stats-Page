@@ -9,15 +9,33 @@ let isEnd = false;
 
 let container = document.querySelector(".grid-container");
 
-let entryTemplate = document.querySelector("#e-0");
-let endTemplate = document.querySelector("#e-end");
+let entryTemplate = document.querySelector("template#e-entry-template");
+let endTemplate = document.querySelector("template#e-end-template");
 
 let currentFilters = [];
 
 
 
+
+
+
+
+
+
+
+//
+//
+// Load Data
+//
+//
+
 // Start loading initial data
-loadData(true);
+loadData(true, false);
+
+// Show everything
+// document.querySelectorAll(".box").forEach(function(e){
+//     e.style.animationPlayState = 'running';
+// })
 
 
 
@@ -34,60 +52,69 @@ window.addEventListener('scroll', () => {
 
     if (scrollTop + clientHeight >= scrollHeight - 250) {
 
-        loadData(false);
+        loadData(false, false);
     } else loading = false;
 }, { passive: true });
 
 
 
-// Load data
-async function loadData(initial) {
-    document.querySelector('title').innerHTML = lbId+" | MCBB Stats" // Favicon
-  
+/**
+   * Loads general data and leaderbaord entries
+   * @param initial true if title, description, etc should be loaded.
+   * @param restart true if all entries should be deleted and reloaded (used when editing filters)
+   */
+function loadData(initial, restart) {
+    if (restart) loaded = 0;
     loadJson('http://localhost:8080/api/leaderboard/'+lbId+'?amount=7&start='+loaded+(currentFilters.length != 0 ? '&filters='+currentFilters : ''), (json) => {
-        loaded = loaded + json['data'].length;
-        showData(json, initial);
-    });
 
-    // Show everything
-    document.querySelectorAll(".box").forEach(function(e){
-        e.style.animationPlayState = 'running';
-    })
+        if (initial) {
+            best = json['data'][0]['value'];
+            document.querySelector('title').innerHTML = json['name'] + " | MCBB Stats";
+            document.querySelector('.page-title').innerHTML = json['name'];
+            document.querySelector('.page-description').innerHTML = json['description'];
+        }
+
+        loaded = loaded + json['data'].length;
+        if (restart) {
+            // Delete all entries & end
+            document.querySelectorAll('div.entry').forEach(function(element) {
+                element.remove();
+            })
+            let end = document.querySelector('div#e-end');
+            if (end != null) end.remove();
+            isEnd = false;
+        }
+        if (restart || initial) {
+            // Top 3 box
+            document.querySelector('.top-3-container > div:nth-child(2) > img').setAttribute('src', 'https://crafatar.com/avatars/'+json['data'][0]['uuid']+'?size=8&overlay');
+            document.querySelector('.top-3-container > div:nth-child(1) > img').setAttribute('src', 'https://crafatar.com/avatars/'+json['data'][1]['uuid']+'?size=8&overlay');
+            document.querySelector('.top-3-container > div:nth-child(3) > img').setAttribute('src', 'https://crafatar.com/avatars/'+json['data'][2]['uuid']+'?size=8&overlay');
+        }
+
+        appendRows(json['data']);
+    });
 }
 
 
 
-function showData(json, initial) {
+/**
+   * Adds all provided rows (from json) to the page
+   * @param json rows data.
+   */
+function appendRows(json) {
 
-    if (json['data'].length == 0 && !isEnd) {
-        console.log('end')
-        let end = document.querySelector('#e-end');
-        end.style.setProperty('display', 'block');
-        container.appendChild(end.cloneNode(true));
+    // All rows loaded.  Show end message
+    if (json.length == 0 && !isEnd) {
+        let element = endTemplate.content.firstElementChild.cloneNode(true);
+        container.appendChild(element);
         isEnd = true;
-        entryTemplate.remove();
-        end.remove();
-    }
-
-    if (initial) {
-        best = json['data'][0]['value'];
-        document.querySelector('title').innerHTML = json['name'] + " | MCBB Stats";
-        document.querySelector('.page-title').innerHTML = json['name'];
-        document.querySelector('.page-description').innerHTML = json['description'];
-
-        // Top 3 box
-        document.querySelector('.top-3-container > div:nth-child(2) > img').setAttribute('src', 'https://crafatar.com/avatars/'+json['data'][0]['uuid']+'?size=8&overlay');
-        document.querySelector('.top-3-container > div:nth-child(1) > img').setAttribute('src', 'https://crafatar.com/avatars/'+json['data'][1]['uuid']+'?size=8&overlay');
-        document.querySelector('.top-3-container > div:nth-child(3) > img').setAttribute('src', 'https://crafatar.com/avatars/'+json['data'][2]['uuid']+'?size=8&overlay');
     }
 
     // Append leaderboard entries
-    for (let i = 0; i < json['data'].length; i++) {
-        let json1 = json['data'][i];
+    for (let i = 0; i < json.length; i++) {
+        let json1 = json[i];
 
-        let element = entryTemplate.cloneNode(true);
-        entryTemplate.remove();
-        element.classList.remove('loading');
+        let element = entryTemplate.content.firstElementChild.cloneNode(true);
         container.appendChild(element)
         let id = 'e-'+json1['pos'];
         element.setAttribute('id', id);
@@ -115,8 +142,14 @@ function showData(json, initial) {
     }
     
     loading = false;
-    if (!isEnd) container.appendChild(entryTemplate);
+    // if (!isEnd) container.appendChild(entryTemplate);
 }
+
+
+
+
+
+
 
 
 
@@ -159,7 +192,7 @@ function clickedFilter(chipElement) {
         let pageChip = document.querySelector("div.filtersPage div.filter-item[filter='"+filter+"']");
         pageChip.setAttribute('mode', 'add'); // Ungrey out the chip in filters page.
         pageChip.innerHTML = pageChip.innerHTML.replace(checkIcon, ''); // Remove the check icon
-        refreshFilters();
+        loadData(false, true);
     }
 
     // When non greyed out (no icon) chips are clicked in the filters page.
@@ -211,23 +244,13 @@ function addChipsToFiltersPage() {
 }
 
 
-/**
-   * Reloads all leaderboard data with new filters
-   */
-function refreshFilters() {
-    // TODO: Actually make a new request
-}
-
-
 let filtersPage = document.querySelector('.filtersPage');
 let isFiltersPageOpen = false;
 /**
    * Toggles filter page visibility
    */
 function openFiltersPage() {
-    console.log('openFiltersPage')
     if (isFiltersPageOpen) {
-        console.log('already open, closing')
         closeFiltersPage();
         return;
     }
@@ -242,7 +265,7 @@ function openFiltersPage() {
 function closeFiltersPage() {
     isFiltersPageOpen = false;
     filtersPage.style.display = 'none';
-    refreshFilters();
+    loadData(false, true);
 }
 
 
@@ -251,7 +274,6 @@ function closeFiltersPage() {
    */
 addEventListener('click', (event) => {;
     if (!isFiltersPageOpen) return;
-    console.log('click, its open :)')
 
     // Check if click is inside filters page
     if (document.querySelector(".filter-chip-container").contains(event.target)) return; // TODO: Clicking label passes this check...
