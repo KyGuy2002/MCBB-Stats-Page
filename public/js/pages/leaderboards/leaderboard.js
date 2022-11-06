@@ -28,10 +28,6 @@ let currentFilters = [];
 // Start loading initial data
 loadData(true, false);
 
-// Show everything
-// document.querySelectorAll(".box").forEach(function(e){
-//     e.style.animationPlayState = 'running';
-// })
 
 
 

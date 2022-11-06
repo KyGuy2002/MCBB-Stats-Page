@@ -29,27 +29,54 @@
             <!-- Search/Jump Chips -->
             <div class="section chip-container">
 
-                <div class="box chip action-chip">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <h1>Search For Leaderboard</h1>
-                </div>
+                <!-- Search bar -->
+                <iframe name="dummyframe" id="dummyframe" style="display: none"></iframe>
+                <form class="search-chip-container" onsubmit="return submitNameFilter();" target="dummyframe">
 
-                <div class="box chip action-chip">
-                    <h1>Jump To Category</h1>
-                    <i class="fa-solid fa-chevron-down"></i>
+                    <!-- Search chip -->
+                    <div class="box chip action-chip" onClick='return openSearchBar()'>
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <h1>Search For Leaderboard</h1>
+                    </div>
+
+                    <input class="box chip searchBar" name="username" placeholder="Username" required>
+                    <div class="search-error"></div>
+                </form>
+
+                <div class="filter-chip-container">
+                    <!-- Jump to chip -->
+                    <div class="box chip action-chip" onClick='return openFiltersPage()'>
+                        <h1>Jump To</h1>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+
+                    <!-- Jump to page -->
+                    <div class="box chip filtersPage">
+                        <h1>Jump To</h1>
+                        <hr class="g-line">
+                        <h2>Manhunt <i class="fa-solid fa-angle-right"></i></h2>
+                        <h2>Theme Parks <i class="fa-solid fa-angle-right"></i></h2>
+                        <h2>Creative <i class="fa-solid fa-angle-right"></i></h2>
+                    </div>
                 </div>
 
             </div>
 
 
 
-            <!-- TEMPLATE: Category -->
-            <div id="c-0" class="box section">
-                <h1 class="section-title">Themeparks Leaderboards</h1>
+            <!-- TEMPLATE: "Category" - Insert Into GRID CONTAINER - THIS IS TOP -->
+            <template id="category-template">
+                <div class="box section category">
+                    <h1 class="section-title">Themeparks Leaderboards</h1>
 
+                    <!-- "INDIVIDUAL ITEM" & "GROUP CONTAINER" GO HERE -->
 
-                <!-- TEMPLATE: Individual LB -->
-                <div id="i-0" class="single-item" onClick="window.location.href = '/leaderboard/coins'">
+                </div>
+            </template>
+
+            <!-- TEMPLATE: "Individual Item" - Insert Into TOP of "Category" -->
+            <template id="individual-item-template">
+                <div class="single-item" onClick="window.location.href = '/leaderboard/coins'">
                     <i class="icon fa-solid fa-coins" style="color:rgb(255, 230, 0);"></i>
                     <div>
                         <h1>Coins</h1>
@@ -57,27 +84,40 @@
                     </div>
                     <i class="link fa-solid fa-angle-right"></i>
                 </div>
+            </template>
 
-
+            <!-- TEMPLATE: "Group Container" - Insert Into BOTTOM of "Category" -->
+            <template id="group-container-template">
                 <div id="c-groups-container" class="groups-container">
                     
-                    <!-- TEMPLATE: LB Group -->
-                    <div id="g-0" class="groups-item">
-                        <h1>Rides</h1>
-                        <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
-
-                        <!-- TEMPLATE: LB Group - Entry -->
-                        <div>
-                            <h1 id="glb-0" >Some Ride<i class="fa-solid fa-angle-right"></i></h1>
-                        </div>
-                    </div>
+                    <!-- "GROUP"S GO HERE -->
 
                 </div>
-            </div>
+            </template>
 
+            <!-- TEMPLATE: "Group" - Insert Into "Group Container" -->
+            <template id="group-template">
+                <div class="groups-item">
+                    <h1>Rides</h1>
+                    <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+
+                    <ul>
+                        <!-- "GROUPED ITEM"S GO HERE -->
+                    </ul>
+
+                </div>
+            </template>
+
+            <!-- TEMPLATE: "Grouped Item" - Insert Into "Group" -->
+            <template id="grouped-item-template">
+                <li>
+                    <h1>Some Ride<i class="fa-solid fa-angle-right"></i></h1>
+                </li>
+            </template>
         
 
         </div>
         <script src="/js/utils.js"></script>
+        <script src="/js/pages/leaderboards/leaderboard-list.js"></script>
     </body>
 </html>

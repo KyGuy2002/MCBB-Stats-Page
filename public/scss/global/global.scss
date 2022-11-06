@@ -282,7 +282,105 @@ html, body {
 
 
 
+// Chip popout / filters page
+.filtersPage {
+    text-align: left;
+    display: none;
+    position: absolute;
+    padding: 20px;
+    padding-bottom: 0px;
+    top: 40px;
+    left: 0px;
+    height: auto;
+    z-index: 999;
+    width: calc(100vw - 10px);
+    margin-right: 5px;
+    border-radius: 20px;
+}
+.filtersPage > h1 {
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+.filtersPage > .sub-container {
+    gap: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+.filter-chip-container {
+    font-size: 0;
+    position: relative;
+}
+.filter-item[mode='greyed'] {
+    background-color: var(--grey);
+}
+.chip-container > .vertical-divider {
+    display: none;
+}
 
+
+
+// Search bar chip popout
+.searchBar {
+    font-family: var(--font);
+    font-size: 20px;
+    text-align: left;
+    display: none;
+    position: absolute;
+    top: 40px;
+    left: 0px;
+    z-index: 999;
+    height: auto;
+    width: calc(100vw - 10px);
+    margin-right: 5px;
+    border-radius: 20px;
+    border: none;
+    color: white;
+    padding: 5px 15px;
+    outline: none;
+}
+.search-chip-container {
+    font-size: 0;
+    position: relative;
+}
+.search-error {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    z-index: 998;
+    display: none;
+    position: absolute;
+    top: 73px;
+    left: 0px;
+    width: calc(100vw - 10px);
+    margin-right: 5px;
+    background-color: rgb(255, 51, 51);
+    color: white;
+    font-size: 15px;
+    padding: 3px 0px;
+    animation: shake 0.4s;
+    transition-duration: 0.5s;
+}
+.search-error-input {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    animation: shake 0.4s;
+}
+@media only screen and (min-width: 550px) {
+    .filtersPage {
+        width: 300px;
+    }
+    .searchBar {
+        width: 300px;
+    }
+    .search-error {
+        width: 300px;
+    }
+}
+
+
+
+
+// Loading (TODO / WIP)
 .loading * {
     background: var(--header-black);
     background: linear-gradient(110deg, var(--header-black) 8%, var(--black2) 18%, var(--header-black) 33%);
@@ -295,6 +393,7 @@ html, body {
 
 
 
+// Global Animations
 @keyframes shake {
     0% { transform: translate(1px, 1px) rotate(0deg); }
     10% { transform: translate(-1px, -2px) rotate(-1deg); }

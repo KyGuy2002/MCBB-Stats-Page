@@ -42,3 +42,13 @@ async function getOppositeID(id) {
   
   return await response.json();
 }
+
+
+
+// Add all classes (space seperated) to element
+function addClasses(element, classes) {
+  classes = classes.split(" ");
+  for (let i = 0; i < classes.length; i++) {
+    element.classList.add(classes[i]);
+  }
+}

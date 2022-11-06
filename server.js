@@ -62,36 +62,42 @@ app.get('/:uuid/generalStats', (req, res) => {
     res.send(general_stats);
 });
 
-app.get('/api/leaderboard-list/', (req, res) => {
+app.get('/api/leaderboard-list', (req, res) => {
+    let filters = req.query.filters;
+    
     var lbs = [
         {name: 'Themeparks',
         individuals: [
             {name:'Coins', lb_id:'coins', description:'View players with the most coins!', icon:'icon fa-solid fa-coins', icon_color:'rgb(255, 230, 0)', image:'/assets/images/themeparks.png'},
-            {name:'Distance Walked', lb_id:'walked', description:'View players with the most coins!', icon:'icon fa-solid fa-coins', icon_color:'rgb(255, 230, 0)', image:'/assets/images/themeparks.png'},
+            {name:'Distance Walked', lb_id:'walked', description:'View players with the most coins!', icon:'icon fa-solid fa-coins', icon_color:'rgb(255, 230, 0)', image:'/assets/images/background.png'},
         ],
         groups: [
             {name:'Rides', description:'View players with the most coins!', image:'/assets/images/themeparks.png', lbs:[
                 {name:'Space Mountain', lb_id:'rides_sm'},
                 {name:'Rollercoaster', lb_id:'rides_rc'},
             ]},
-            {name:'Games', description:'View players with the most coins!', image:'/assets/images/themeparks.png', lbs:[
+            {name:'Games', description:'View players with the most coins!', image:'/assets/images/creative.png', lbs:[
                 {name:'Ring Toss', lb_id:'games_rt'},
                 {name:'Other 1', lb_id:'games_1'},
                 {name:'Other 2', lb_id:'games_2'},
+                {name:'Ring Toss', lb_id:'games_rt'},
+
             ]},
         ]},
 
         {name: 'Creative',
         individuals: [
-            {name:'Plots', lb_id:'coins', description:'View players with the most coins!', icon:'icon fa-solid fa-coins', icon_color:'rgb(255, 230, 0)', image:'/assets/images/themeparks.png'},
+            {name:'Plots', lb_id:'coins', description:'View players with the most coins!', icon:'icon fa-solid fa-coins', icon_color:'rgb(255, 230, 0)', image:'/assets/images/creative.png'},
             {name:'Coins', lb_id:'walked', description:'View players with the most coins!', icon:'icon fa-solid fa-coins', icon_color:'rgb(255, 230, 0)', image:'/assets/images/themeparks.png'},
         ],
         groups: [
-            {name:'Rating', description:'View players with the most coins!', image:'/assets/images/themeparks.png', lbs:[
+            {name:'Rating', description:'View players with the most coins!', image:'/assets/images/background.png', lbs:[
                 {name:'Space Mountain', lb_id:'rides_sm'},
                 {name:'Rollercoaster', lb_id:'rides_rc'},
+                {name:'Ring Toss', lb_id:'games_rt'},
+                {name:'Other 1', lb_id:'games_1'},
             ]},
-            {name:'Plot Details', description:'View players with the most coins!', image:'/assets/images/themeparks.png', lbs:[
+            {name:'Plot Details', description:'View players with the most coins!', image:'/assets/images/creative.png', lbs:[
                 {name:'Ring Toss', lb_id:'games_rt'},
                 {name:'Other 1', lb_id:'games_1'},
                 {name:'Other 2', lb_id:'games_2'},
@@ -106,8 +112,7 @@ app.get('/api/leaderboard/:lbid', (req, res) => {
     let amount = req.query.amount;
     let start = req.query.start;
 
-    let filters = req.query;
-    console.log(filters);
+    let filters = req.query.filters;
 
     if (!amount) amount = 20;
     var lb_data = {

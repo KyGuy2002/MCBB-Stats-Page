@@ -8,6 +8,10 @@
     font-size: 30px;
     margin-top: 0px;
     text-align: left;
+    padding-left: 10px;
+}
+.grid-container {
+    gap: 30px;
 }
 
 
@@ -18,10 +22,6 @@
     background-color: black;
     padding: 15px 25px;
     height: 80px;
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.980), rgba(0, 0, 0, 0.300)), url('/assets/images/themeparks.png');
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
     display: flex;
     box-sizing: border-box;
     gap: 15px;
@@ -79,10 +79,6 @@
     width: 200px;
     height: 200px;
     flex-grow: 1;
-    background: radial-gradient(circle at center, rgba(0, 0, 0, 0.750), rgba(0, 0, 0, 0.400)), url('/assets/images/themeparks.png');
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
     transition: all .24s ease;
     z-index: 100;
     filter: drop-shadow(0 0 0.6rem rgb(22, 22, 22));
@@ -98,21 +94,11 @@
 }
 
 // Groups - Hover
-.groups-item:hover {
-    transform: translateY(-50%);
-    filter: drop-shadow(0 0 0.8rem rgb(12, 12, 12));
-}
-.groups-item:hover > div {
-    opacity: 1;
-    top: 230px;
-}
-.groups-item > div {
-    z-index: 0;
+.groups-item > ul {
     transition: inherit;
     position: absolute;
     top: 0px;
     margin-left: -25px;
-    opacity: 0;
     background-color: black;
     width: 100%;
     box-sizing: border-box;
@@ -120,19 +106,39 @@
     border-bottom-left-radius: 15px;
     padding: 10px 0;
 }
-.groups-item > div > h1 {
+.groups-item > ul > li > h1 {
     margin: 0px;
     box-sizing: content-box;
     color: white;
-    padding: 15px;
-    font-size: 25px;
+    padding: 10px;
+    font-size: 18px;
     transition-duration: .2s;
 }
-.groups-item > div > h1 > i {
+.groups-item > ul > li > h1 > i {
     float: right;
     margin-right: 10px;
 }
-.groups-item > div > h1:hover {
+.groups-item:hover { // Move card up on hover
+    transform: translateY(-50%);
+    filter: drop-shadow(0 0 0.8rem rgb(12, 12, 12)); 
+}
+.groups-item > ul {
+    opacity: 0;
+    z-index: 900;
+    list-style: none;
+}
+.groups-item:hover > ul { // Move list down on hover
+    opacity: 1;
+    top: 210px;
+}
+.groups-item > ul > li > h1:hover { // Cursor and greyed when hover
     background-color: rgb(17, 17, 17);
     cursor: pointer;
+}
+
+
+@media only screen and (min-width: 550px) {
+    .category {
+        padding-bottom: 40px;
+    }
 }
