@@ -40,7 +40,7 @@ header {
 .info-box[expanded=true] {
 	max-width: 500px;
 	position: absolute;
-	margin: 0px;
+	margin: 10px 0;
 	z-index: 998;
 	background-color: var(--header-black);
 	color: white;
@@ -119,6 +119,12 @@ header {
 	width: 200px;
 }
 
+/* Tablet */
+@media only screen and (min-width: 550px) {
+	.info-box[expanded=true] {
+		margin: 25px 20px;
+	}
+}
 
 /* Desktop and Tablet */
 @media only screen and (min-width: 760px) {
@@ -133,9 +139,5 @@ header {
 	}
 	.h-search-input {
 		top: 0;
-	}
-
-	.info-box[expanded=true] {
-		margin: 25px 20px;
 	}
 }

@@ -20,3 +20,25 @@ async function loadJson(url, callback) {
 async function copy(element) {
   navigator.clipboard.writeText(element.textContent);
 }
+
+
+
+// Get name from uuid or uuid from name
+async function getOppositeID(id) {
+  const response = await fetch('https://api.ashcon.app/mojang/v2/user/' + id);
+
+  // Invalid name/uuid
+  if (response.status == 400) {
+    throw new Error('Invalid Name or UUID!');
+  }
+  // Invalid name/uuid
+  if (response.status == 404) {
+    throw new Error('Player Does Not Exist!');
+  }
+  // Other error
+  if (response.status != 200) {
+    throw new Error('Unknown Error!  Status Code: ' + response.status);
+  }
+  
+  return await response.json();
+}

@@ -22,9 +22,11 @@ function initRecentGames(json) {
     let id = 'rg-'+(i+1);
     element.setAttribute('id', id);
 
-    document.querySelector("#"+id+' > .lb-title').innerHTML = json1['title'];
-    document.querySelector("#"+id+' > .circle > h1').innerHTML = json1['level'];
-    document.querySelector("#"+id+' > .lb-next-value').innerHTML = json1['current'] + ' / ' + json1['next'];
+    document.querySelector("#"+id+' #rg-date').innerHTML = json1['date'];
+    document.querySelector("#"+id+' #rg-duration').innerHTML = json1['duration'];
+    document.querySelector("#"+id+' #rg-role').innerHTML = json1['role'];
+    document.querySelector("#"+id+' #rg-winner').innerHTML = json1['winner'];
+    document.querySelector("#"+id+' #rg-mods').innerHTML = json1['mods'];
   }
 }
 
@@ -44,10 +46,12 @@ function initLevels(json) {
     let id = 'l-'+(i+1);
     element.setAttribute('id', id);
 
-    // document.querySelector("#"+id+' #os-stat').innerHTML = json1['stat'];
-    // document.querySelector("#"+id+' #os-value').innerHTML = json1['value'];
-    // document.querySelector("#"+id+' #os-t_what').innerHTML = json1['t_what'];
-    // document.querySelector("#"+id+' #os-t_how').innerHTML = json1['t_how'];
+    document.querySelector("#"+id+' .lb-title').innerHTML = json1['title'];
+    document.querySelector("#"+id+' .lb-next-value').innerHTML = json1['current'] + " / " + json1['next'];
+    document.querySelector("#"+id+' .circle > h1').innerHTML = json1['level'];
+
+    document.querySelector("#"+id+' #lb-t_what').innerHTML = json1['t_what'];
+    document.querySelector("#"+id+' #lb-t_how').innerHTML = json1['t_how'];
   }
 }
 

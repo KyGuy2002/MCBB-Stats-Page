@@ -21,7 +21,6 @@ html {
 
 html, body {
   margin: 0;
-  overflow: visible;
   overflow-x: hidden; }
 
 /* ===== Grid ===== */
@@ -34,7 +33,6 @@ html, body {
   margin-right: auto; }
 
 .grid-container > div {
-  overflow: visible;
   text-align: center;
   font-size: 30px; }
 
@@ -45,7 +43,6 @@ html, body {
   -webkit-backdrop-filter: blur(10px);
   margin: 0px;
   padding: 15px 10px;
-  overflow: visible;
   animation: popInAnimation 0.5s;
   animation-fill-mode: backwards; }
   .box:nth-child(1) {
@@ -284,18 +281,13 @@ html, body {
   display: flex;
   align-items: center;
   gap: 10px;
-  overflow: auto;
-  white-space: nowrap;
-  margin-left: 5px; }
-
-/* Tablet & Desktop */
-@media only screen and (min-width: 550px) {
-  .chip-container {
-    margin-left: 0px; } }
+  flex-wrap: wrap;
+  margin: 0 5px; }
 
 .chip {
   display: inline-flex;
   box-sizing: border-box;
+  height: 35px;
   margin: 0px;
   padding: 7px 14px;
   align-items: center;
@@ -312,6 +304,14 @@ html, body {
   color: white;
   margin: 0px; }
 
+.chip > img {
+  margin-top: -2px;
+  margin-bottom: -2px;
+  margin-left: -8px;
+  height: 23px;
+  image-rendering: pixelated;
+  border-radius: 50%; }
+
 .action-chip:hover {
   transform: scale(1.04);
   cursor: pointer; }
@@ -319,7 +319,7 @@ html, body {
 .vertical-divider {
   display: inline;
   border-left: 2px solid darkgray;
-  height: 80%; }
+  height: 30px; }
 
 .removable-chip {
   border: 1px solid var(--green); }
@@ -332,6 +332,17 @@ html, body {
 .removable-chip > i:hover {
   color: gray;
   cursor: pointer; }
+
+.loading * {
+  background: var(--header-black);
+  background: linear-gradient(110deg, var(--header-black) 8%, var(--black2) 18%, var(--header-black) 33%);
+  border-radius: 20px;
+  background-size: 200% 100%;
+  animation: 1.5s shine linear infinite; }
+
+@keyframes shine {
+  to {
+    background-position-x: -200%; } }
 
 @keyframes shake {
   0% {

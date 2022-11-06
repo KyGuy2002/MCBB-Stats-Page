@@ -19,10 +19,6 @@ let currentFilters = [];
 
 
 
-
-
-
-
 //
 //
 // Load Data
@@ -125,6 +121,7 @@ function appendRows(json) {
         document.querySelector("#"+id+' > .data > .username').innerHTML = json1['username'];
         document.querySelector("#"+id+' > .data > .stat > .value').innerHTML = json1['value'];
         document.querySelector("#"+id+' > .data > .stat > .label').innerHTML = json1['label'];
+        document.querySelector("#"+id).setAttribute('onClick', "window.location.href='/stats/"+json1['uuid']+"'");
 
         // Progress bar
         let barPercent = (100 * json1['value']) / best;
@@ -172,7 +169,7 @@ let template = document.querySelector("template#filter-item-template");
    *
    * @param chipElement The chip element.
    */
-function clickedFilter(chipElement) {
+async function clickedFilter(chipElement) {
     let filter = chipElement.getAttribute('filter');
     let mode = chipElement.getAttribute('mode');
 
@@ -195,19 +192,23 @@ function clickedFilter(chipElement) {
         loadData(false, true);
     }
 
+    // When active chip (with X) is clicked. (Player)
+    else if (mode == "player" && currentFilters.includes(filter)) {
+        currentFilters.splice(currentFilters.indexOf(filter), 1);
+        chipElement.remove();
+        loadData(false, true);
+    }
+
     // When non greyed out (no icon) chips are clicked in the filters page.
     else if (mode == "add" && !currentFilters.includes(filter)) {
         currentFilters.push(filter);
         chipElement.setAttribute("mode", 'greyed');
         chipElement.innerHTML = checkIcon + chipElement.innerHTML; // Add a check icon
-        document.querySelector("div#f-container").appendChild(chipBuilder(filter, 'remove'));
+        document.querySelector("div#f-container").appendChild(await chipBuilder(filter, 'remove'));
         // Don't refresh, since this can only happen within the filters page
     }
 
-    // Toggle line between filter chips and buttons
-    let line = document.querySelector('div#f-container > div.vertical-divider');
-    if (currentFilters.length == 0)  line.style.display = 'none';
-    else line.style.display = 'block';
+    toggleLine();
 }
 
 
@@ -215,31 +216,58 @@ function clickedFilter(chipElement) {
    * Creates a filter chip
    *
    * @param filter The filter type and name.  Ex. Rank:Pig
-   * @param mode "add", "remove", or "greyed".
+   * @param mode "add", "remove", "greyed", or "player".
    * @return The filter chip element.
    */
-function chipBuilder(filter, mode) {
+async function chipBuilder(filter, mode) {
     let element = template.content.firstElementChild.cloneNode(true);
+    let text = filter.split(':', 2)[1];
 
+    // Everything
     element.setAttribute("filter", filter);
     element.setAttribute("mode", mode);
+    element.querySelector('h1').innerHTML = text; // Set text
 
-    element.querySelector('h1').innerHTML = filter.split(':', 2)[1]; // Set text
+    // Not Add mode
+    if (mode != "add") {
+        element.innerHTML = (mode == "greyed" ? checkIcon : "") + element.innerHTML + (mode == "remove" || mode == "player" ? xIcon : ""); // Add icon if not in mode "add"
+    }
 
-    if (mode != "add") element.innerHTML = (mode == "greyed" ? checkIcon : "") + element.innerHTML + (mode == "remove" ? xIcon : ""); // Add icon if not in mode "add"
+    // Player mode
+    if (mode == "player") {
+        let playerDataArray = await getOppositeID(text);
+
+        if (currentFilters.includes("Player:"+playerDataArray['uuid'])) throw new Error("Player Already Added!");
+
+        currentFilters[currentFilters.indexOf(filter)] = "Player:"+playerDataArray['uuid'] // Replace item in current filters with UUID
+        element.setAttribute("filter", "Player:"+playerDataArray['uuid']);
+        element.querySelector('h1').innerHTML = playerDataArray['username']; // Set name
+        element.innerHTML = "<img src='https://crafatar.com/avatars/"+playerDataArray['uuid']+"?size=8&overlay'>" + element.innerHTML; // Add player head image
+    }
 
     return element;
 }
 
+// document.addEventListener('DOMContentLoaded', (event) => {
+//     setTimeout(function() {
+//         if (screen.width <= 550) {
+//             console.log("ee")
+//             const element = document.querySelector(".filtersPage");
+//             var rect = element.getBoundingClientRect();
+//             console.log(rect.top, rect.right, rect.bottom, rect.left);
+//             // element.style.left = -(rect.left) + "px";
+//         }
+//     }, 1000);
+// })
 
 addChipsToFiltersPage();
 /**
    * Copy all default chips to the filters page
    */
-function addChipsToFiltersPage() {
+async function addChipsToFiltersPage() {
     for (i = 0; i < allFilters.length; i++) {
         let f = allFilters[i];
-        document.querySelector('div.filtersPage > div#'+f.split(':', 2)[0]+'-container').appendChild(chipBuilder(f, 'add'));
+        document.querySelector('div.filtersPage > div#'+f.split(':', 2)[0]+'-container').appendChild(await chipBuilder(f, 'add'));
     }
 }
 
@@ -280,3 +308,91 @@ addEventListener('click', (event) => {;
 
     closeFiltersPage();
 });
+
+
+function toggleLine() {
+    // Toggle line between filter chips and buttons
+    let line = document.querySelector('div#f-container > div.vertical-divider');
+    if (currentFilters.length == 0)  line.style.display = 'none';
+    else line.style.display = 'block';
+}
+
+
+
+
+
+
+//
+//
+// Search
+//
+//
+let searchBar = document.querySelector('.searchBar');
+let isSearchBarOpen = false;
+/**
+   * Toggles search bar visibility
+   */
+function openSearchBar() {
+    if (isSearchBarOpen) {
+        closeSearchBar();
+        return;
+    }
+    isSearchBarOpen = true;
+    searchBar.style.display = 'block';
+    searchBar.focus();
+}
+
+
+/**
+   * Closes search bar
+   */
+function closeSearchBar() {
+    removeError();
+    isSearchBarOpen = false;
+    searchBar.style.display = 'none';
+    searchBar.value = "";
+}
+
+
+/**
+   * Closes search bar when clicking away
+   */
+addEventListener('click', (event) => {
+    if (!isSearchBarOpen) return;
+
+    // Check if click is inside search bar
+    if (document.querySelector(".search-chip-container").contains(event.target)) return;
+
+    closeSearchBar();
+});
+
+const errorElement = document.querySelector(".search-error");
+async function submitNameFilter() {
+    let nameUUID = searchBar.value;
+
+    try {
+        currentFilters.push("Player:"+nameUUID);
+        let child = await chipBuilder("Player:"+nameUUID, "player");
+        document.querySelector("div#f-container").appendChild(child);
+        toggleLine();
+        loadData(false, true);
+        closeSearchBar();
+
+    } catch (e) {
+        currentFilters.pop();
+
+        removeError();
+
+        setTimeout(function() {
+            searchBar.classList.add("search-error-input");
+
+            errorElement.innerHTML = e.message;
+            errorElement.style.display = "block";
+        }, 10);
+    }
+}
+
+function removeError() {
+    errorElement.style.display = "none";
+    searchBar.classList.remove("search-error-input");
+}

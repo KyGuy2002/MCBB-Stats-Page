@@ -152,23 +152,6 @@
 
 
 
-.loading * {
-    background-color: black !important;
-    color: transparent !important;
-    border-radius: 20px !important;
-    filter: brightness(0) !important;
-    animation: loadingAnimation 1s ease-in-out 1s infinite;
-    animation-play-state: running;
-}
-
-@keyframes loadingAnimation {
-    0% { background-color: rgb(14, 14, 14) !important; }
-    50% { background-color: rgb(34, 34, 34) !important; }
-    100% { background-color: grey !important; }
-}
-
-
-
 
 
 
@@ -244,6 +227,9 @@
         top: 50%;
         transform: translate(-50%, -50%);
     }
+    .data {
+        min-width: 170px;
+    }
 }
 
 
@@ -256,9 +242,10 @@
     padding-bottom: 0px;
     top: 40px;
     left: 0px;
+    height: auto;
     z-index: 999;
-    max-width: 300px;
-    min-width: 300px;
+    width: calc(100vw - 10px);
+    margin-right: 5px;
     border-radius: 20px;
 }
 
@@ -285,4 +272,69 @@
 
 #f-container > .vertical-divider {
     display: none;
+}
+
+
+
+
+
+
+.searchBar {
+    font-size: 20px;
+    text-align: left;
+    display: none;
+    position: absolute;
+    top: 40px;
+    left: 0px;
+    z-index: 999;
+    height: auto;
+    width: calc(100vw - 10px);
+    margin-right: 5px;
+    border-radius: 20px;
+    border: none;
+    color: white;
+    padding: 5px 15px;
+    outline: none;
+}
+
+.search-chip-container {
+    font-size: 0;
+    position: relative;
+}
+
+
+
+
+.search-error {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    z-index: 998;
+    display: none;
+    position: absolute;
+    top: 73px;
+    left: 0px;
+    width: calc(100vw - 10px);
+    margin-right: 5px;
+    background-color: rgb(255, 51, 51);
+    color: white;
+    font-size: 15px;
+    padding: 3px 0px;
+    animation: shake 0.4s;
+    transition-duration: 0.5s;
+}
+.search-error-input {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    animation: shake 0.4s;
+}
+@media only screen and (min-width: 550px) {
+    .filtersPage {
+        width: 300px;
+    }
+    .searchBar {
+        width: 300px;
+    }
+    .search-error {
+        width: 300px;
+    }
 }

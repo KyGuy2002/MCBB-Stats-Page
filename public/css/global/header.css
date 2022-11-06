@@ -37,7 +37,7 @@ header {
 .info-box[expanded=true] {
   max-width: 500px;
   position: absolute;
-  margin: 0px;
+  margin: 10px 0;
   z-index: 998;
   background-color: var(--header-black);
   color: white;
@@ -108,6 +108,11 @@ header {
   padding: inherit;
   width: 200px; }
 
+/* Tablet */
+@media only screen and (min-width: 550px) {
+  .info-box[expanded=true] {
+    margin: 25px 20px; } }
+
 /* Desktop and Tablet */
 @media only screen and (min-width: 760px) {
   .h-name {
@@ -123,6 +128,4 @@ header {
   .h-search-input:focus {
     width: 363px; }
   .h-search-input {
-    top: 0; }
-  .info-box[expanded=true] {
-    margin: 25px 20px; } }
+    top: 0; } }

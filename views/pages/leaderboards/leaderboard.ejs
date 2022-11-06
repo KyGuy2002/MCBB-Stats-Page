@@ -47,11 +47,20 @@
             <!-- Filter Chips -->
             <div id="f-container" class="section chip-container">
 
-                <!-- Search chip -->
-                <div class="box chip action-chip">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <h1>Search</h1>
-                </div>
+
+                <!-- Search bar -->
+                <iframe name="dummyframe" id="dummyframe" style="display: none"></iframe>
+                <form class="search-chip-container" onsubmit="return submitNameFilter();" target="dummyframe">
+
+                    <!-- Search chip -->
+                    <div class="box chip action-chip" onClick='return openSearchBar()'>
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <h1>Search</h1>
+                    </div>
+
+                    <input class="box chip searchBar" name="username" placeholder="Username" required>
+                    <div class="search-error"></div>
+                </form>
 
                 <div class="filter-chip-container">
                     <!-- Filter chip -->
@@ -86,7 +95,7 @@
                     <h1>1</h1>
                     <img src="https://crafatar.com/avatars/910b8e50-7cc3-4062-8f0a-f9fbd4a9b935?size=8&overlay">
 
-                    <div class="data" style="min-width: 170px">
+                    <div class="data">
                         <h1 class="username">IEatBeans</h1>
                         <div class="stat">
                             <i class="fa-solid fa-coins" style="color:rgb(255, 230, 0); font-size: 20px; margin-right: 3px;"></i>
