@@ -12,6 +12,8 @@ let container = document.querySelector(".grid-container");
 let entryTemplate = document.querySelector("template#e-entry-template");
 let endTemplate = document.querySelector("template#e-end-template");
 
+let entryTemplateSkeleton = document.querySelector("template#e-entry-template-skeleton");
+
 let currentFilters = [];
 
 
@@ -25,6 +27,21 @@ let currentFilters = [];
 //
 //
 
+// Render skeleton
+async function renderSkeleton(amount) {
+    console.log('rendering');
+    for (i = 0; i < amount; i++) {
+        console.log('copy');
+        container.appendChild(entryTemplateSkeleton.content.firstElementChild.cloneNode(true));
+    }
+}
+async function deleteSkeleton() {
+    console.log('removing')
+    container.querySelectorAll("entry.skeleton").forEach(entry => {
+        entry.remove();
+    })
+}
+
 // Start loading initial data
 loadData(true, false);
 
@@ -35,7 +52,6 @@ loadData(true, false);
 window.addEventListener('scroll', () => {
     if (isEnd) return;
     if (loading) return;
-    loading = true;
     const {
         scrollTop,
         scrollHeight,
@@ -57,7 +73,11 @@ window.addEventListener('scroll', () => {
    */
 function loadData(initial, restart) {
     if (restart) loaded = 0;
-    loadJson('http://localhost:8080/api/leaderboard/'+lbId+'?amount=7&start='+loaded+(currentFilters.length != 0 ? '&filters='+currentFilters : ''), (json) => {
+    renderSkeleton(7);
+    loading = true;
+    loadJson('/api/leaderboard/'+lbId+'?amount=7&start='+loaded+(currentFilters.length != 0 ? '&filters='+currentFilters : ''), (json) => {
+        deleteSkeleton();
+        container.classList.remove('skeleton');
 
         if (initial) {
             best = json['data'][0]['value'];
@@ -108,34 +128,31 @@ function appendRows(json) {
 
         let element = entryTemplate.content.firstElementChild.cloneNode(true);
         container.appendChild(element)
-        let id = 'e-'+json1['pos'];
-        element.setAttribute('id', id);
 
         // Data
-        document.querySelector("#"+id+' > h1').innerHTML = json1['pos'];
-        document.querySelector("#"+id+' > img').setAttribute('src', 'https://crafatar.com/avatars/'+json1['uuid']+'?size=8&overlay');
-        document.querySelector("#"+id+' > .data > .username').innerHTML = json1['username'];
-        document.querySelector("#"+id+' > .data > .stat > .value').innerHTML = json1['value'];
-        document.querySelector("#"+id+' > .data > .stat > .label').innerHTML = json1['label'];
-        document.querySelector("#"+id).setAttribute('onClick', "window.location.href='/stats/"+json1['uuid']+"'");
+        element.querySelector('h1').innerHTML = json1['pos'];
+        element.querySelector('img').setAttribute('src', 'https://crafatar.com/avatars/'+json1['uuid']+'?size=8&overlay');
+        element.querySelector('.data > .username').innerHTML = json1['username'];
+        element.querySelector('.data > .stat > .value').innerHTML = json1['value'];
+        element.querySelector('.data > .stat > .label').innerHTML = json1['label'];
+        element.setAttribute('onClick', "window.location.href='/stats/"+json1['uuid']+"'");
 
         // Progress bar
         let barPercent = (100 * json1['value']) / best;
         if (barPercent >= 92) {
-            document.querySelector("#"+id+' > .bar > #best').innerHTML = '';
+            element.querySelector('.bar > #best').innerHTML = '';
         }
         else if (barPercent <= 8) {
-            document.querySelector("#"+id+' > .bar > #none').innerHTML = '';
+            element.querySelector('.bar > #none').innerHTML = '';
         }
         else {
-            document.querySelector("#"+id+' > .bar > #best > #value').innerHTML = best;
+            element.querySelector('.bar > #best > #value').innerHTML = best;
         }
-        document.querySelector("#"+id+' > .bar > #you > #value').innerHTML = json1['value'];
-        document.querySelector("#"+id+' > .bar > #you').style.setProperty('left', 'calc('+barPercent+'% - 17px)');
+        element.querySelector('.bar > #you > #value').innerHTML = json1['value'];
+        element.querySelector('.bar > #you').style.setProperty('left', 'calc('+barPercent+'% - 17px)');
     }
     
     loading = false;
-    // if (!isEnd) container.appendChild(entryTemplate);
 }
 
 

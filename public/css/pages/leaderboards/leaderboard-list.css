@@ -63,17 +63,19 @@
   align-items: stretch;
   gap: 20px; }
 
-.groups-item {
-  position: relative;
-  border-radius: 15px;
-  background-color: black;
-  padding: 25px;
-  width: 200px;
-  height: 200px;
+.groups-item-wrapper {
   flex-grow: 1;
   transition: all .24s ease;
   z-index: 100;
   filter: drop-shadow(0 0 0.6rem #161616);
+  width: 200px;
+  transition: all .5s ease-in-out; }
+
+.groups-item {
+  border-radius: 15px;
+  height: 200px;
+  background-color: black;
+  padding: 25px;
   text-shadow: 2px 2px 5px black; }
 
 .groups-item > h1 {
@@ -84,46 +86,59 @@
   color: gray;
   font-size: 17px; }
 
-.groups-item > ul {
-  transition: inherit;
-  position: absolute;
-  top: 0px;
-  margin-left: -25px;
-  background-color: black;
-  width: 100%;
-  box-sizing: border-box;
-  border-bottom-right-radius: 15px;
-  border-bottom-left-radius: 15px;
-  padding: 10px 0; }
-
-.groups-item > ul > li > h1 {
+.groups-item-wrapper > ul > li > h1 {
   margin: 0px;
-  box-sizing: content-box;
   color: white;
   padding: 10px;
   font-size: 18px;
   transition-duration: .2s; }
 
-.groups-item > ul > li > h1 > i {
+.groups-item-wrapper > ul > li > h1 > i {
   float: right;
   margin-right: 10px; }
 
-.groups-item:hover {
-  transform: translateY(-50%);
-  filter: drop-shadow(0 0 0.8rem #0c0c0c); }
-
-.groups-item > ul {
-  opacity: 0;
-  z-index: 900;
-  list-style: none; }
-
-.groups-item:hover > ul {
-  opacity: 1;
-  top: 210px; }
-
-.groups-item > ul > li > h1:hover {
+.groups-item-wrapper > ul > li > h1:hover {
   background-color: #111111;
   cursor: pointer; }
+
+.groups-item-wrapper:hover {
+  filter: drop-shadow(0 0 0.8rem #0c0c0c); }
+
+.groups-item-wrapper > ul {
+  overflow: hidden;
+  margin: 0;
+  background-color: black;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  list-style: none;
+  height: 0; }
+
+.groups-item-wrapper:hover > ul {
+  padding: 10px 0;
+  height: auto; }
+
+.groups-item-wrapper:hover > .groups-item {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0; }
+
+.filtersPage > a {
+  text-decoration: none;
+  font-size: 16px;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+  transition-duration: 0.3s; }
+
+.filtersPage > a:hover {
+  color: var(--green); }
+
+.filtersPage > hr {
+  border: 2px solid var(--green);
+  width: 100px;
+  margin-left: 0;
+  margin-right: auto; }
 
 @media only screen and (min-width: 550px) {
   .category {

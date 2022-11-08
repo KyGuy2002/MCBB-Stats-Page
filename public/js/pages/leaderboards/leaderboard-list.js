@@ -6,7 +6,7 @@ let groupContainerTemplate = document.querySelector("#group-container-template")
 let groupTemplate = document.querySelector("#group-template");
 let groupedItemTemplate = document.querySelector("#grouped-item-template");
 
-let currentFilters = [];
+let filtersPage = document.querySelector(".filtersPage");
 
 
 
@@ -31,7 +31,7 @@ loadData(false);
    * @param restart true if all items should be deleted and reloaded (used when editing filters)
    */
 function loadData(restart) {
-    loadJson('http://localhost:8080/api/leaderboard-list'+(currentFilters.length != 0 ? '?filters='+currentFilters : ''), (json) => {
+    loadJson('/api/leaderboard-list', (json) => {
 
         if (restart) {
             // Delete all items
@@ -61,6 +61,10 @@ function appendRows(json) {
 
         // Data
         category.querySelector('h1.section-title').innerHTML = cJson['name'];
+        category.setAttribute('id', "Category-"+cJson['name']);
+
+        // Filters Page
+        filtersPage.innerHTML = filtersPage.innerHTML + '<a href="#Category-'+cJson['name']+'">'+cJson['name']+' <i class="fa-solid fa-angle-right"></i></a>'
 
 
 
@@ -94,16 +98,17 @@ function appendRows(json) {
         for (let i = 0; i < cJson['groups'].length; i++) {
             let gJson = cJson['groups'][i];
 
-            let group = groupTemplate.content.firstElementChild.cloneNode(true);
-            groupContainer.appendChild(group);
+            let groupWrapper = groupTemplate.content.firstElementChild.cloneNode(true);
+            groupContainer.appendChild(groupWrapper);
+            let groupCard = groupWrapper.querySelector('.groups-item');
 
             // Data
-            group.querySelector('h1').innerHTML = gJson['name'];
-            group.querySelector('h2').innerHTML = gJson['description'];
-            group.style.background = "radial-gradient(circle at center, rgba(0, 0, 0, 0.750), rgba(0, 0, 0, 0.400)), url('"+gJson['image']+"')";
-            group.style.backgroundPosition = "center";
-            group.style.backgroundSize = "cover";
-            group.style.backgroundRepeat = "no-repeat";
+            groupCard.querySelector('h1').innerHTML = gJson['name'];
+            groupCard.querySelector('h2').innerHTML = gJson['description'];
+            groupCard.style.background = "radial-gradient(circle at center, rgba(0, 0, 0, 0.750), rgba(0, 0, 0, 0.400)), url('"+gJson['image']+"')";
+            groupCard.style.backgroundPosition = "center";
+            groupCard.style.backgroundSize = "cover";
+            groupCard.style.backgroundRepeat = "no-repeat";
 
 
 
@@ -112,7 +117,7 @@ function appendRows(json) {
                 let gIJson = gJson['lbs'][i];
 
                 let groupedItem = groupedItemTemplate.content.firstElementChild.cloneNode(true);
-                group.querySelector('ul').appendChild(groupedItem);
+                groupWrapper.querySelector('ul').appendChild(groupedItem);
 
                 // Data
                 groupedItem.querySelector('h1').innerHTML = gIJson['name'] + "<i class='fa-solid fa-angle-right'></i>";
@@ -120,4 +125,123 @@ function appendRows(json) {
             }
         }
     }
+}
+
+
+
+
+
+
+//
+//
+// Jump To Page
+//
+//
+let jumpToPage = document.querySelector('.filtersPage');
+let isJumpToPageOpen = false;
+/**
+   * Toggles jump to page visibility
+   */
+function openJumpToPage() {
+    if (isJumpToPageOpen) {
+        closeJumpToPage();
+        return;
+    }
+    isJumpToPageOpen = true;
+    jumpToPage.style.display = 'block';
+}
+
+
+/**
+   * Closes jump to page
+   */
+function closeJumpToPage() {
+    isJumpToPageOpen = false;
+    jumpToPage.style.display = 'none';
+}
+
+
+/**
+   * Closes jump to page when clicking away
+   */
+addEventListener('click', (event) => {;
+    if (!isJumpToPageOpen) return;
+
+    // Check if click is inside filters page
+    if (document.querySelector(".filter-chip-container").contains(event.target)) return; // TODO: Clicking label passes this check...
+
+    closeJumpToPage();
+});
+
+
+
+
+
+//
+//
+// Search
+//
+//
+let searchBar = document.querySelector('.searchBar');
+let isSearchBarOpen = false;
+/**
+   * Toggles search bar visibility
+   */
+function openSearchBar() {
+    if (isSearchBarOpen) {
+        closeSearchBar();
+        return;
+    }
+    isSearchBarOpen = true;
+    searchBar.style.display = 'block';
+    searchBar.focus();
+}
+
+
+/**
+   * Closes search bar
+   */
+function closeSearchBar() {
+    removeError();
+    isSearchBarOpen = false;
+    searchBar.style.display = 'none';
+    searchBar.value = "";
+}
+
+
+/**
+   * Closes search bar when clicking away
+   */
+addEventListener('click', (event) => {
+    if (!isSearchBarOpen) return;
+
+    // Check if click is inside search bar
+    if (document.querySelector(".search-chip-container").contains(event.target)) return;
+
+    closeSearchBar();
+});
+
+const errorElement = document.querySelector(".search-error");
+async function submitSearch() {
+    let value = searchBar.value;
+
+    try {
+        
+        closeSearchBar();
+
+    } catch (e) {
+        removeError();
+
+        setTimeout(function() {
+            searchBar.classList.add("search-error-input");
+
+            errorElement.innerHTML = e.message;
+            errorElement.style.display = "block";
+        }, 10);
+    }
+}
+
+function removeError() {
+    errorElement.style.display = "none";
+    searchBar.classList.remove("search-error-input");
 }

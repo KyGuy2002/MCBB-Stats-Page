@@ -31,7 +31,7 @@
 
                 <!-- Search bar -->
                 <iframe name="dummyframe" id="dummyframe" style="display: none"></iframe>
-                <form class="search-chip-container" onsubmit="return submitNameFilter();" target="dummyframe">
+                <form class="search-chip-container" onsubmit="return submitSearch();" target="dummyframe">
 
                     <!-- Search chip -->
                     <div class="box chip action-chip" onClick='return openSearchBar()'>
@@ -39,13 +39,13 @@
                         <h1>Search For Leaderboard</h1>
                     </div>
 
-                    <input class="box chip searchBar" name="username" placeholder="Username" required>
+                    <input class="box chip searchBar" placeholder="Leaderboard" required>
                     <div class="search-error"></div>
                 </form>
 
                 <div class="filter-chip-container">
                     <!-- Jump to chip -->
-                    <div class="box chip action-chip" onClick='return openFiltersPage()'>
+                    <div class="box chip action-chip" onClick='return openJumpToPage()'>
                         <h1>Jump To</h1>
                         <i class="fa-solid fa-chevron-down"></i>
                     </div>
@@ -53,10 +53,8 @@
                     <!-- Jump to page -->
                     <div class="box chip filtersPage">
                         <h1>Jump To</h1>
-                        <hr class="g-line">
-                        <h2>Manhunt <i class="fa-solid fa-angle-right"></i></h2>
-                        <h2>Theme Parks <i class="fa-solid fa-angle-right"></i></h2>
-                        <h2>Creative <i class="fa-solid fa-angle-right"></i></h2>
+                        <hr>
+                        <!-- INSERT JUMP TO ITEMS HERE -->
                     </div>
                 </div>
 
@@ -97,14 +95,14 @@
 
             <!-- TEMPLATE: "Group" - Insert Into "Group Container" -->
             <template id="group-template">
-                <div class="groups-item">
-                    <h1>Rides</h1>
-                    <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
-
+                <div class="groups-item-wrapper">
+                    <div class="groups-item">
+                        <h1>Rides</h1>
+                        <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+                    </div>
                     <ul>
                         <!-- "GROUPED ITEM"S GO HERE -->
                     </ul>
-
                 </div>
             </template>
 

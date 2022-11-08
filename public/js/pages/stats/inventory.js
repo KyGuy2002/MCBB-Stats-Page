@@ -1,5 +1,5 @@
 function initInventory(uuid) {
-    loadJson('http://localhost:8080/'+uuid+'/generalStats', (json) => {initInventoryCallback(json)});
+    loadJson('/'+uuid+'/generalStats', (json) => {initInventoryCallback(json)});
 }
 
 

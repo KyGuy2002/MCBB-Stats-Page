@@ -27,7 +27,7 @@ async function usernameError(reason) {
 
 
 // Init Top Players Data
-loadJson('http://localhost:8080/topPlayers', (json) => {initTopPlayers(json)});
+loadJson('/topPlayers', (json) => {initTopPlayers(json)});
 async function initTopPlayers(json) {
   let main = document.querySelector("#tp-0")
   main.style.visibility = 'visible';

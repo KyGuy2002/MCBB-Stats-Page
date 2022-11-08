@@ -13,6 +13,8 @@
 
     --font: 'Montserrat', sans-serif;
 
+    --loading-gradient: linear-gradient(110deg, var(--header-black) 8%, var(--black2) 18%, var(--header-black) 33%);
+
     // Tablet-Min: 550px
     // Desktop-Min: 1200px
 }
@@ -31,7 +33,6 @@ html {
 }
 html, body {
     margin: 0;
-    overflow-x: hidden; // Never allowed to horizontally scroll the page
 }
 
 
@@ -57,7 +58,10 @@ html, body {
     -webkit-backdrop-filter: blur(10px);
     margin: 0px;
     padding: 15px 10px;
-    
+
+    transition: all 1s linear;
+}
+.box[animate] {
     animation: popInAnimation 0.5s;
     animation-fill-mode: backwards;
 
@@ -126,8 +130,8 @@ html, body {
 }
 
 @keyframes popInAnimation {
-    0% { opacity: 0; transform: scale(1); }
-    1% { opacity: 0; transform: scale(0.5); }
+    // 0% { opacity: 0; transform: scale(1); }
+    0% { opacity: 0; transform: scale(0.5); }
     100% { opacity: 1; transform: scale(1); }
 }
 
@@ -288,7 +292,6 @@ html, body {
     display: none;
     position: absolute;
     padding: 20px;
-    padding-bottom: 0px;
     top: 40px;
     left: 0px;
     height: auto;
@@ -381,12 +384,29 @@ html, body {
 
 
 // Loading (TODO / WIP)
-.loading * {
-    background: var(--header-black);
-    background: linear-gradient(110deg, var(--header-black) 8%, var(--black2) 18%, var(--header-black) 33%);
+.skeleton .solid {
+    background: var(--loading-gradient);
+    background-size: 200% 100%;
+    animation: 1.5s shine linear infinite;
+}
+.skeleton h1 {
+    text-shadow: none !important;
+    color: transparent !important;
+    background: var(--loading-gradient);
     border-radius: 20px;
     background-size: 200% 100%;
     animation: 1.5s shine linear infinite;
+}
+.skeleton i {
+    text-shadow: none !important;
+    color: transparent !important;
+    background: var(--loading-gradient);
+    border-radius: 20px;
+    background-size: 200% 100%;
+    animation: 1.5s shine linear infinite;
+}
+.skeleton .solid * { // Anything inside .solid should be hidden
+    visibility: hidden !important;
 }
 @keyframes shine { to { background-position-x: -200%; } }
 

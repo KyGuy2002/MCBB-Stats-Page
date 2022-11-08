@@ -17,21 +17,21 @@
     <%- include('../../partials/_header') %>
 
     <body>
-        <div class="grid-container">
+        <div class="grid-container skeleton">
 
-            <div class="box section">
+            <div animate class="box section top-box">
                 <div class="top-3-container"  style="float: left">
-                    <div>
+                    <div class="solid">
                         <img>
                         <h1>2</h1>
                     </div>
 
-                    <div>
+                    <div class="solid">
                         <img>
                         <h1>1</h1>
                     </div>
 
-                    <div>
+                    <div class="solid">
                         <img>
                         <h1>3</h1>
                     </div>
@@ -53,7 +53,7 @@
                 <form class="search-chip-container" onsubmit="return submitNameFilter();" target="dummyframe">
 
                     <!-- Search chip -->
-                    <div class="box chip action-chip" onClick='return openSearchBar()'>
+                    <div animate class="box chip action-chip" onClick='return openSearchBar()'>
                         <i class="fa-solid fa-magnifying-glass"></i>
                         <h1>Search</h1>
                     </div>
@@ -64,7 +64,7 @@
 
                 <div class="filter-chip-container">
                     <!-- Filter chip -->
-                    <div class="box chip action-chip" onClick='return openFiltersPage()'>
+                    <div animate class="box chip action-chip" onClick='return openFiltersPage()'>
                         <h1>Filters</h1>
                         <i class="fa-solid fa-chevron-down"></i>
                     </div>
@@ -93,7 +93,7 @@
             <template id="e-entry-template">
                 <div id="e-0" class="box section entry">
                     <h1>1</h1>
-                    <img src="https://crafatar.com/avatars/910b8e50-7cc3-4062-8f0a-f9fbd4a9b935?size=8&overlay">
+                    <img class="img" src="https://crafatar.com/avatars/910b8e50-7cc3-4062-8f0a-f9fbd4a9b935?size=8&overlay">
 
                     <div class="data">
                         <h1 class="username">IEatBeans</h1>
@@ -120,6 +120,41 @@
 
                     <i class="fa-solid fa-arrow-up-right-from-square"></i>
                 </div>
+            </template>
+
+
+
+            <!-- Entry Template SKELETON -->
+            <template id="e-entry-template-skeleton">
+                <entry animate class="box section entry skeleton">
+                    <h1>1</h1>
+                    <div class="solid img"></div>
+
+                    <div class="data">
+                        <h1 class="username">IEatBeans</h1>
+                        <div class="stat">
+                            <i class="fa-solid fa-coins" style="color:rgb(255, 230, 0); font-size: 20px; margin-right: 3px;"></i>
+                            <h1 class="value">135</h1>
+                            <h1 class="label">Coins</h1>
+                        </div>
+                    </div>
+
+                    <div class="bar solid">
+                        <div id="none" class="solid">
+                            <h1 id="value">0</h1>
+                        </div>
+                        <div id="you" class="solid">
+                            <h1>This</h1>
+                            <h1 id="value">135</h1>
+                        </div>
+                        <div id="best" class="solid">
+                            <h1>Top</h1>
+                            <h1 id="value">869</h1>
+                        </div>
+                    </div>
+
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </entry>
             </template>
 
 

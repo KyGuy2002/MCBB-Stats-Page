@@ -7,7 +7,8 @@
   --grey2: rgba(109, 109, 109, 0.705);
   --black: #000000ad;
   --black2: #333333;
-  --font: 'Montserrat', sans-serif; }
+  --font: 'Montserrat', sans-serif;
+  --loading-gradient: linear-gradient(110deg, var(--header-black) 8%, var(--black2) 18%, var(--header-black) 33%); }
 
 /* ===== Page ===== */
 html {
@@ -20,8 +21,7 @@ html {
   background-size: cover; }
 
 html, body {
-  margin: 0;
-  overflow-x: hidden; }
+  margin: 0; }
 
 /* ===== Grid ===== */
 .grid-container {
@@ -43,107 +43,110 @@ html, body {
   -webkit-backdrop-filter: blur(10px);
   margin: 0px;
   padding: 15px 10px;
+  transition: all 1s linear; }
+
+.box[animate] {
   animation: popInAnimation 0.5s;
   animation-fill-mode: backwards; }
-  .box:nth-child(1) {
+  .box[animate]:nth-child(1) {
     animation-delay: 20ms; }
-  .box:nth-child(2) {
+  .box[animate]:nth-child(2) {
     animation-delay: 40ms; }
-  .box:nth-child(3) {
+  .box[animate]:nth-child(3) {
     animation-delay: 60ms; }
-  .box:nth-child(4) {
+  .box[animate]:nth-child(4) {
     animation-delay: 80ms; }
-  .box:nth-child(5) {
+  .box[animate]:nth-child(5) {
     animation-delay: 100ms; }
-  .box:nth-child(6) {
+  .box[animate]:nth-child(6) {
     animation-delay: 120ms; }
-  .box:nth-child(7) {
+  .box[animate]:nth-child(7) {
     animation-delay: 140ms; }
-  .box:nth-child(8) {
+  .box[animate]:nth-child(8) {
     animation-delay: 160ms; }
-  .box:nth-child(9) {
+  .box[animate]:nth-child(9) {
     animation-delay: 180ms; }
-  .box:nth-child(10) {
+  .box[animate]:nth-child(10) {
     animation-delay: 200ms; }
-  .box:nth-child(11) {
+  .box[animate]:nth-child(11) {
     animation-delay: 220ms; }
-  .box:nth-child(12) {
+  .box[animate]:nth-child(12) {
     animation-delay: 240ms; }
-  .box:nth-child(13) {
+  .box[animate]:nth-child(13) {
     animation-delay: 260ms; }
-  .box:nth-child(14) {
+  .box[animate]:nth-child(14) {
     animation-delay: 280ms; }
-  .box:nth-child(15) {
+  .box[animate]:nth-child(15) {
     animation-delay: 300ms; }
-  .box:nth-child(16) {
+  .box[animate]:nth-child(16) {
     animation-delay: 320ms; }
-  .box:nth-child(17) {
+  .box[animate]:nth-child(17) {
     animation-delay: 340ms; }
-  .box:nth-child(18) {
+  .box[animate]:nth-child(18) {
     animation-delay: 360ms; }
-  .box:nth-child(19) {
+  .box[animate]:nth-child(19) {
     animation-delay: 380ms; }
-  .box:nth-child(20) {
+  .box[animate]:nth-child(20) {
     animation-delay: 400ms; }
-  .box:nth-child(21) {
+  .box[animate]:nth-child(21) {
     animation-delay: 420ms; }
-  .box:nth-child(22) {
+  .box[animate]:nth-child(22) {
     animation-delay: 440ms; }
-  .box:nth-child(23) {
+  .box[animate]:nth-child(23) {
     animation-delay: 460ms; }
-  .box:nth-child(24) {
+  .box[animate]:nth-child(24) {
     animation-delay: 480ms; }
-  .box:nth-child(25) {
+  .box[animate]:nth-child(25) {
     animation-delay: 500ms; }
-  .box:nth-child(26) {
+  .box[animate]:nth-child(26) {
     animation-delay: 520ms; }
-  .box:nth-child(27) {
+  .box[animate]:nth-child(27) {
     animation-delay: 540ms; }
-  .box:nth-child(28) {
+  .box[animate]:nth-child(28) {
     animation-delay: 560ms; }
-  .box:nth-child(29) {
+  .box[animate]:nth-child(29) {
     animation-delay: 580ms; }
-  .box:nth-child(30) {
+  .box[animate]:nth-child(30) {
     animation-delay: 600ms; }
-  .box:nth-child(31) {
+  .box[animate]:nth-child(31) {
     animation-delay: 620ms; }
-  .box:nth-child(32) {
+  .box[animate]:nth-child(32) {
     animation-delay: 640ms; }
-  .box:nth-child(33) {
+  .box[animate]:nth-child(33) {
     animation-delay: 660ms; }
-  .box:nth-child(34) {
+  .box[animate]:nth-child(34) {
     animation-delay: 680ms; }
-  .box:nth-child(35) {
+  .box[animate]:nth-child(35) {
     animation-delay: 700ms; }
-  .box:nth-child(36) {
+  .box[animate]:nth-child(36) {
     animation-delay: 720ms; }
-  .box:nth-child(37) {
+  .box[animate]:nth-child(37) {
     animation-delay: 740ms; }
-  .box:nth-child(38) {
+  .box[animate]:nth-child(38) {
     animation-delay: 760ms; }
-  .box:nth-child(39) {
+  .box[animate]:nth-child(39) {
     animation-delay: 780ms; }
-  .box:nth-child(40) {
+  .box[animate]:nth-child(40) {
     animation-delay: 800ms; }
-  .box:nth-child(41) {
+  .box[animate]:nth-child(41) {
     animation-delay: 820ms; }
-  .box:nth-child(42) {
+  .box[animate]:nth-child(42) {
     animation-delay: 840ms; }
-  .box:nth-child(43) {
+  .box[animate]:nth-child(43) {
     animation-delay: 860ms; }
-  .box:nth-child(44) {
+  .box[animate]:nth-child(44) {
     animation-delay: 880ms; }
-  .box:nth-child(45) {
+  .box[animate]:nth-child(45) {
     animation-delay: 900ms; }
-  .box:nth-child(46) {
+  .box[animate]:nth-child(46) {
     animation-delay: 920ms; }
-  .box:nth-child(47) {
+  .box[animate]:nth-child(47) {
     animation-delay: 940ms; }
-  .box:nth-child(48) {
+  .box[animate]:nth-child(48) {
     animation-delay: 960ms; }
-  .box:nth-child(49) {
+  .box[animate]:nth-child(49) {
     animation-delay: 980ms; }
-  .box:nth-child(50) {
+  .box[animate]:nth-child(50) {
     animation-delay: 1000ms; }
 
 /* Tablet */
@@ -197,9 +200,6 @@ html, body {
 
 @keyframes popInAnimation {
   0% {
-    opacity: 0;
-    transform: scale(1); }
-  1% {
     opacity: 0;
     transform: scale(0.5); }
   100% {
@@ -338,7 +338,6 @@ html, body {
   display: none;
   position: absolute;
   padding: 20px;
-  padding-bottom: 0px;
   top: 40px;
   left: 0px;
   height: auto;
@@ -419,12 +418,29 @@ html, body {
   .search-error {
     width: 300px; } }
 
-.loading * {
-  background: var(--header-black);
-  background: linear-gradient(110deg, var(--header-black) 8%, var(--black2) 18%, var(--header-black) 33%);
+.skeleton .solid {
+  background: var(--loading-gradient);
+  background-size: 200% 100%;
+  animation: 1.5s shine linear infinite; }
+
+.skeleton h1 {
+  text-shadow: none !important;
+  color: transparent !important;
+  background: var(--loading-gradient);
   border-radius: 20px;
   background-size: 200% 100%;
   animation: 1.5s shine linear infinite; }
+
+.skeleton i {
+  text-shadow: none !important;
+  color: transparent !important;
+  background: var(--loading-gradient);
+  border-radius: 20px;
+  background-size: 200% 100%;
+  animation: 1.5s shine linear infinite; }
+
+.skeleton .solid * {
+  visibility: hidden !important; }
 
 @keyframes shine {
   to {

@@ -1,8 +1,8 @@
 async function loadData(uuid, username) {
-  loadJson('http://localhost:8080/'+uuid+'/generalStats', (json) => {initGeneralStats(json, uuid, username)});
+  loadJson('/'+uuid+'/generalStats', (json) => {initGeneralStats(json, uuid, username)});
 
-  loadJson('http://localhost:8080/'+uuid+'/themeparks/commonStats', (json) => {initCommonStats(json)});
-  loadJson('http://localhost:8080/'+uuid+'/themeparks/otherStats', (json) => {initOtherStats(json)});
+  loadJson('/'+uuid+'/themeparks/commonStats', (json) => {initCommonStats(json)});
+  loadJson('/'+uuid+'/themeparks/otherStats', (json) => {initOtherStats(json)});
 
   initInventory(uuid);
 }
