@@ -423,6 +423,11 @@ html, body {
   background-size: 200% 100%;
   animation: 1.5s shine linear infinite; }
 
+.skeleton .light-solid {
+  background: var(--grey2); }
+
+.skeleton p,
+.skeleton h2,
 .skeleton h1 {
   text-shadow: none !important;
   color: transparent !important;

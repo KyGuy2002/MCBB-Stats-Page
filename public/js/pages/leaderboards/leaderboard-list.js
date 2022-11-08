@@ -6,6 +6,8 @@ let groupContainerTemplate = document.querySelector("#group-container-template")
 let groupTemplate = document.querySelector("#group-template");
 let groupedItemTemplate = document.querySelector("#grouped-item-template");
 
+let categoryTemplateSkeleton = document.querySelector("#category-template-skeleton");
+
 let filtersPage = document.querySelector(".filtersPage");
 
 
@@ -31,7 +33,10 @@ loadData(false);
    * @param restart true if all items should be deleted and reloaded (used when editing filters)
    */
 function loadData(restart) {
+    renderSkeleton(2, container, categoryTemplateSkeleton);
     loadJson('/api/leaderboard-list', (json) => {
+        deleteSkeleton(container, 'entry.skeleton');
+        container.classList.remove('skeleton');
 
         if (restart) {
             // Delete all items

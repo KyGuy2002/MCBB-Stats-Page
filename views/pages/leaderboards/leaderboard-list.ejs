@@ -17,7 +17,7 @@
     <%- include('../../partials/_header') %>
 
     <body>
-        <div class="grid-container">
+        <div class="grid-container skeleton">
 
             <div class="box section">
                 <h1 class="page-title">All Leaderboards</h1>
@@ -111,6 +111,62 @@
                 <li>
                     <h1>Some Ride<i class="fa-solid fa-angle-right"></i></h1>
                 </li>
+            </template>
+
+
+
+            <!-- TEMPLATE: "Category" SKELETON -->
+            <template id="category-template-skeleton">
+                <entry class="box section category skeleton">
+                    <h1 class="section-title">Themeparks Leaderboards</h1>
+
+                    <!-- Individual Item -->
+                    <div class="single-item light-solid">
+                        <i class="icon fa-solid fa-coins" style="color:rgb(255, 230, 0);"></i>
+                        <div>
+                            <h1>Coins</h1>
+                            <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+                        </div>
+                        <i class="link fa-solid fa-angle-right"></i>
+                    </div>
+
+                    <!-- Individual Item -->
+                    <div class="single-item light-solid">
+                        <i class="icon fa-solid fa-coins" style="color:rgb(255, 230, 0);"></i>
+                        <div>
+                            <h1>Coins</h1>
+                            <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+                        </div>
+                        <i class="link fa-solid fa-angle-right"></i>
+                    </div>
+
+                    <div id="c-groups-container" class="groups-container">
+                    
+                        <!-- Group Item -->
+                        <div class="groups-item-wrapper">
+                            <div class="groups-item light-solid">
+                                <h1>Rides</h1>
+                                <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+                            </div>
+                            <ul>
+                                
+                            </ul>
+                        </div>
+
+                        <!-- Group Item -->
+                        <div class="groups-item-wrapper">
+                            <div class="groups-item light-solid">
+                                <h1>Rides</h1>
+                                <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+                            </div>
+                            <ul>
+                                
+                            </ul>
+                        </div>
+    
+                    </entry>
+
+                </div>
             </template>
         
 

@@ -52,3 +52,19 @@ function addClasses(element, classes) {
     element.classList.add(classes[i]);
   }
 }
+
+
+
+
+
+// Render skeleton
+async function renderSkeleton(amount, container, template) {
+  for (i = 0; i < amount; i++) {
+      container.appendChild(template.content.firstElementChild.cloneNode(true));
+  }
+}
+async function deleteSkeleton(container, querySelector) {
+  container.querySelectorAll(querySelector).forEach(entry => {
+      entry.remove();
+  })
+}

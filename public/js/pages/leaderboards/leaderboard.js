@@ -27,21 +27,6 @@ let currentFilters = [];
 //
 //
 
-// Render skeleton
-async function renderSkeleton(amount) {
-    console.log('rendering');
-    for (i = 0; i < amount; i++) {
-        console.log('copy');
-        container.appendChild(entryTemplateSkeleton.content.firstElementChild.cloneNode(true));
-    }
-}
-async function deleteSkeleton() {
-    console.log('removing')
-    container.querySelectorAll("entry.skeleton").forEach(entry => {
-        entry.remove();
-    })
-}
-
 // Start loading initial data
 loadData(true, false);
 
@@ -73,10 +58,10 @@ window.addEventListener('scroll', () => {
    */
 function loadData(initial, restart) {
     if (restart) loaded = 0;
-    renderSkeleton(7);
+    renderSkeleton(7, container, entryTemplateSkeleton);
     loading = true;
     loadJson('/api/leaderboard/'+lbId+'?amount=7&start='+loaded+(currentFilters.length != 0 ? '&filters='+currentFilters : ''), (json) => {
-        deleteSkeleton();
+        deleteSkeleton(container, 'entry.skeleton');
         container.classList.remove('skeleton');
 
         if (initial) {
