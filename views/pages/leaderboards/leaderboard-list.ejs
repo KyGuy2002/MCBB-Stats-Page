@@ -19,7 +19,7 @@
     <body>
         <div class="grid-container skeleton">
 
-            <div class="box section">
+            <div animate class="box section">
                 <h1 class="page-title">All Leaderboards</h1>
                 <h1 class="a-description">Here you can view all your game stats in one place!  Vizualize your progression and advancment throughout every gamemode, and share a quick link to your friends!</h1>
             </div>
@@ -34,7 +34,7 @@
                 <form class="search-chip-container" onsubmit="return submitSearch();" target="dummyframe">
 
                     <!-- Search chip -->
-                    <div class="box chip action-chip" onClick='return openSearchBar()'>
+                    <div animate class="box chip action-chip" onClick='return openSearchBar()'>
                         <i class="fa-solid fa-magnifying-glass"></i>
                         <h1>Search For Leaderboard</h1>
                     </div>
@@ -45,7 +45,7 @@
 
                 <div class="filter-chip-container">
                     <!-- Jump to chip -->
-                    <div class="box chip action-chip" onClick='return openJumpToPage()'>
+                    <div animate class="box chip action-chip" onClick='return openJumpToPage()'>
                         <h1>Jump To</h1>
                         <i class="fa-solid fa-chevron-down"></i>
                     </div>
@@ -117,7 +117,7 @@
 
             <!-- TEMPLATE: "Category" SKELETON -->
             <template id="category-template-skeleton">
-                <entry class="box section category skeleton">
+                <entry animate class="box section category skeleton">
                     <h1 class="section-title">Themeparks Leaderboards</h1>
 
                     <!-- Individual Item -->
