@@ -17,7 +17,7 @@
     <%- include('../../partials/_header') %>
 
     <body>
-        <div class="grid-container skeleton">
+        <grid-container skeleton>
 
             <div animate class="box section top-box">
                 <div class="top-3-container"  style="float: left">
@@ -90,68 +90,33 @@
 
 
             <!-- LB Entry Template -->
-            <template id="e-entry-template">
-                <div id="e-0" class="box section entry">
+            <template has="entry">
+                <entry animate skeleton class="box section entry">
                     <h1>1</h1>
-                    <img class="img" src="https://crafatar.com/avatars/910b8e50-7cc3-4062-8f0a-f9fbd4a9b935?size=8&overlay">
+                    <img-div class="solid"><img src="https://crafatar.com/avatars/910b8e50-7cc3-4062-8f0a-f9fbd4a9b935?size=8&overlay"></img-div>
 
-                    <div class="data">
-                        <h1 class="username">IEatBeans</h1>
-                        <div class="stat">
+                    <data-div>
+                        <h1>IEatBeans</h1>
+                        <stat-div>
                             <i class="fa-solid fa-coins" style="color:rgb(255, 230, 0); font-size: 20px; margin-right: 3px;"></i>
                             <h1 class="value">135</h1>
                             <h1 class="label">Coins</h1>
-                        </div>
-                    </div>
+                        </stat-div>
+                    </data-div>
 
-                    <div class="bar">
-                        <div id="none">
+                    <bar-line class="solid">
+                        <point id="none" class="solid">
                             <h1 id="value">0</h1>
-                        </div>
-                        <div id="you">
+                        </point>
+                        <point id="you" class="solid">
                             <h1>This</h1>
                             <h1 id="value">135</h1>
-                        </div>
-                        <div id="best">
+                        </point>
+                        <point id="best" class="solid">
                             <h1>Top</h1>
                             <h1 id="value">869</h1>
-                        </div>
-                    </div>
-
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </div>
-            </template>
-
-
-
-            <!-- Entry Template SKELETON -->
-            <template id="e-entry-template-skeleton">
-                <entry animate class="box section entry skeleton">
-                    <h1>1</h1>
-                    <div class="solid img"></div>
-
-                    <div class="data">
-                        <h1 class="username">IEatBeans</h1>
-                        <div class="stat">
-                            <i class="fa-solid fa-coins" style="color:rgb(255, 230, 0); font-size: 20px; margin-right: 3px;"></i>
-                            <h1 class="value">135</h1>
-                            <h1 class="label">Coins</h1>
-                        </div>
-                    </div>
-
-                    <div class="bar solid">
-                        <div id="none" class="solid">
-                            <h1 id="value">0</h1>
-                        </div>
-                        <div id="you" class="solid">
-                            <h1>This</h1>
-                            <h1 id="value">135</h1>
-                        </div>
-                        <div id="best" class="solid">
-                            <h1>Top</h1>
-                            <h1 id="value">869</h1>
-                        </div>
-                    </div>
+                        </point>
+                    </bar-line>
 
                     <i class="fa-solid fa-arrow-up-right-from-square"></i>
                 </entry>
@@ -160,16 +125,16 @@
 
 
             <!-- End Of Leaderboard Template -->
-            <template id="e-end-template">
-                <div id="e-end" class="box section">
+            <template has="end">
+                <end animate class="box section end">
                     <h1>That's all!</h1>
                     <h2>You have reached the end of this leaderboard.  No more entries can be loaded.</h2>
-                </div>
+                </end>
             </template>
 
         
 
-        </div>
+        </grid-container>
         <script src="/js/pages/leaderboards/leaderboard.js"></script>
     </body>
 </html>

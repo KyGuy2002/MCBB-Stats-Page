@@ -7,12 +7,12 @@
     <%- include('../partials/_header') %>
 
     <body>
-        <div class="grid-container">
+        <grid-container>
 
 
 
             <!-- Welcome Box -->
-            <div class="section announcement box">
+            <div animate class="section announcement box">
                 <h1 class="a-title">Welcome To The MCBlockBuilds Stats Page</h1>
                 <h1 class="a-description">Here you can view all your game stats in one place!  Vizualize your progression and advancment throughout every gamemode, and share a quick link to your friends!</h1>
             </div>
@@ -20,7 +20,7 @@
 
             
             <!-- View Stats Box -->
-            <div class="section namePrompt box" style="padding-left: 0px; padding-right: 0px;">
+            <div animate class="section namePrompt box" style="padding-left: 0px; padding-right: 0px;">
                 <h1 class="a-title">View Player Stats Of</h1>
 
                 <iframe name="dummyframe" id="dummyframe" style="display: none"></iframe>
@@ -38,7 +38,7 @@
             <!-- Leaderboard Links -->
             <div class="section chip-container">
 
-                <div class="box chip action-chip" onClick="window.location.href='/leaderboard'">
+                <div animate class="box chip action-chip" onClick="window.location.href='/leaderboard'">
                     <i class="fa-solid fa-ranking-star"></i>
                     <h1>Full Leaderboard</h1>
                 </div>
@@ -54,27 +54,29 @@
                 <div class="top-players-container">
 
                     <!-- Element is duplicated in home.js -->
-                    <a id="tp-0" class="box tp-item">
-                        <img style="height: 64px; border-radius: 10px; image-rendering: pixelated;">
-                        <div style="padding-left: 20px;">
-                            <h1 id='tp-username' class="tp-main" style="display: block">USERNAME</h1>
-    
-                            <h1 id='tp-category' class="tp-main tp-sub" style="display: block">CATEGORY</h1>
-    
-                            <div style="text-align: left; padding:0px; line-height: 20px;margin-top: 5px">
-                                <i class="tp-main fa-solid fa-coins" style="color:rgb(255, 230, 0); font-size: 20px; margin-right: 3px;"></i>
-                                <span id="tp-stat" class="tp-main">STAT</span>
-                                <span id='tp-value' class="tp-main tp-value" style="margin-left: 3px;">VALUE</span>
+                    <template class="top-player-template">
+                        <entry animate skeleton class="box tp-item">
+                            <img style="height: 64px; border-radius: 10px; image-rendering: pixelated;">
+                            <div style="padding-left: 20px;">
+                                <h1 id='tp-username' class="tp-main" style="display: block">USERNAME</h1>
+        
+                                <h1 id='tp-category' class="tp-main tp-sub" style="display: block">CATEGORY</h1>
+        
+                                <div style="text-align: left; padding:0px; line-height: 20px;margin-top: 5px">
+                                    <i class="tp-main fa-solid fa-coins" style="color:rgb(255, 230, 0); font-size: 20px; margin-right: 3px;"></i>
+                                    <span id="tp-stat" class="tp-main">STAT</span>
+                                    <span id='tp-value' class="tp-main tp-value" style="margin-left: 3px;">VALUE</span>
+                                </div>
                             </div>
-                        </div>
-                    </a>
+                        </entry>
+                    </template>
     
                 </div>
             </div>
 
 
 
-        </div>
+        </grid-container>
         <script src="/js/utils.js"></script>
         <script src="/js/usernameChecks.js"></script>
         <script src="/js/pages/home/home.js"></script>

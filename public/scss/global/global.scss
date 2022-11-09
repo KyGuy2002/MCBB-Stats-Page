@@ -38,6 +38,7 @@ html, body {
 
 
 /* ===== Grid ===== */
+grid-container,
 .grid-container {
     display: grid;
     grid-template-columns: 1;
@@ -47,6 +48,7 @@ html, body {
     margin-right: auto;
 }
   
+grid-container > div,
 .grid-container > div {
     text-align: center;
     font-size: 30px;
@@ -73,6 +75,7 @@ html, body {
 }
 /* Tablet */
 @media only screen and (min-width: 550px) {
+    grid-container,
     .grid-container {
         padding: 20px;
         width: 80%
@@ -84,6 +87,7 @@ html, body {
 }
 /* Desktop */
 @media only screen and (min-width: 1200px) {
+    grid-container,
     .grid-container {
         grid-template-columns: repeat(3, 1fr);
         width: 1000px;
@@ -384,34 +388,37 @@ html, body {
 
 
 // Loading (TODO / WIP)
-.skeleton .solid {
+[skeleton] .solid {
     background: var(--loading-gradient);
     background-size: 200% 100%;
     animation: 1.5s shine linear infinite;
 }
-.skeleton .light-solid {
+[skeleton] .light-solid {
     background: var(--grey2);
 }
-.skeleton p,
-.skeleton h2,
-.skeleton h1 {
-    text-shadow: none !important;
-    color: transparent !important;
-    background: var(--loading-gradient);
-    border-radius: 20px;
-    background-size: 200% 100%;
-    animation: 1.5s shine linear infinite;
-}
-.skeleton i {
-    text-shadow: none !important;
-    color: transparent !important;
-    background: var(--loading-gradient);
-    border-radius: 20px;
-    background-size: 200% 100%;
-    animation: 1.5s shine linear infinite;
-}
-.skeleton .solid * { // Anything inside .solid should be hidden
+[skeleton] .hide-inside * { // Anything inside .solid should be hidden
     visibility: hidden !important;
+}
+[skeleton] p,
+[skeleton] h2,
+[skeleton] h1 {
+    text-shadow: none !important;
+    color: transparent !important;
+    background: var(--loading-gradient);
+    border-radius: 20px;
+    background-size: 200% 100%;
+    animation: 1.5s shine linear infinite;
+}
+[skeleton] i {
+    text-shadow: none !important;
+    color: transparent !important;
+    background: var(--loading-gradient);
+    border-radius: 20px;
+    background-size: 200% 100%;
+    animation: 1.5s shine linear infinite;
+}
+[skeleton] img {
+    display: none;
 }
 @keyframes shine { to { background-position-x: -200%; } }
 

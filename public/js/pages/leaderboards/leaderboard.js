@@ -1,22 +1,22 @@
-const pathArray = window.location.pathname.split('/');
-const lbId = pathArray[2];
+// Config
+const loadAmount = 7;
+
+
+
+
+// Vars
+const lbId = window.location.pathname.split('/')[2];
+
+const container = document.querySelector("grid-container");
+const entryTemplate = document.querySelector("template[has='entry']").content.firstElementChild;
+const endTemplate = document.querySelector("template[has='end']").content.firstElementChild;
 
 let loaded = 0;
 let loading = false;
 let best;
-
 let isEnd = false;
 
-let container = document.querySelector(".grid-container");
-
-let entryTemplate = document.querySelector("template#e-entry-template");
-let endTemplate = document.querySelector("template#e-end-template");
-
-let entryTemplateSkeleton = document.querySelector("template#e-entry-template-skeleton");
-
 let currentFilters = [];
-
-
 
 
 
@@ -46,7 +46,7 @@ window.addEventListener('scroll', () => {
     if (scrollTop + clientHeight >= scrollHeight - 250) {
 
         loadData(false, false);
-    } else loading = false;
+    };
 }, { passive: true });
 
 
@@ -57,38 +57,31 @@ window.addEventListener('scroll', () => {
    * @param restart true if all entries should be deleted and reloaded (used when editing filters)
    */
 function loadData(initial, restart) {
-    if (restart) loaded = 0;
-    renderSkeleton(7, container, entryTemplateSkeleton);
+    if (loading) return;
+    if (restart) {
+        document.querySelectorAll('entry.entry, end.end').forEach(function(element) {element.remove();});
+        isEnd = false;
+        loaded = 0;
+    }
+    appendSkeletonRows(loadAmount, container, entryTemplate);
     loading = true;
-    loadJson('/api/leaderboard/'+lbId+'?amount=7&start='+loaded+(currentFilters.length != 0 ? '&filters='+currentFilters : ''), (json) => {
-        deleteSkeleton(container, 'entry.skeleton');
-        container.classList.remove('skeleton');
+    loadJson('/api/leaderboard/'+lbId+'?amount='+loadAmount+'&start='+loaded+(currentFilters.length != 0 ? '&filters='+currentFilters : ''), (json) => {
 
-        if (initial) {
-            best = json['data'][0]['value'];
+        if (initial) { // Details
+            container.removeAttribute('skeleton');
             document.querySelector('title').innerHTML = json['name'] + " | MCBB Stats";
             document.querySelector('.page-title').innerHTML = json['name'];
             document.querySelector('.page-description').innerHTML = json['description'];
         }
 
-        loaded = loaded + json['data'].length;
-        if (restart) {
-            // Delete all entries & end
-            document.querySelectorAll('div.entry').forEach(function(element) {
-                element.remove();
-            })
-            let end = document.querySelector('div#e-end');
-            if (end != null) end.remove();
-            isEnd = false;
-        }
-        if (restart || initial) {
-            // Top 3 box
+        if (restart || initial) { // Top 3 box
+            best = json['data'][0]['value'];
             document.querySelector('.top-3-container > div:nth-child(2) > img').setAttribute('src', 'https://crafatar.com/avatars/'+json['data'][0]['uuid']+'?size=8&overlay');
             document.querySelector('.top-3-container > div:nth-child(1) > img').setAttribute('src', 'https://crafatar.com/avatars/'+json['data'][1]['uuid']+'?size=8&overlay');
             document.querySelector('.top-3-container > div:nth-child(3) > img').setAttribute('src', 'https://crafatar.com/avatars/'+json['data'][2]['uuid']+'?size=8&overlay');
         }
 
-        appendRows(json['data']);
+        fillRows(json['data']);
     });
 }
 
@@ -98,46 +91,55 @@ function loadData(initial, restart) {
    * Adds all provided rows (from json) to the page
    * @param json rows data.
    */
-function appendRows(json) {
+function fillRows(json) {
 
-    // All rows loaded.  Show end message
-    if (json.length == 0 && !isEnd) {
-        let element = endTemplate.content.firstElementChild.cloneNode(true);
-        container.appendChild(element);
+    // If end, add end card and stop
+    if (json.length == 0) {
+        container.appendChild(endTemplate.cloneNode(true));
         isEnd = true;
+        return;
     }
 
-    // Append leaderboard entries
+    // Fill leaderboard entries
     for (let i = 0; i < json.length; i++) {
+        let current = i + loaded + 1;
         let json1 = json[i];
 
-        let element = entryTemplate.content.firstElementChild.cloneNode(true);
-        container.appendChild(element)
+        let element = container.querySelector('entry:nth-of-type('+current+')');
+        element.removeAttribute('skeleton');
 
         // Data
         element.querySelector('h1').innerHTML = json1['pos'];
-        element.querySelector('img').setAttribute('src', 'https://crafatar.com/avatars/'+json1['uuid']+'?size=8&overlay');
-        element.querySelector('.data > .username').innerHTML = json1['username'];
-        element.querySelector('.data > .stat > .value').innerHTML = json1['value'];
-        element.querySelector('.data > .stat > .label').innerHTML = json1['label'];
+        element.querySelector('img-div > img').setAttribute('src', 'https://crafatar.com/avatars/'+json1['uuid']+'?size=8&overlay');
+        element.querySelector('data-div > h1').innerHTML = json1['username'];
+        element.querySelector('data-div > stat-div > .value').innerHTML = json1['value'];
+        element.querySelector('data-div > stat-div > .label').innerHTML = json1['label'];
         element.setAttribute('onClick', "window.location.href='/stats/"+json1['uuid']+"'");
 
         // Progress bar
         let barPercent = (100 * json1['value']) / best;
         if (barPercent >= 92) {
-            element.querySelector('.bar > #best').innerHTML = '';
+            element.querySelector('bar-line > #best').innerHTML = '';
         }
         else if (barPercent <= 8) {
-            element.querySelector('.bar > #none').innerHTML = '';
+            element.querySelector('bar-line > #none').innerHTML = '';
         }
         else {
-            element.querySelector('.bar > #best > #value').innerHTML = best;
+            element.querySelector('bar-line > #best > #value').innerHTML = best;
         }
-        element.querySelector('.bar > #you > #value').innerHTML = json1['value'];
-        element.querySelector('.bar > #you').style.setProperty('left', 'calc('+barPercent+'% - 17px)');
+        element.querySelector('bar-line > #you > #value').innerHTML = json1['value'];
+        element.querySelector('bar-line > #you').style.setProperty('left', 'calc('+barPercent+'% - 17px)');
     }
-    
+
+    loaded = loaded + json.length;
     loading = false;
+
+    // If not full, add end card and remove extra skeleton rows
+    if (json.length < loadAmount) {
+        container.appendChild(endTemplate.cloneNode(true));
+        isEnd = true;
+        removeSkeletonRows(container, 'entry[skeleton]');
+    }
 }
 
 

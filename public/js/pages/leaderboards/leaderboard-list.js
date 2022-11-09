@@ -1,4 +1,4 @@
-let container = document.querySelector(".grid-container");
+let container = document.querySelector("grid-container");
 
 let categoryTemplate = document.querySelector("#category-template");
 let individualItemTemplate = document.querySelector("#individual-item-template");
@@ -33,10 +33,10 @@ loadData(false);
    * @param restart true if all items should be deleted and reloaded (used when editing filters)
    */
 function loadData(restart) {
-    renderSkeleton(2, container, categoryTemplateSkeleton);
+    for (i = 0; i < 2; i++) { container.appendChild(categoryTemplateSkeleton.content.firstElementChild.cloneNode(true)); }
     loadJson('/api/leaderboard-list', (json) => {
-        deleteSkeleton(container, 'entry.skeleton');
-        container.classList.remove('skeleton');
+        removeSkeletonRows(container, 'entry[skeleton]');
+        container.removeAttribute('skeleton');
 
         if (restart) {
             // Delete all items

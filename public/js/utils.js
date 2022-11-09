@@ -58,13 +58,14 @@ function addClasses(element, classes) {
 
 
 // Render skeleton
-async function renderSkeleton(amount, container, template) {
+async function appendSkeletonRows(amount, container, template) {
   for (i = 0; i < amount; i++) {
-      container.appendChild(template.content.firstElementChild.cloneNode(true));
+    console.log("append")
+    container.appendChild(template.cloneNode(true));
   }
 }
-async function deleteSkeleton(container, querySelector) {
-  container.querySelectorAll(querySelector).forEach(entry => {
-      entry.remove();
+async function removeSkeletonRows(container, querySelector) {
+  container.querySelectorAll(querySelector).forEach(row => {
+    row.remove();
   })
 }

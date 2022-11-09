@@ -1,3 +1,6 @@
+.title-container {
+  margin: 20px auto; }
+
 .page-title {
   font-size: 30px;
   color: white;
@@ -9,10 +12,7 @@
   color: var(--grey);
   margin: 0px; }
 
-.title-container {
-  margin: 20px auto; }
-
-.entry {
+entry.entry {
   display: flex;
   align-items: center;
   padding: 0px 30px;
@@ -20,17 +20,22 @@
   transition: all .18s ease-in-out;
   gap: 20px; }
 
-.entry:hover {
+entry.entry:hover {
   transform: scale(1.02);
   cursor: pointer; }
 
-.entry > .img {
+entry.entry > img-div {
   height: 60px;
+  width: 60px;
   min-width: 60px;
   border-radius: 10px;
-  image-rendering: pixelated; }
+  image-rendering: pixelated;
+  overflow: hidden; }
 
-.entry > h1 {
+entry.entry > img-div > img {
+  width: 100%; }
+
+entry.entry > h1 {
   text-align: center;
   text-shadow: 1px 1px 4px black;
   font-size: 45px;
@@ -41,13 +46,13 @@
   min-width: 55px;
   min-height: 55px; }
 
-.entry > i {
+entry.entry > i {
   font-size: 20px;
   color: white;
   margin-left: auto;
   display: none; }
 
-.entry .username {
+entry.entry > data-div > h1 {
   text-align: left;
   color: white;
   font-size: 21px;
@@ -56,45 +61,48 @@
   white-space: nowrap;
   text-overflow: ellipsis; }
 
-.stat {
+entry.entry > data-div > stat-div {
   display: flex;
   align-items: center;
   gap: 6px;
   margin-top: 6px; }
 
-.stat > .value {
+entry.entry > data-div > stat-div > .value {
   margin: 0px;
   font-size: 19px;
   color: white; }
 
-.stat > .label {
+entry.entry > data-div > stat-div > .label {
   margin: 0px;
   font-size: 13px;
   color: var(--grey); }
 
-#e-1 > h1 {
+entry.entry:nth-of-type(1) > h1 {
   background-color: gold;
   border-radius: 50px; }
 
-#e-2 > h1 {
+entry.entry:nth-of-type(2) > h1 {
   background-color: silver;
   border-radius: 50px; }
 
-#e-3 > h1 {
+entry.entry:nth-of-type(3) > h1 {
   background-color: #CD7F32;
   border-radius: 50px; }
 
-#e-end > h1 {
+end.end {
+  text-align: center; }
+
+end.end > h1 {
   font-size: 30px;
   color: white;
   margin-top: 0px; }
 
-#e-end > h2 {
+end.end > h2 {
   font-size: 15px;
   color: lightgray;
   margin-bottom: 0px; }
 
-.bar {
+entry.entry > bar-line {
   display: none;
   background-color: var(--green);
   height: 3px;
@@ -104,7 +112,7 @@
   margin-right: 20px;
   transform: translateY(20px); }
 
-.bar > div {
+entry.entry > bar-line > point {
   position: absolute;
   bottom: -6px;
   height: 16px;
@@ -113,7 +121,7 @@
   border-radius: 100%;
   filter: drop-shadow(0 0 1rem #0c0c0c); }
 
-.bar > div > h1 {
+entry.entry > bar-line > point > h1 {
   margin: 0px;
   margin-left: -100%;
   margin-right: -100%;
@@ -123,21 +131,21 @@
   font-size: 15px;
   text-shadow: 1px 1px 4px black; }
 
-.bar > div > h1#value {
+entry.entry > bar-line > point > h1#value {
   color: white;
   font-size: 16px; }
 
-.bar > div#none > h1#value {
+entry.entry > bar-line > point#none > h1#value {
   transform: translateY(-22px); }
 
-#none {
+entry.entry > bar-line > point#none {
   z-index: 2; }
 
-#best {
+entry.entry > bar-line > point#best {
   z-index: 3;
   left: calc(100% - 16px); }
 
-#you {
+entry.entry > bar-line > point#you {
   left: calc(50% - 18px);
   z-index: 100; }
 
@@ -181,9 +189,9 @@
   border-radius: 2px; }
 
 @media only screen and (min-width: 950px) {
-  .bar {
+  entry.entry > bar-line {
     display: block; }
-  .entry > i {
+  entry.entry > i {
     display: block; }
   .top-3-container {
     display: block; }
@@ -193,5 +201,5 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%); }
-  .data {
+  entry.entry > data-div {
     min-width: 170px; } }
