@@ -4,15 +4,13 @@
   "description": "",
   "scripts": {
     "build": "eleventy",
-    "dev": "eleventy --serve & sass scss:css"
+    "dev": "rm -r _site & eleventy --serve & sass scss:css"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@11ty/eleventy": "^1.0.2"
-  },
-  "dependencies": {
+    "@11ty/eleventy": "^1.0.2",
     "sass": "^1.56.1"
   }
 }
