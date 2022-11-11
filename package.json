@@ -5,7 +5,7 @@
   "scripts": {
     "build": "eleventy",
     "dev": "eleventy & npm run watch-sass",
-    "watch-sass": "node-sass -w public/scss -o public/css"
+    "watch-sass": "node-sass -w scss -o css"
   },
   "keywords": [],
   "author": "",
