@@ -63,112 +63,49 @@
 
 
             <!-- TEMPLATE: "Category" - Insert Into GRID CONTAINER - THIS IS TOP -->
-            <template id="category-template">
+            <? for (var ci = 0; ci < lbListJson; ci++) {?>
                 <div class="box section category">
-                    <h1 class="section-title">Themeparks Leaderboards</h1>
+                    <h1 class="section-title"><? lbListJson[ci]['name'] ?></h1>
 
                     <!-- "INDIVIDUAL ITEM" & "GROUP CONTAINER" GO HERE -->
-
-                </div>
-            </template>
-
-            <!-- TEMPLATE: "Individual Item" - Insert Into TOP of "Category" -->
-            <template id="individual-item-template">
-                <div class="single-item" onClick="window.location.href = '/leaderboard/coins'">
-                    <i class="icon fa-solid fa-coins" style="color:rgb(255, 230, 0);"></i>
-                    <div>
-                        <h1>Coins</h1>
-                        <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
-                    </div>
-                    <i class="link fa-solid fa-angle-right"></i>
-                </div>
-            </template>
-
-            <!-- TEMPLATE: "Group Container" - Insert Into BOTTOM of "Category" -->
-            <template id="group-container-template">
-                <div id="c-groups-container" class="groups-container">
-                    
-                    <!-- "GROUP"S GO HERE -->
-
-                </div>
-            </template>
-
-            <!-- TEMPLATE: "Group" - Insert Into "Group Container" -->
-            <template id="group-template">
-                <div class="groups-item-wrapper">
-                    <div class="groups-item">
-                        <h1>Rides</h1>
-                        <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
-                    </div>
-                    <ul>
-                        <!-- "GROUPED ITEM"S GO HERE -->
-                    </ul>
-                </div>
-            </template>
-
-            <!-- TEMPLATE: "Grouped Item" - Insert Into "Group" -->
-            <template id="grouped-item-template">
-                <li>
-                    <h1>Some Ride<i class="fa-solid fa-angle-right"></i></h1>
-                </li>
-            </template>
-
-
-
-            <!-- TEMPLATE: "Category" SKELETON -->
-            <template id="category-template-skeleton">
-                <entry animate skeleton class="box section category">
-                    <h1 class="section-title">Themeparks Leaderboards</h1>
-
-                    <!-- Individual Item -->
-                    <div class="single-item light-solid">
-                        <i class="icon fa-solid fa-coins" style="color:rgb(255, 230, 0);"></i>
-                        <div>
-                            <h1>Coins</h1>
-                            <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+                    <? for (var ii = 0; ii < lbListJson[ci]['individuals']; ii++) {?>
+                        <div class="single-item" onClick="window.location.href = '/leaderboard/board/<? lbListJson[ci][\'individuals\'][ii][\'id\'] ?>'">
+                            <i class="<? lbListJson[ci]['individuals'][ii]['icon'] ?>" style="color: <? lbListJson[ci]['individuals'][ii]['icon_color'] ?>;"></i>
+                            <div>
+                                <h1><? lbListJson[ci]['individuals'][ii]['name'] ?></h1>
+                                <h2><? lbListJson[ci]['individuals'][ii]['description'] ?></h2>
+                            </div>
+                            <i class="link fa-solid fa-angle-right"></i>
                         </div>
-                        <i class="link fa-solid fa-angle-right"></i>
-                    </div>
+                    <? } ?>
 
-                    <!-- Individual Item -->
-                    <div class="single-item light-solid">
-                        <i class="icon fa-solid fa-coins" style="color:rgb(255, 230, 0);"></i>
-                        <div>
-                            <h1>Coins</h1>
-                            <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
-                        </div>
-                        <i class="link fa-solid fa-angle-right"></i>
-                    </div>
-
+                    <!-- GROUP CONTAINER -->
                     <div id="c-groups-container" class="groups-container">
                     
-                        <!-- Group Item -->
-                        <div class="groups-item-wrapper" onmouseover="popOutCard(this)">
-                            <div class="groups-item light-solid">
-                                <h1>Rides</h1>
-                                <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+                        <!-- "GROUP"S GO HERE -->
+                        <? for (var gi = 0; gi < lbListJson[ci]['groups']; gi++) {?>
+                            <div class="groups-item-wrapper">
+                                <div class="groups-item">
+                                    <h1><? lbListJson[ci]['groups'][gi]['name'] ?></h1>
+                                    <h2><? lbListJson[ci]['groups'][gi]['description'] ?></h2>
+                                </div>
+                                <ul>
+                                    <!-- "GROUPED ITEM"S GO HERE -->
+                                    <? for (var gii = 0; gii < lbListJson[ci]['groups'][gi]['lbs']; gii++) {?>
+                                        <li onClick="window.location.href = '/leaderboard/board/<? lbListJson[ci][\'groups\'][gi][\'lbs\'][gii][\'id\'] ?>'">
+                                            <h1><? lbListJson[ci]['groups'][gi]['lbs'][gii] ?><i class="fa-solid fa-angle-right"></i></h1>
+                                        </li>
+                                    <? } ?>
+                                </ul>
                             </div>
-                            <ul>
-                                
-                            </ul>
-                        </div>
-
-                        <!-- Group Item -->
-                        <div class="groups-item-wrapper">
-                            <div class="groups-item light-solid">
-                                <h1>Rides</h1>
-                                <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
-                            </div>
-                            <ul>
-                                
-                            </ul>
-                        </div>
+                        <? } ?>
     
-                    </entry>
+                    </div>
 
                 </div>
-            </template>
+            <? } ?>
         
+
 
         </grid-container>
         <script src="/MCBB-Stats-Page/js/utils.js"></script>
