@@ -61,25 +61,30 @@
 
 
 
+
+
+
+
+
 // Groups
 .groups-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    align-content: stretch;
     justify-content: space-evenly;
-    align-items: stretch;
     gap: 20px;
 }
 .groups-item-wrapper {
+    position: relative;
     flex-grow: 1;
-    transition: all .24s ease;
-    z-index: 100;
     filter: drop-shadow(0 0 0.6rem rgb(22, 22, 22));
-    width: 200px;
-    transition: all .5s ease-in-out;
+    min-height: 200px;
+    transition: all 0.6s ease-in-out;
 }
 .groups-item {
+    position: absolute;
+    width: 100%;
+    box-sizing: border-box;
     border-radius: 15px;
     height: 200px;
     background-color: black;
@@ -95,7 +100,33 @@
     font-size: 17px;
 }
 
-// Grouped Items
+
+
+// List
+.groups-item-wrapper > ul {
+    transition: inherit;
+    position: absolute;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+    background-color: black;
+    list-style: none;
+
+    opacity: 0;
+    top: 0;
+}
+.groups-item-wrapper:hover > ul {
+    opacity: 1;
+    top: 200px;
+}
+.groups-item-wrapper:hover {
+    // transform: translateY(-50%);
+}
+
+
+
+// Grouped Items (Options In List)
 .groups-item-wrapper > ul > li > h1 {
     margin: 0px;
     color: white;
@@ -107,33 +138,9 @@
     float: right;
     margin-right: 10px;
 }
-.groups-item-wrapper > ul > li > h1:hover { // Cursor and greyed when hover
+.groups-item-wrapper > ul > li > h1:hover {
     background-color: rgb(17, 17, 17);
     cursor: pointer;
-}
-.groups-item-wrapper:hover { // More shadow when expanded
-    filter: drop-shadow(0 0 0.8rem rgb(12, 12, 12)); 
-}
-
-// Hover animation
-.groups-item-wrapper > ul {
-    overflow: hidden;
-    margin: 0;
-    background-color: black;
-    border-bottom-right-radius: 15px;
-    border-bottom-left-radius: 15px;
-    list-style: none;
-
-    // Animated properties
-    height: 0;
-}
-.groups-item-wrapper:hover > ul {
-    padding: 10px 0;
-    height: auto;
-}
-.groups-item-wrapper:hover > .groups-item {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
 }
 
 

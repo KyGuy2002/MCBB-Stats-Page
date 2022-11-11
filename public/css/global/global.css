@@ -48,7 +48,7 @@ grid-container > div,
   transition: all 1s linear; }
 
 .box[animate] {
-  animation: popInAnimation 0.5s;
+  animation: popInAnimationScale 0.4s;
   animation-fill-mode: backwards; }
   .box[animate]:nth-child(1) {
     animation-delay: 20ms; }
@@ -151,6 +151,23 @@ grid-container > div,
   .box[animate]:nth-child(50) {
     animation-delay: 1000ms; }
 
+grid-container > .box[animate]:first-child {
+  animation: popInAnimation 0.4s; }
+
+@keyframes popInAnimation {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@keyframes popInAnimationScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.9); }
+  100% {
+    opacity: 1;
+    transform: scale(1); } }
+
 /* Tablet */
 @media only screen and (min-width: 550px) {
   grid-container,
@@ -201,14 +218,6 @@ grid-container > div,
   font-weight: bold;
   transition-duration: 0.4s;
   cursor: pointer; }
-
-@keyframes popInAnimation {
-  0% {
-    opacity: 0;
-    transform: scale(0.5); }
-  100% {
-    opacity: 1;
-    transform: scale(1); } }
 
 /* ===== Tooltips/Hovercards ===== */
 .tooltipparent {

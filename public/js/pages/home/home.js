@@ -1,6 +1,9 @@
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 
+const container = document.querySelector(".top-players-container");
+const entryTemplate = document.querySelector("template[has='entry']").content.firstElementChild;
+
 
 // Check if username error in url params
 if (urlParams.has('usernameError')) {
@@ -27,27 +30,35 @@ async function usernameError(reason) {
 
 
 // Init Top Players Data
-loadJson('/topPlayers', (json) => {initTopPlayers(json)});
-async function initTopPlayers(json) {
-  let main = document.querySelector("#tp-0")
-  main.style.visibility = 'visible';
-  main.remove();
-  let container = document.querySelector(".top-players-container");
+initTopPlayers();
+async function initTopPlayers() {
+  appendSkeletonRows(6, container, entryTemplate);
+  loadJson('/topPlayers', (json) => {
+    fillRows(json);
+  });
+}
 
+
+
+
+/**
+ * Adds all provided rows (from json) to the page
+ * @param json rows data.
+ */
+function fillRows(json) {
   for (let i = 0; i < json.length; i++) {
-
     let json1 = json[i];
 
-    let element = main.cloneNode(true);
-    container.appendChild(element)
-    let id = 'tp-'+(i+1);
-    element.setAttribute('id', id);
+    let element = container.querySelector('entry:nth-of-type('+(i+1)+')');
+    element.removeAttribute('skeleton');
 
-    document.querySelector("#"+id).setAttribute('href', '/stats/'+json1['uuid']+'/manhunt');
-    document.querySelector("#"+id+' img').setAttribute('src', 'https://crafatar.com/avatars/'+json1['uuid']+'?size=8&overlay');
-    document.querySelector("#"+id+' #tp-username').innerHTML = json1['name'];
-    document.querySelector("#"+id+' #tp-category').innerHTML = json1['category'];
-    document.querySelector("#"+id+' #tp-stat').innerHTML = json1['stat'];
-    document.querySelector("#"+id+' #tp-value').innerHTML = json1['value'];
+    element.setAttribute('href', '/stats/'+json1['uuid']+'/manhunt');
+    element.querySelector('img').setAttribute('src', 'https://crafatar.com/avatars/'+json1['uuid']+'?size=8&overlay');
+    element.querySelector('#tp-username').innerHTML = json1['name'];
+    element.querySelector('#tp-category').innerHTML = json1['category'];
+    element.querySelector('#tp-stat').innerHTML = json1['stat'];
+    element.querySelector('#tp-value').innerHTML = json1['value'];
   }
+
+  removeSkeletonRows(container, 'entry[skeleton]');
 }

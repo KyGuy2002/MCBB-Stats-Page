@@ -14,6 +14,15 @@ let filtersPage = document.querySelector(".filtersPage");
 
 
 
+function popOutCard(element) {
+    console.log('ee')
+    const height = element.querySelector('ul').offsetHeight;
+    element.style.transform = 'translateY('+height+'px)';
+}
+
+
+
+
 
 
 //

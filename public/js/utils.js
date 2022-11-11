@@ -60,7 +60,6 @@ function addClasses(element, classes) {
 // Render skeleton
 async function appendSkeletonRows(amount, container, template) {
   for (i = 0; i < amount; i++) {
-    console.log("append")
     container.appendChild(template.cloneNode(true));
   }
 }
