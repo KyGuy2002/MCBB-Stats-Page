@@ -14,8 +14,6 @@ jobs:
 
         - name: Setup Node
           uses: actions/setup-node@v1
-          runs:
-            using: node16
 
 
         - run: npm ci
