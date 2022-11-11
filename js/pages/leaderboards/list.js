@@ -14,132 +14,121 @@ let filtersPage = document.querySelector(".filtersPage");
 
 
 
-function popOutCard(element) {
-    console.log('ee')
-    const height = element.querySelector('ul').offsetHeight;
-    element.style.transform = 'translateY('+height+'px)';
-}
-
-
-
-
-
-
 //
 //
 // Load Data
 //
 //
 
-// Start loading data
-loadData(false);
+// // Start loading data
+// loadData(false);
 
 
 
 
-/**
-   * Loads leaderboard list
-   * @param restart true if all items should be deleted and reloaded (used when editing filters)
-   */
-function loadData(restart) {
-    for (i = 0; i < 2; i++) { container.appendChild(categoryTemplateSkeleton.content.firstElementChild.cloneNode(true)); }
-    loadJson('/api/leaderboard-list', (json) => {
-        removeSkeletonRows(container, 'entry[skeleton]');
-        container.removeAttribute('skeleton');
+// /**
+//    * Loads leaderboard list
+//    * @param restart true if all items should be deleted and reloaded (used when editing filters)
+//    */
+// function loadData(restart) {
+//     for (i = 0; i < 2; i++) { container.appendChild(categoryTemplateSkeleton.content.firstElementChild.cloneNode(true)); }
+//     loadJson('/api/leaderboard-list', (json) => {
+//         removeSkeletonRows(container, 'entry[skeleton]');
+//         container.removeAttribute('skeleton');
 
-        if (restart) {
-            // Delete all items
-            document.querySelectorAll('div.section').forEach(function(element) {
-                element.remove();
-            })
-        }
+//         if (restart) {
+//             // Delete all items
+//             document.querySelectorAll('div.section').forEach(function(element) {
+//                 element.remove();
+//             })
+//         }
 
-        appendRows(json);
-    });
-}
-
-
-
-/**
-   * Adds all provided rows/leaderboards (from json) to the page
-   * @param json rows data.
-   */
-function appendRows(json) {
-
-    // Append leaderboard entries
-    for (let i = 0; i < json.length; i++) {
-        let cJson = json[i];
-
-        let category = categoryTemplate.content.firstElementChild.cloneNode(true);
-        container.appendChild(category)
-
-        // Data
-        category.querySelector('h1.section-title').innerHTML = cJson['name'];
-        category.setAttribute('id', "Category-"+cJson['name']);
-
-        // Filters Page
-        filtersPage.innerHTML = filtersPage.innerHTML + '<a href="#Category-'+cJson['name']+'">'+cJson['name']+' <i class="fa-solid fa-angle-right"></i></a>'
+//         appendRows(json);
+//     });
+// }
 
 
 
-        // Individual Items
-        for (let i = 0; i < cJson['individuals'].length; i++) {
-            let iJson = cJson['individuals'][i];
+// /**
+//    * Adds all provided rows/leaderboards (from json) to the page
+//    * @param json rows data.
+//    */
+// function appendRows(json) {
 
-            let individual = individualItemTemplate.content.firstElementChild.cloneNode(true);
-            category.appendChild(individual);
+//     // Append leaderboard entries
+//     for (let i = 0; i < json.length; i++) {
+//         let cJson = json[i];
 
-            // Data
-            individual.setAttribute('onClick', "window.location.href = '/leaderboard/"+iJson['lb_id']+"'");
-            addClasses(individual.querySelector('i.icon'), iJson['icon']);
-            individual.querySelector('div > h1').innerHTML = iJson['name'];
-            individual.querySelector('div > h2').innerHTML = iJson['description'];
-            individual.style.background = "linear-gradient(to right, rgba(0, 0, 0, 0.980), rgba(0, 0, 0, 0.300)), url('"+iJson['image']+"')";
-            individual.style.backgroundPosition = "center";
-            individual.style.backgroundSize = "cover";
-            individual.style.backgroundRepeat = "no-repeat";
-        }
+//         let category = categoryTemplate.content.firstElementChild.cloneNode(true);
+//         container.appendChild(category)
 
+//         // Data
+//         category.querySelector('h1.section-title').innerHTML = cJson['name'];
+//         category.setAttribute('id', "Category-"+cJson['name']);
 
-
-        // Group Container
-        let groupContainer = groupContainerTemplate.content.firstElementChild.cloneNode(true);
-        category.appendChild(groupContainer);
+//         // Filters Page
+//         filtersPage.innerHTML = filtersPage.innerHTML + '<a href="#Category-'+cJson['name']+'">'+cJson['name']+' <i class="fa-solid fa-angle-right"></i></a>'
 
 
 
-        // Groups
-        for (let i = 0; i < cJson['groups'].length; i++) {
-            let gJson = cJson['groups'][i];
+//         // Individual Items
+//         for (let i = 0; i < cJson['individuals'].length; i++) {
+//             let iJson = cJson['individuals'][i];
 
-            let groupWrapper = groupTemplate.content.firstElementChild.cloneNode(true);
-            groupContainer.appendChild(groupWrapper);
-            let groupCard = groupWrapper.querySelector('.groups-item');
+//             let individual = individualItemTemplate.content.firstElementChild.cloneNode(true);
+//             category.appendChild(individual);
 
-            // Data
-            groupCard.querySelector('h1').innerHTML = gJson['name'];
-            groupCard.querySelector('h2').innerHTML = gJson['description'];
-            groupCard.style.background = "radial-gradient(circle at center, rgba(0, 0, 0, 0.750), rgba(0, 0, 0, 0.400)), url('"+gJson['image']+"')";
-            groupCard.style.backgroundPosition = "center";
-            groupCard.style.backgroundSize = "cover";
-            groupCard.style.backgroundRepeat = "no-repeat";
+//             // Data
+//             individual.setAttribute('onClick', "window.location.href = '/leaderboard/"+iJson['lb_id']+"'");
+//             addClasses(individual.querySelector('i.icon'), iJson['icon']);
+//             individual.querySelector('div > h1').innerHTML = iJson['name'];
+//             individual.querySelector('div > h2').innerHTML = iJson['description'];
+//             individual.style.background = "linear-gradient(to right, rgba(0, 0, 0, 0.980), rgba(0, 0, 0, 0.300)), url('"+iJson['image']+"')";
+//             individual.style.backgroundPosition = "center";
+//             individual.style.backgroundSize = "cover";
+//             individual.style.backgroundRepeat = "no-repeat";
+//         }
 
 
 
-            // Grouped Items
-            for (let i = 0; i < gJson['lbs'].length; i++) {
-                let gIJson = gJson['lbs'][i];
+//         // Group Container
+//         let groupContainer = groupContainerTemplate.content.firstElementChild.cloneNode(true);
+//         category.appendChild(groupContainer);
 
-                let groupedItem = groupedItemTemplate.content.firstElementChild.cloneNode(true);
-                groupWrapper.querySelector('ul').appendChild(groupedItem);
 
-                // Data
-                groupedItem.querySelector('h1').innerHTML = gIJson['name'] + "<i class='fa-solid fa-angle-right'></i>";
-                groupedItem.setAttribute('onClick', "window.location.href = '/leaderboard/"+gIJson['lb_id']+"'");
-            }
-        }
-    }
-}
+
+//         // Groups
+//         for (let i = 0; i < cJson['groups'].length; i++) {
+//             let gJson = cJson['groups'][i];
+
+//             let groupWrapper = groupTemplate.content.firstElementChild.cloneNode(true);
+//             groupContainer.appendChild(groupWrapper);
+//             let groupCard = groupWrapper.querySelector('.groups-item');
+
+//             // Data
+//             groupCard.querySelector('h1').innerHTML = gJson['name'];
+//             groupCard.querySelector('h2').innerHTML = gJson['description'];
+//             groupCard.style.background = "radial-gradient(circle at center, rgba(0, 0, 0, 0.750), rgba(0, 0, 0, 0.400)), url('"+gJson['image']+"')";
+//             groupCard.style.backgroundPosition = "center";
+//             groupCard.style.backgroundSize = "cover";
+//             groupCard.style.backgroundRepeat = "no-repeat";
+
+
+
+//             // Grouped Items
+//             for (let i = 0; i < gJson['lbs'].length; i++) {
+//                 let gIJson = gJson['lbs'][i];
+
+//                 let groupedItem = groupedItemTemplate.content.firstElementChild.cloneNode(true);
+//                 groupWrapper.querySelector('ul').appendChild(groupedItem);
+
+//                 // Data
+//                 groupedItem.querySelector('h1').innerHTML = gIJson['name'] + "<i class='fa-solid fa-angle-right'></i>";
+//                 groupedItem.setAttribute('onClick', "window.location.href = '/leaderboard/"+gIJson['lb_id']+"'");
+//             }
+//         }
+//     }
+// }
 
 
 

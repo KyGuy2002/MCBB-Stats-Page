@@ -8,31 +8,37 @@ header {
   background-color: var(--header-black);
   height: 50px;
   gap: 7px;
-  padding: 0 7px; }
+  padding: 0 7px;
+}
 
 /* Logo and Name */
 .h-logo {
   width: 30px;
   height: 30px;
-  cursor: pointer; }
+  cursor: pointer;
+}
 
 .h-name {
   color: white;
   font-size: 18px;
-  cursor: pointer; }
+  cursor: pointer;
+}
 
 .h-info {
   color: lightgray;
   font-size: 19px;
   margin-left: 5px;
   cursor: pointer;
-  transition-duration: color 0.4s; }
+  transition-duration: color 0.4s;
+}
 
 .h-info:hover {
-  color: white; }
+  color: white;
+}
 
 .info-box[expanded=false] {
-  display: none; }
+  display: none;
+}
 
 .info-box[expanded=true] {
   max-width: 500px;
@@ -43,54 +49,68 @@ header {
   color: white;
   display: block;
   padding: 30px;
-  filter: drop-shadow(0 0 1rem #0c0c0c); }
+  filter: drop-shadow(0 0 1rem rgb(12, 12, 12));
+}
 
 .info-box a {
   color: var(--green);
-  text-decoration: none; }
+  text-decoration: none;
+}
 
 .info-box p {
-  margin: 4px 0; }
+  margin: 4px 0;
+}
 
 .info-box h2 {
   margin-top: 40px;
-  margin-bottom: 16px; }
+  margin-bottom: 16px;
+}
 
 /* Buttons */
 .h-leaderboard {
-  background-color: var(--green); }
+  background-color: var(--green);
+}
 
 .h-leaderboard:hover {
-  background-color: var(--green-hover); }
+  background-color: var(--green-hover);
+}
 
 .h-leaderboard-label {
   display: none;
-  padding: 0px; }
+  padding: 0px;
+}
 
 .h-discord {
   background-color: #5865F2;
-  display: none; }
+  display: none;
+}
 
 .h-discord:hover {
-  background-color: #808af7; }
+  background-color: #808af7;
+}
 
 .h-website {
   background-color: #3a3a3a;
-  display: none; }
+  display: none;
+}
 
 .h-website:hover {
-  background-color: #666666; }
+  background-color: #666666;
+}
 
 /* Search */
 .h-search {
-  background-color: #666666; }
+  background-color: #666666;
+}
 
 .h-search:hover {
-  background-color: #919191; }
+  background-color: #919191;
+}
 
 .h-search-label {
   display: none;
-  padding: 0px; }
+  padding: 0px;
+}
 
 .h-search-input {
   width: 0;
@@ -102,30 +122,43 @@ header {
   z-index: 10;
   position: absolute;
   right: -1px;
-  top: -2px; }
+  top: -2px;
+}
 
 .h-search-input:focus {
   padding: inherit;
-  width: 200px; }
+  width: 200px;
+}
 
 /* Tablet */
 @media only screen and (min-width: 550px) {
   .info-box[expanded=true] {
-    margin: 25px 20px; } }
-
+    margin: 25px 20px;
+  }
+}
 /* Desktop and Tablet */
 @media only screen and (min-width: 760px) {
   .h-name {
-    font-size: 20px; }
+    font-size: 20px;
+  }
   .h-discord {
-    display: inline; }
+    display: inline;
+  }
   .h-website {
-    display: inline; }
+    display: inline;
+  }
   .h-leaderboard-label {
-    display: inline; }
+    display: inline;
+  }
   .h-search-label {
-    display: inline; }
+    display: inline;
+  }
   .h-search-input:focus {
-    width: 363px; }
+    width: 363px;
+  }
   .h-search-input {
-    top: 0; } }
+    top: 0;
+  }
+}
+
+/*# sourceMappingURL=header.css.map */
