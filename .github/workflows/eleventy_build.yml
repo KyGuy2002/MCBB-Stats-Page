@@ -9,7 +9,7 @@ jobs:
       - name: Build
         uses: TartanLlama/actions-eleventy@master
       - name: Compile SASS
-        run: sass scss:/css
+        run: npm i sass & sass scss:css
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
