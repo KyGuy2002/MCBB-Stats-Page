@@ -4,8 +4,7 @@
   "description": "",
   "scripts": {
     "build": "eleventy",
-    "dev": "eleventy & npm run watch-sass",
-    "watch-sass": "node-sass -w scss -o css"
+    "dev": "eleventy --serve & sass scss:css"
   },
   "keywords": [],
   "author": "",

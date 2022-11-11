@@ -1,0 +1,46 @@
+.g-name {
+  font-size: 30px;
+  text-align: left;
+  color: #ffffff;
+  margin: 10px;
+}
+
+.g-uuid {
+  text-align: left;
+  color: #a5a5a5;
+  font-weight: 500;
+  margin: 10px;
+  font-size: 16px;
+}
+
+.g-uuid:hover {
+  text-decoration: underline;
+}
+
+.g-character {
+  margin: 0px;
+  display: none;
+  cursor: grab;
+}
+
+@media only screen and (min-width: 700px) {
+  .g-character {
+    display: block;
+  }
+}
+.g-stats-label {
+  font-size: 15px;
+  text-align: left;
+  color: #ffffff;
+  margin: 10px;
+}
+
+.g-stats-value {
+  text-align: left;
+  color: #a5a5a5;
+  font-weight: 500;
+  margin: 10px;
+  font-size: 15px;
+}
+
+/*# sourceMappingURL=general-stats.css.map */
