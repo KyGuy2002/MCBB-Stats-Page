@@ -1,0 +1,71 @@
+<head>
+    <link rel="stylesheet" href="/css/global/header.css">
+</head>
+
+<!-- Header -->
+<script src="/js/usernameChecks.js"></script>
+<script src="/js/search.js"></script>
+<script src="/js/utils.js"></script>
+<header>
+
+
+    <!-- Logo And Name -->
+    <img class="h-logo" src="/assets/images/logo.png" onclick="location.href = '/'">
+    <h1 class="h-name" onclick="location.href = '/'">MCBlockBuilds Stats</h1>
+
+    <!-- Info Button -->
+    <i class="h-info fa-solid fa-circle-info" onClick="return toggleAbout();"></i>
+    
+
+    <!-- Search Bar -->
+    <iframe name="dummyframe" id="dummyframe" style="display: none"></iframe>
+    <form style="margin-left: auto;" onsubmit="return submitName();" target="dummyframe">
+        <label class="button h-button h-search" style="position: relative;">
+            <input class="button h-button h-search h-search-input" name="username" placeholder="Search" id="username-input-header" required>
+            <h1 class="button h-search-label">Search</h1>
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </label>
+    </form>
+
+
+    <!-- Leaderboard Button -->
+    <button class="button h-button h-leaderboard" onclick="window.location.href='/leaderboard'">
+        <h1 class="button h-leaderboard-label">Leaderboards</h1>
+        <i class="fa-solid fa-ranking-star"></i>
+    </button>
+
+
+    <!-- Discord Button -->
+    <button class="button h-button h-discord" onclick="window.open('https://mcblockbuilds.net/discord/','_blank')">
+        Discord
+        <i class="fa-brands fa-discord"></i>
+    </button>
+
+    <!-- Website Button -->
+    <button class="button h-button h-website" onclick="window.open('https://mcblockbuilds.net/','_blank')">
+        Website
+        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+    </button>
+
+
+</header>
+
+
+<div class="box info-box" expanded="false">
+    <p>The MCBlockBuilds Stats Page is the official stats viewer for the <a href="https://mcblockbuilds.net/">MCBlockBuilds.Net</a> Minecraft Server.</p>
+
+    <h2>Other Links</h2>
+    <p>Website: <a href="https://mcblockbuilds.net/">https://mcblockbuilds.net/</a></p>
+    <p>Discord: <a href="https://mcblockbuilds.net/discord">https://mcblockbuilds.net/discord</a></p>
+    <p>Server Ip (Java): <a>mcblockbuilds.net</a></p>
+    <p>Server Ip (Bedrock): <a>br.mcblockbuilds.net</a></p>
+
+    <h2>Credits/Resources</h2>
+    <p>Using the <a href="https://crafater.com/">Crafater API</a> for player skin files.</p>
+    <p>Using Electroids <a href="https://github.com/Electroid/mojang-api">Mojang API</a> for player information.</p>
+    <p>Icons provided by <a href="https://fontawesome.com/">Fontawesome</a></p>
+    <p style="margin-top: 20px;">Created by <a href="https://github.com/KyGuy2002/">KyGuy2002</a></p>
+    <p>Based off of <a href="https://sky.shiiyu.moe/">SkyCrypt</a></p>
+</div>
+
+<script src="/js/header.js"></script>

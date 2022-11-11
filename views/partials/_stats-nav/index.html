@@ -1,0 +1,59 @@
+<body>
+
+    <div class="box" style="border-radius: 0; padding: 0px; animation: none;">
+        <hr class="nav-line">
+        <ul>
+            <li><a class="nav" page="themeparks">Theme Parks</a></li>
+            <li><a class="nav" page="manhunt">Manhunt</a></li>
+            <li><a class="nav" page="creative">Creative</a></li>
+            <li><a class="nav" page="survival">Survival</a></li>
+            <li><a class="nav" page="skyblock">Skyblock</a></li>
+        </ul>
+    </div>
+
+</body>
+
+<style>
+    .nav-line {
+        width: 100%;
+        border: none;
+        background-color: var(--green);
+        height: 4px;
+        margin: 0px;
+    }
+    ul {
+        display: flex;
+        justify-content: space-between;
+        width: 90%;
+        margin: auto;
+        padding: 7px;
+    }
+    li {
+        display: block;
+        list-style-type: none;
+        font-size: 12px;
+        color: white;
+        transition-duration: 0.4s;
+    }
+    a:hover {
+        color: var(--green-hover);
+    }
+    a {
+        color: white;
+        text-decoration: none;
+        transition-duration: 0.3s;
+    }
+    .current {
+        color: var(--green);
+        text-decoration: underline;
+    }
+    /* For tablets and desktops */
+    @media only screen and (min-width: 768px) {
+        ul {
+            width: 75%;
+        }
+        li {
+            font-size: 20px;
+        }
+    }
+</style>
